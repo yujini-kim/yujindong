@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ep-hidden-meadow-a1avi5qb-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_FJNnDCK1Ve8P
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
