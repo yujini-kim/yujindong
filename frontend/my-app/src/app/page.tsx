@@ -1,8 +1,19 @@
 "use client";
 
+import PreResult from "@/components/PreResult";
+import Result from "@/components/Result";
 import TextArea from "@/components/Textarea";
 import { useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+`;
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -10,7 +21,6 @@ export default function Home() {
   const [recommendation, setRecommendation] = useState<string>("");
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    e.preventDefault();
     setText(e.target.value);
   };
 
@@ -25,21 +35,14 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <form onSubmit={onSubmit}>
-        <TextArea />
-      </form>
+    <Wrapper>
+      <TextArea onSubmit={onSubmit} value={text} onChange={onChange} />
 
-      {score !== null && (
-        <div style={{ marginTop: "2rem", fontSize: "1.1rem" }}>
-          <p>
-            📊 친밀도 점수: <strong>{score}</strong>
-          </p>
-          <p>
-            💰 추천 축의금: <strong>{recommendation}</strong>
-          </p>
-        </div>
+      {score !== null ? (
+        <Result recommendation={recommendation} score={score} />
+      ) : (
+        <PreResult />
       )}
-    </div>
+    </Wrapper>
   );
 }

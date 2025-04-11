@@ -1,7 +1,10 @@
+import { useAnalyzeMutation } from "@/hooks/analyzeText";
+import { useState } from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Form = styled.form`
   max-width: 294px;
+  width: 294px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +16,8 @@ const Text = styled.textarea.attrs({
   maxLength: 1000,
 })`
   all: unset;
+  box-sizing: border-box;
+  width: 100%;
   border-radius: 15px;
   border: 1px solid ${(props) => props.theme.borderColor};
   padding: 10px;
@@ -26,12 +31,18 @@ const Button = styled.button.attrs({
   padding: 5px;
 `;
 
-function TextArea() {
+interface ITextProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onSubmit: (e: React.FormEvent) => void;
+}
+
+function TextArea({ value, onChange, onSubmit }: ITextProps) {
   return (
-    <Wrapper>
-      <Text placeholder="텍스트를 입력해주세요"></Text>
+    <Form onSubmit={onSubmit}>
+      <Text value={value} onChange={onChange}></Text>
       <Button>분석하기</Button>
-    </Wrapper>
+    </Form>
   );
 }
 
