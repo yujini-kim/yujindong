@@ -1,4 +1,4 @@
-package com.wedding.weddinggiftai;
+package com.wedding.weddinggiftai.analyzeApi;
 
 public class ChatResponse {
     private int score;
