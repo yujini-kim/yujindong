@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76000165-17f9-4b94-b139-49db6f0a5f0c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/ChatResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/ChatResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,7 @@
     "Gradle.weddinggiftai [:com.wedding.weddinggiftai.WeddinggiftaiApplication.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/chat-analyze",
+    "git-widget-placeholder": "feat/chat-analyze-be",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
