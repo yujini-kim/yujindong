@@ -1,51 +1,48 @@
 "use client";
 
+import PreResult from "@/components/PreResult";
+import Result from "@/components/Result";
+import TextArea from "@/components/Textarea";
+import { useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+`;
 
 export default function Home() {
   const [text, setText] = useState("");
+  const [score, setScore] = useState<number | null>(null);
+  const [recommendation, setRecommendation] = useState<string>("");
+
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    e.preventDefault();
     setText(e.target.value);
   };
+
+  const mutation = useAnalyzeMutation((data) => {
+    setScore(data.score);
+    setRecommendation(data.recommendation);
+  });
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const payload = {
-      message: text,
-    };
-
-    try {
-      const res = await fetch("/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok) {
-        const result = await res.json();
-        console.log("서버 응답:", result);
-      } else {
-        console.error("서버 오류:", res.status);
-      }
-    } catch (err) {
-      console.error("요청 실패:", err);
-    }
+    mutation.mutate(text);
   };
+
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <textarea
-          onChange={onChange}
-          value={text}
-          placeholder="텍스트를 입력해 주세요"
-          rows={5}
-          maxLength={1000}
-        />
-        <button>전송하기</button>
-      </form>
-    </div>
+    <Wrapper>
+      <TextArea onSubmit={onSubmit} value={text} onChange={onChange} />
+
+      {score !== null ? (
+        <Result recommendation={recommendation} score={score} />
+      ) : (
+        <PreResult />
+      )}
+    </Wrapper>
   );
 }

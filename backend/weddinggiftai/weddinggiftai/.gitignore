@@ -39,3 +39,6 @@ out/
 
 .idea/
 *.iml
+
+# 시크릿 설정
+src/main/resources/secret-application.yml
