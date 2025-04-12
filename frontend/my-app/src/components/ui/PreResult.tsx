@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ProgressCircle from "./ProgressCircle";
+import { animate, motion } from "framer-motion";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ export const Text = styled.p`
   text-align: center;
 `;
 
-const Emoji = styled.div`
+const Emoji = styled(motion.div)`
   width: 100px;
   height: 100px;
   display: flex;
@@ -28,6 +29,18 @@ const Emoji = styled.div`
   justify-content: center;
   font-size: 80px;
 `;
+
+const emojiVariants = {
+  animate: {
+    rotate: [0, -20, 20, 0],
+    transition: {
+      duration: 1,
+      repeat: Infinity,
+      repeatType: "loop",
+      ease: "easeInOut",
+    },
+  },
+};
 
 function PreResult() {
   return (
@@ -38,7 +51,9 @@ function PreResult() {
       </Box>
       <Box>
         <Text>축의금 추천</Text>
-        <Emoji>🤔</Emoji>
+        <Emoji variants={emojiVariants} animate="animate">
+          🤔
+        </Emoji>
       </Box>
     </Wrapper>
   );
