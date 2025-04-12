@@ -39,7 +39,7 @@ export const ProgressVariants = ({ percentage }: Iprops) => ({
   animate: {
     "--angle": ` ${percentage * 3.6}deg`,
     transition: {
-      duration: 1,
+      duration: 2,
       ease: "easeOut",
       repeat: Infinity,
       repeatType: "loop",
