@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ProgressCircle from "./ProgressCircle";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -19,28 +20,6 @@ export const Text = styled.p`
   text-align: center;
 `;
 
-export const CircleWrapper = styled.div`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const InnerCircle = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: bold;
-`;
-
 const Emoji = styled.div`
   width: 100px;
   height: 100px;
@@ -55,9 +34,7 @@ function PreResult() {
     <Wrapper>
       <Box>
         <Text>친밀도 점수</Text>
-        <CircleWrapper>
-          <InnerCircle>??</InnerCircle>
-        </CircleWrapper>
+        <ProgressCircle percentage={100} />
       </Box>
       <Box>
         <Text>축의금 추천</Text>
