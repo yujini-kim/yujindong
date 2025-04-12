@@ -1,4 +1,4 @@
-import HomeIcon from "../ui/HomeIcon";
+import HomeIcon from "../svg/HomeIcon";
 
 function Navbar() {
   return (
