@@ -1,4 +1,4 @@
-import ExitIcon from "../ui/ExitIcon";
+import ExitIcon from "../svg/ExitIcon";
 
 function Header() {
   return (
@@ -10,4 +10,3 @@ function Header() {
 }
 
 export default Header;
-    

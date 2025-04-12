@@ -3,6 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 type AnalyzeResponse = {
   score: number;
   recommendation: string;
+  success: boolean;
+  message: string;
+  summary: string;
 };
 
 const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
@@ -15,6 +18,8 @@ const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
   });
 
   if (!res.ok) {
+    const errorText = await res.text();
+    console.error("❌ 서버 응답 오류:", res.status, errorText);
     throw new Error("서버 오류");
   }
 
