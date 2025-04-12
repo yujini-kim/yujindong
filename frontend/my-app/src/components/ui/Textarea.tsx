@@ -28,7 +28,8 @@ const Button = styled.button.attrs({
   width: 100%;
   background-color: ${(props) => props.theme.accentColor};
   border-radius: 15px;
-  padding: 5px;
+  padding: 8px;
+  font-weight: 600;
 `;
 
 interface ITextProps {
