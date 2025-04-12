@@ -1,5 +1,3 @@
-import { useAnalyzeMutation } from "@/hooks/analyzeText";
-import { useState } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
