@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/ui/Loading";
 import PreResult from "@/components/ui/PreResult";
 import Result from "@/components/ui/Result";
 import Summary from "@/components/ui/Summary";
@@ -51,9 +52,15 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <TextArea onSubmit={onSubmit} value={text} onChange={onChange} />
-
-      {score !== null ? (
+      <TextArea
+        onSubmit={onSubmit}
+        value={text}
+        onChange={onChange}
+        text={mutation.isPending ? "분석중..." : "분석하기"}
+      />
+      {mutation.isPending ? (
+        <Loading />
+      ) : score !== null ? (
         <Result recommendation={recommendation} score={score} />
       ) : (
         <PreResult />
