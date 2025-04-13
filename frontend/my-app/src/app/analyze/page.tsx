@@ -1,6 +1,6 @@
 "use client";
 
-import PreResult from "@/components/ui/PreResult";
+import PreResult from "@/components/ui/Loading";
 import Result from "@/components/ui/Result";
 import TextArea from "@/components/ui/Textarea";
 import { useAnalyzeMutation } from "@/hooks/analyzeText";

@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/ui/Loading";
 import PreResult from "@/components/ui/PreResult";
 import Result from "@/components/ui/Result";
 import Summary from "@/components/ui/Summary";
@@ -49,22 +50,18 @@ export default function Home() {
     mutation.mutate(text);
   };
 
+  console.log(mutation);
+
   return (
     <Wrapper>
       <TextArea onSubmit={onSubmit} value={text} onChange={onChange} />
 
-      {score !== null ? (
+      {mutation.isPending ? (
+        <Loading />
+      ) : score !== null ? (
         <Result recommendation={recommendation} score={score} />
       ) : (
         <PreResult />
-      )}
-
-      {summary == "" ? null : (
-        <Summary
-          summary={realsummary.map((line, idx) => (
-            <p key={idx}>- {line}</p>
-          ))}
-        />
       )}
     </Wrapper>
   );
