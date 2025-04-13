@@ -33,13 +33,14 @@ interface ITextProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
+  text: string;
 }
 
-function TextArea({ value, onChange, onSubmit }: ITextProps) {
+function TextArea({ value, onChange, onSubmit, text }: ITextProps) {
   return (
     <Form onSubmit={onSubmit}>
       <Text value={value} onChange={onChange}></Text>
-      <Button>분석하기</Button>
+      <Button>{text}</Button>
     </Form>
   );
 }
