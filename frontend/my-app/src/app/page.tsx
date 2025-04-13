@@ -50,18 +50,28 @@ export default function Home() {
     mutation.mutate(text);
   };
 
-  console.log(mutation);
-
   return (
     <Wrapper>
-      <TextArea onSubmit={onSubmit} value={text} onChange={onChange} />
-
+      <TextArea
+        onSubmit={onSubmit}
+        value={text}
+        onChange={onChange}
+        text={mutation.isPending ? "분석중..." : "분석하기"}
+      />
       {mutation.isPending ? (
         <Loading />
       ) : score !== null ? (
         <Result recommendation={recommendation} score={score} />
       ) : (
         <PreResult />
+      )}
+
+      {summary == "" ? null : (
+        <Summary
+          summary={realsummary.map((line, idx) => (
+            <p key={idx}>- {line}</p>
+          ))}
+        />
       )}
     </Wrapper>
   );
