@@ -14,24 +14,17 @@ import java.time.Duration;
 public class AnalyzeApiController {
     private final AnalyzeApiService analyzeApiService;
     private final RedisTemplate<String,String> redisTemplate;
+    private final RedisService redisService;
 
     @PostMapping("/analyze")
     public ChatResponse analyze(@RequestBody ChatRequest request, HttpServletRequest httpRequest){
         String ip = httpRequest.getRemoteAddr();
-        String key = "ip" + ip;
 
-        String countStr = redisTemplate.opsForValue().get(key);
-        int count = countStr != null ? Integer.parseInt(countStr) : 0;
-
-        if (count >= 10) {
+        if (redisService.isOverLimit(ip)) {
             return new ChatResponse(0,"",false,"오늘 10회 모두 사용하셨습니다.","");
         }
 
-        redisTemplate.opsForValue().increment(key);
-        if (count == 0) {
-            redisTemplate.expire(key, Duration.ofDays(1));
-        }
-
+        redisService.increaseCount(ip);
 
         return analyzeApiService.analyzeWithSummary(request.getText());
     }
