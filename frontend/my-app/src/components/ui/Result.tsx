@@ -5,7 +5,7 @@ import {
   InnerCircle,
   Iprops,
 } from "./ProgressCircle";
-import { Box, Text, Wrapper } from "./PreResult";
+import { Box, Text, Wrapper } from "./Loading";
 
 const Score = styled.div`
   width: 100px;

@@ -11,7 +11,6 @@ const Form = styled.form`
 const Text = styled.textarea.attrs({
   placeholder: "텍스트를 입력해 주세요",
   rows: 5,
-  maxLength: 1000,
 })`
   all: unset;
   box-sizing: border-box;

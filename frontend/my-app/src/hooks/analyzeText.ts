@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
 type AnalyzeResponse = {
   score: number;
@@ -19,7 +19,7 @@ const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
 
   if (!res.ok) {
     const errorText = await res.text();
-    console.error("❌ 서버 응답 오류:", res.status, errorText);
+    console.error("서버오류:", errorText);
     throw new Error("서버 오류");
   }
 
@@ -28,11 +28,12 @@ const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
 
 export const useAnalyzeMutation = (
   onSuccessCallback: (data: AnalyzeResponse) => void
-) => {
+): UseMutationResult<AnalyzeResponse, Error, string> => {
   return useMutation({
     mutationFn: analyzeText,
+
     onSuccess: (data) => {
-      console.log("✅ 분석 결과", data);
+      console.log("분석 결과", data);
       onSuccessCallback(data);
     },
     onError: (err) => {

@@ -1,59 +1,31 @@
 import styled from "styled-components";
-import ProgressCircle from "./ProgressCircle";
-import { animate, motion } from "framer-motion";
+import { Box, Emoji, Text, Wrapper } from "./Loading";
+import { CircleWrapper } from "./ProgressCircle";
 
-export const Wrapper = styled.div`
-  display: flex;
-  gap: 12px;
-`;
-
-export const Box = styled.div`
-  border: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 15px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-`;
-
-export const Text = styled.p`
-  font-weight: 600;
-  text-align: center;
-`;
-
-const Emoji = styled(motion.div)`
+const Circle = styled.div`
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  border: 8px solid #d9d9d9;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80px;
+  font-weight: 600;
+  font-size: 20px;
 `;
-
-const emojiVariants = {
-  animate: {
-    rotate: [0, -20, 20, 0],
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      repeatType: "loop",
-      ease: "easeInOut",
-    },
-  },
-};
 
 function PreResult() {
   return (
     <Wrapper>
       <Box>
         <Text>친밀도 점수</Text>
-        <ProgressCircle percentage={100} />
+        <CircleWrapper>
+          <Circle>??</Circle>
+        </CircleWrapper>
       </Box>
       <Box>
         <Text>축의금 추천</Text>
-        <Emoji variants={emojiVariants} animate="animate">
-          🤔
-        </Emoji>
+        <Emoji>🤔</Emoji>
       </Box>
     </Wrapper>
   );
