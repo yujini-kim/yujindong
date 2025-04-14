@@ -1,4 +1,6 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
-public interface AnalyzeApiRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AnalyzeApiRepository extends JpaRepository<AnalyzeApi,Long> {
 }

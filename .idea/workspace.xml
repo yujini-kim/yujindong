@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6eaa4927-49e4-4a5f-aa78-0af974a5fadb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/RedisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
