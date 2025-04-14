@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box, Emoji, Text, Wrapper } from "./Loading";
+import { Box, Text, Wrapper } from "./Loading";
 import { CircleWrapper } from "./ProgressCircle";
 
 const Circle = styled.div`
@@ -12,6 +12,14 @@ const Circle = styled.div`
   justify-content: center;
   font-weight: 600;
   font-size: 20px;
+`;
+const Emoji = styled.div`
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
 `;
 
 function PreResult() {
