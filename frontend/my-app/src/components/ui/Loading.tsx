@@ -4,13 +4,14 @@ import { animate, motion } from "framer-motion";
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 12px;
+  width: 294px;
+  justify-content: space-between;
 `;
 
 export const Box = styled.div`
   border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 32px;

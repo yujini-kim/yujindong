@@ -66,12 +66,16 @@ export default function Home() {
         <PreResult />
       )}
 
-      {summary == "" ? null : (
-        <Summary
-          summary={realsummary.map((line, idx) => (
-            <p key={idx}>- {line}</p>
-          ))}
-        />
+      {success ? (
+        summary == "" ? null : (
+          <Summary
+            summary={realsummary.map((line, idx) => (
+              <p key={idx}>- {line}</p>
+            ))}
+          />
+        )
+      ) : (
+        <Summary summary={message} />
       )}
     </Wrapper>
   );
