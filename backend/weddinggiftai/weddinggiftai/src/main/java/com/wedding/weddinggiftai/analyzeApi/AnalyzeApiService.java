@@ -4,11 +4,13 @@ import com.wedding.weddinggiftai.gpt.GptService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Service
 @RequiredArgsConstructor
 public class AnalyzeApiService {
+    private final AnalyzeApiRepository analyzeApiRepository;
     private final GptService gptService;
 
     public String extractMessageOnly(String kakaoText) {
@@ -64,4 +66,16 @@ public class AnalyzeApiService {
         if (score <= 95) return "15만원";
         return "20만원 이상";
     }
+
+    public void SaveAnalyzeResult(String ip,String text,ChatResponse response){
+        AnalyzeApi analyzeApi = new AnalyzeApi();
+        analyzeApi.setIp(ip);
+        analyzeApi.setText(text);
+        analyzeApi.setScore(response.getScore());
+        analyzeApi.setRecommendation(response.getRecommendation());
+        analyzeApi.setSummary(response.getSummary());
+        analyzeApi.setCreatedAt(LocalDateTime.now());
+        analyzeApiRepository.save(analyzeApi);
+    }
+
 }
