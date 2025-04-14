@@ -24,8 +24,6 @@ export default function Home() {
   const [message, setMessage] = useState<string | null>("");
   const [summary, setSummary] = useState<string | null>("");
   const [recommendation, setRecommendation] = useState<string>("");
-  const [txt, setTxt] = useState("");
-  const [isFile, setIsFile] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -34,8 +32,7 @@ export default function Home() {
     const reader = new FileReader();
     reader.onload = () => {
       const content = reader.result as string;
-      setTxt(content);
-      setIsFile(true);
+      setText(content);
     };
     reader.readAsText(file);
   };
@@ -72,6 +69,7 @@ export default function Home() {
         value={text}
         onChange={onChange}
         text={mutation.isPending ? "분석중..." : "분석하기"}
+        handleFileChange={handleFileChange}
       />
       {mutation.isPending ? (
         <Loading />
