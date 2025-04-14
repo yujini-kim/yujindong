@@ -25,6 +25,18 @@ export default function Home() {
   const [summary, setSummary] = useState<string | null>("");
   const [recommendation, setRecommendation] = useState<string>("");
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = reader.result as string;
+      setText(content);
+    };
+    reader.readAsText(file);
+  };
+
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
@@ -57,6 +69,7 @@ export default function Home() {
         value={text}
         onChange={onChange}
         text={mutation.isPending ? "분석중..." : "분석하기"}
+        handleFileChange={handleFileChange}
       />
       {mutation.isPending ? (
         <Loading />
@@ -66,12 +79,16 @@ export default function Home() {
         <PreResult />
       )}
 
-      {summary == "" ? null : (
-        <Summary
-          summary={realsummary.map((line, idx) => (
-            <p key={idx}>- {line}</p>
-          ))}
-        />
+      {success ? (
+        summary == "" ? null : (
+          <Summary
+            summary={realsummary.map((line, idx) => (
+              <p key={idx}>- {line}</p>
+            ))}
+          />
+        )
+      ) : (
+        <Summary summary={message} />
       )}
     </Wrapper>
   );
