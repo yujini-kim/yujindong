@@ -23,12 +23,12 @@ public class AnalyzeApiController {
         String ip = httpRequest.getRemoteAddr();
 
         if (redisService.isOverLimit(ip)) {
-            return new ChatResponse(0,"0원",false,"오늘 10회 모두 사용하셨습니다.","");
+            return new ChatResponse(0,"0원",false,"오늘 10회 모두 사용하셨습니다.","","");
         }
 
         redisService.increaseCount(ip);
         ChatResponse analyze = analyzeApiService.analyzeWithSummary(request.getText());
-        analyzeApiService.SaveAnalyzeResult(ip,request.getText(),analyze);
+        analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze);
 
         return analyze;
     }
