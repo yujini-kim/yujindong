@@ -22,22 +22,13 @@ export const Text = styled.p`
   text-align: center;
 `;
 
-export const Emoji = styled(motion.div)`
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-`;
-
 const emojiVariants = {
   animate: {
     rotate: [0, -20, 20, 0],
     transition: {
       duration: 1,
       repeat: Infinity,
-      repeatType: "loop",
+      repeatType: "loop" as const,
       ease: "easeInOut",
     },
   },
@@ -52,9 +43,13 @@ function Loading() {
       </Box>
       <Box>
         <Text>축의금 추천</Text>
-        <Emoji variants={emojiVariants} animate="animate">
+        <motion.div
+          className="text-[50px] w-[100px] h-[100px] flex items-center justify-center"
+          variants={emojiVariants}
+          animate="animate"
+        >
           🤔
-        </Emoji>
+        </motion.div>
       </Box>
     </Wrapper>
   );
