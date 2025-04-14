@@ -1,9 +1,6 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +13,7 @@ public class AnalyzeApi {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ip;
+    @Column(length = 2000)
     private String text;
     private Integer score;
     private String recommendation;

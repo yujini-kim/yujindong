@@ -54,7 +54,7 @@ public class AnalyzeApiService {
 
         String recommendation = getRecommendation(score);
 
-        return new ChatResponse(score, recommendation, true, "분석완료", summary);
+        return new ChatResponse(score, recommendation, true, "분석완료", summary ,cleanText);
 
     }
 

@@ -10,18 +10,21 @@ public class ChatResponse {
     private boolean success;
     private String message;
     private String summary;
+    private String cleanText;
 
 
     public ChatResponse(int score,
                         String recommendation,
                         boolean success,
                         String message,
-                        String summary) {
+                        String summary,
+                        String cleanText) {
         this.score = score;
         this.recommendation = recommendation;
         this.success = success;
         this.message = message;
         this.summary = summary;
+        this.cleanText = cleanText;
     }
 
 }
