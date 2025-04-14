@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -19,14 +20,35 @@ const Text = styled.textarea.attrs({
   border: 1px solid ${(props) => props.theme.borderColor};
   padding: 10px;
 `;
+
+const File = styled.label.attrs({
+  htmlFor: "file",
+})`
+  width: 141px;
+  border-radius: 15px;
+  background-color: #56beff;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+  text-align: center;
+  input {
+    display: none;
+  }
+`;
+
+const BtnBox = styled.div`
+  display: flex;
+  gap: 12px;
+`;
 const Button = styled.button.attrs({
   type: "submit",
 })`
-  width: 100%;
+  width: 141px;
   background-color: ${(props) => props.theme.accentColor};
   border-radius: 15px;
   padding: 8px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 interface ITextProps {
@@ -37,10 +59,37 @@ interface ITextProps {
 }
 
 function TextArea({ value, onChange, onSubmit, text }: ITextProps) {
+  const [txt, setTxt] = useState("");
+  const [isFile, setIsFile] = useState(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = reader.result as string;
+      setTxt(content);
+      setIsFile(true);
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <Form onSubmit={onSubmit}>
-      <Text value={value} onChange={onChange}></Text>
-      <Button>{text}</Button>
+      <Text value={isFile ? txt : value} onChange={onChange}></Text>
+      <BtnBox>
+        <File>
+          파일 업로드하기
+          <input
+            type="file"
+            id="file"
+            accept=".txt"
+            onChange={handleFileChange}
+          />
+        </File>
+        <Button>{text}</Button>
+      </BtnBox>
     </Form>
   );
 }
