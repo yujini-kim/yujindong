@@ -21,8 +21,8 @@ public class MemberService {
         }
         Member member = new Member();
         member.setUsername(request.getUsername());
-        member.setPassword(request.getPassword());
-        member.setDisplayName(passwordEncoder.encode(request.getDisplayName()));
+        member.setPassword(passwordEncoder.encode(request.getPassword()));
+        member.setDisplayName(request.getDisplayName());
         member.setEmail(request.getEmail());
         memberRepository.save(member);
 
