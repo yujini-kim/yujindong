@@ -11,7 +11,7 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     public void signup(MemberRequest request){
-        if (memberRepository.existsByUserId(request.getUsername())){
+        if (memberRepository.existsByUsername(request.getUsername())){
             throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
 
         }
