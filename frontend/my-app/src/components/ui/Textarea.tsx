@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const Form = styled.form`
+export const Form = styled.form`
   max-width: 294px;
   width: 294px;
   display: flex;
