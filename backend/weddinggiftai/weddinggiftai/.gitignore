@@ -39,6 +39,7 @@ out/
 
 .idea/
 *.iml
+.idea/workspace.xml
 
 # 시크릿 설정
 src/main/resources/secret-application.yml
