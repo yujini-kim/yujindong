@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   gap: 32px;
 `;
 
-export default function Home() {
+export default function Analyze() {
   const [text, setText] = useState("");
   const [score, setScore] = useState<number | null>(null);
   const [success, setSuccess] = useState<boolean>(true); //false일때message 쓰기기
