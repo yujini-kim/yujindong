@@ -22,12 +22,13 @@ public class MemberController {
 
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody MemberRequest request){
+    @ResponseBody
+    public ResponseEntity<MemberResponse> signup(@RequestBody MemberRequest request){
         try{
             memberService.signup(request);
-            return ResponseEntity.ok("회원가입 성공");
+            return ResponseEntity.ok(new MemberResponse("회원가입 성공"));
         } catch(IllegalArgumentException e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(new MemberResponse(e.getMessage()));
         }
 
     }
