@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6eaa4927-49e4-4a5f-aa78-0af974a5fadb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberService.java" afterDir="false" />
-    </list>
+    <list default="true" id="6eaa4927-49e4-4a5f-aa78-0af974a5fadb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +68,7 @@
     "Gradle.weddinggiftai [:com.wedding.weddinggiftai.WeddinggiftaiApplication.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feat/signup-be",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }
