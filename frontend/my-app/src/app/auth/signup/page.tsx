@@ -1,15 +1,16 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
-
+import HelloBergerIcon from "@/components/icons/HelloBergerIcon";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 32px;
+  margin-top: 40px;
 `;
 
 const Form = styled.form`
@@ -72,6 +73,7 @@ function Signup() {
 
   return (
     <Wrapper>
+      <HelloBergerIcon />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"

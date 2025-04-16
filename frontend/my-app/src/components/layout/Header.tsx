@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import ExitIcon from "../svg/ExitIcon";
+import ExitIcon from "../icons/ExitIcon";
 
 function Header() {
   const pathname = usePathname();
@@ -10,6 +10,7 @@ function Header() {
     "/": "홈페이지",
     "/analyze": "축의금 분석기",
     "/mypage": "마이페이지",
+    "/auth/signup": "회원가입",
   };
 
   const pageTitle = titleMap[pathname] || "*";
