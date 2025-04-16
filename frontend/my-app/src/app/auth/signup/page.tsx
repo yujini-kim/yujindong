@@ -58,7 +58,7 @@ function Signup() {
         body: JSON.stringify(formData),
       }),
     onSuccess: async (res) => {
-      const data = await res.json();
+      const data = await res.text();
       console.log("회원가입 성공!", data);
     },
     onError: (err) => {
