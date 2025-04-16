@@ -1,7 +1,7 @@
 import Link from "next/link";
-import ChartIcon from "../svg/ChartIcon";
-import HomeIcon from "../svg/HomeIcon";
-import ProfileIcon from "../svg/profileIcon";
+import ChartIcon from "../icons/ChartIcon";
+import HomeIcon from "../icons/HomeIcon";
+import ProfileIcon from "../icons/profileIcon";
 
 function Navbar() {
   return (
