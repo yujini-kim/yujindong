@@ -14,10 +14,10 @@ function useAuthMutation<T>(path: string) {
       }),
     onSuccess: async (res) => {
       const data = await res.text();
-      console.log(`${path} 성공!`, data);
+      console.log(`${BASE_URL}/${path} 성공!`, data);
     },
     onError: (err) => {
-      console.error(`${path} 실패 😢`, err);
+      console.error(`${BASE_URL}/${path} 실패 😢`, err);
     },
   });
 }

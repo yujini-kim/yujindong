@@ -8,7 +8,7 @@ import useAuthMutation from "@/hooks/Auth";
 import { useRouter } from "next/navigation";
 
 function SignIn() {
-  const mutation = useAuthMutation<SigninValues>("/login");
+  const mutation = useAuthMutation<SigninValues>("login");
   const router = useRouter();
   const onSubmit = (data: SigninValues) => {
     mutation.mutate(data);
