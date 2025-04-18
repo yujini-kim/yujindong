@@ -8,7 +8,7 @@ import HelloBergerIcon from "@/components/icons/HelloBergerIcon";
 import { Wrapper } from "@/components/ui/auth/styled";
 
 function Signup() {
-  const mutation = useAuthMutation<SignupValues>("/signup");
+  const mutation = useAuthMutation<SignupValues>("signup");
   const router = useRouter();
   const onSubmit = (data: SignupValues) => {
     mutation.mutate(data);
