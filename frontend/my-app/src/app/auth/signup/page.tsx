@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,7 +51,7 @@ function Signup() {
 
   const mutation = useMutation({
     mutationFn: (formData: FormValues) =>
-      fetch("http://localhost:8080/signup", {
+      fetch(`${BASE_URL}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

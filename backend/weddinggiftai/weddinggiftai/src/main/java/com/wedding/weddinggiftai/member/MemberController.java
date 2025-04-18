@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "http://54.180.242.92:3000"
+})
 public class MemberController {
     private final MemberRepository memberRepository;
     private final MemberService memberService;

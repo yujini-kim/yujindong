@@ -1,5 +1,7 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
+
 type AnalyzeResponse = {
   score: number;
   recommendation: string;
@@ -9,7 +11,7 @@ type AnalyzeResponse = {
 };
 
 const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
-  const res = await fetch("http://localhost:8080/api/analyze", {
+  const res = await fetch(`${BASE_URL}/api/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
