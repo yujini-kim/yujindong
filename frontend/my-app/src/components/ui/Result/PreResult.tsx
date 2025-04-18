@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { Box, Text, Wrapper } from "./Loading";
-import { CircleWrapper } from "./ProgressCircle";
+import { Box, CircleWrapper, Text, Wrapper } from "./Styled";
 
 const Circle = styled.div`
   width: 100px;

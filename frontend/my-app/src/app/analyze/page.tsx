@@ -1,10 +1,10 @@
 "use client";
 
-import Loading from "@/components/ui/Loading";
-import PreResult from "@/components/ui/PreResult";
-import Result from "@/components/ui/Result";
+import Loading from "@/components/ui/Result/Loading";
+import PreResult from "@/components/ui/Result/PreResult";
+import Result from "@/components/ui/Result/Result";
 import Summary from "@/components/ui/Summary";
-import TextArea from "@/components/ui/Textarea";
+import TextArea from "@/components/ui/TextArea";
 import { useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
 import styled from "styled-components";
@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 32px;
+  margin-top: 28px;
 `;
 
 export default function Analyze() {

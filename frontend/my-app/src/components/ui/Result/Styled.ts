@@ -1,13 +1,31 @@
-import React from "react";
 import styled from "styled-components";
+import { Iprops } from "./type";
 import { motion } from "framer-motion";
 
+export const Wrapper = styled.div`
+  display: flex;
+  width: 294px;
+  justify-content: space-between;
+`;
+
+export const Box = styled.div`
+  border: 1px solid ${(props) => props.theme.borderColor};
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
+
+export const Text = styled.p`
+  font-weight: 600;
+  text-align: center;
+`;
 export const CircleWrapper = styled.div`
   width: 100px;
   height: 100px;
   position: relative;
 `;
-
 export const AnimatedBorder = styled(motion.div)`
   width: 100%;
   height: 100%;
@@ -29,11 +47,6 @@ export const InnerCircle = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
-
-export interface Iprops {
-  percentage: number;
-}
-
 export const ProgressVariants = ({ percentage }: Iprops) => ({
   initial: { "--angle": "0deg" },
   animate: {
@@ -46,18 +59,22 @@ export const ProgressVariants = ({ percentage }: Iprops) => ({
     },
   },
 });
+export const Score = styled.div`
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+`;
 
-const ProgressCircle = ({ percentage }: Iprops) => {
-  return (
-    <CircleWrapper>
-      <AnimatedBorder
-        variants={ProgressVariants({ percentage }) as any}
-        initial="initial"
-        animate="animate"
-      />
-      <InnerCircle>??</InnerCircle>
-    </CircleWrapper>
-  );
-};
-
-export default ProgressCircle;
+export const ResultVariants = ({ percentage }: Iprops) => ({
+  initial: { "--angle": "0deg" },
+  animate: {
+    "--angle": ` ${percentage * 3.6}deg`,
+    transition: {
+      duration: 1,
+      ease: "easeOut",
+    },
+  },
+});
