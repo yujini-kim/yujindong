@@ -1,36 +1,16 @@
 import styled from "styled-components";
+
 import {
   AnimatedBorder,
+  Box,
   CircleWrapper,
   InnerCircle,
-  Iprops,
-} from "./ProgressCircle";
-import { Box, Text, Wrapper } from "./Loading";
-
-const Score = styled.div`
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-`;
-
-const ResultVariants = ({ percentage }: Iprops) => ({
-  initial: { "--angle": "0deg" },
-  animate: {
-    "--angle": ` ${percentage * 3.6}deg`,
-    transition: {
-      duration: 1,
-      ease: "easeOut",
-    },
-  },
-});
-
-interface IAnalyzeProps {
-  score: number;
-  recommendation: string;
-}
+  ResultVariants,
+  Score,
+  Text,
+  Wrapper,
+} from "./Styled";
+import { IAnalyzeProps } from "./type";
 
 function Result({ score, recommendation }: IAnalyzeProps) {
   return (
