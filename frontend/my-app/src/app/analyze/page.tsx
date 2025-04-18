@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 32px;
+  margin-top: 28px;
 `;
 
 export default function Analyze() {

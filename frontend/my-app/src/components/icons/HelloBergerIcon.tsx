@@ -13,7 +13,7 @@ function HelloBergerIcon() {
         ease: "easeInOut",
       }}
     >
-      <Image src="/helloberger.svg" alt="헬로버거" width={160} height={160} />
+      <Image src="/helloberger.svg" alt="헬로버거" width={130} height={130} />
     </motion.div>
   );
 }
