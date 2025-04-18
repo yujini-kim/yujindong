@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6eaa4927-49e4-4a5f-aa78-0af974a5fadb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.env.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.env.production" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/my-app/Dockerfile" afterDir="false" />
+    <list default="true" id="3a0cb855-90f2-4672-9847-190083d9ce89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/auth/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/auth/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/auth/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/jwt/JwtUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/MemberRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/app/auth/signup/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/src/app/auth/signup/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/hooks/analyzeText.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/my-app/src/hooks/analyzeText.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,41 +25,9 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="weddinggiftai" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="weddinggiftai" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="weddinggiftai" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -72,90 +35,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;TheGOATLBJ&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "feat/signup-be"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/TheGOATLBJ/yujindong.git&quot;,
-    &quot;accountId&quot;: &quot;e194a92a-773e-4155-9a1b-5d3e8fa67589&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2veX4N3Z1ia0ZWzVLwJfVDBS4Le" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.weddinggiftai [:com.wedding.weddinggiftai.WeddinggiftaiApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.weddinggiftai [bootJar].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/docker-setup&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Desktop/yujindong&quot;
-  }
-}</component>
-  <component name="RunManager" selected="Gradle.weddinggiftai [bootJar]">
-    <configuration name="WeddinggiftaiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wedding.weddinggiftai.WeddinggiftaiApplication" />
-      <module name="weddinggiftai.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wedding.weddinggiftai.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="yujindong" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="weddinggiftai [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootJar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="yujindong" />
+      <option name="filePath" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.weddinggiftai [bootJar]" />
-        <item itemvalue="Application.WeddinggiftaiApplication" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="6eaa4927-49e4-4a5f-aa78-0af974a5fadb" name="Changes" comment="" />
-      <created>1744506322130</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1744506322130</updated>
-    </task>
     <servers />
   </component>
 </project>
