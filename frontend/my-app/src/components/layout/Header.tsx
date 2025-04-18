@@ -11,6 +11,7 @@ function Header() {
     "/analyze": "축의금 분석기",
     "/mypage": "마이페이지",
     "/auth/signup": "회원가입",
+    "/auth/signin": "로그인",
   };
 
   const pageTitle = titleMap[pathname] || "*";

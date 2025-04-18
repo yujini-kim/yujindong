@@ -1,26 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { Box, Text, Wrapper } from "./Styled";
 import ProgressCircle from "./ProgressCircle";
-import { animate, motion } from "framer-motion";
-
-export const Wrapper = styled.div`
-  display: flex;
-  width: 294px;
-  justify-content: space-between;
-`;
-
-export const Box = styled.div`
-  border: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 15px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-`;
-
-export const Text = styled.p`
-  font-weight: 600;
-  text-align: center;
-`;
 
 const emojiVariants = {
   animate: {
