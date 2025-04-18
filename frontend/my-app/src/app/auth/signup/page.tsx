@@ -1,16 +1,17 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
-
+import HelloBergerIcon from "@/components/icons/HelloBergerIcon";
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 30px;
+  margin-top: 40px;
 `;
 
 const Form = styled.form`
@@ -23,6 +24,7 @@ const Form = styled.form`
 const Input = styled.input`
   width: 100%;
   height: 40px;
+  border-radius: 15px;
   border: 1px solid ${(props) => props.theme.borderColor};
   padding: 10px;
 `;
@@ -59,7 +61,7 @@ function Signup() {
         body: JSON.stringify(formData),
       }),
     onSuccess: async (res) => {
-      const data = await res.json();
+      const data = await res.text();
       console.log("회원가입 성공!", data);
     },
     onError: (err) => {
@@ -73,6 +75,7 @@ function Signup() {
 
   return (
     <Wrapper>
+      <HelloBergerIcon />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
@@ -96,6 +99,8 @@ function Signup() {
         />
         <Button type="submit">회원가입하기</Button>
       </Form>
+
+      
     </Wrapper>
   );
 }
