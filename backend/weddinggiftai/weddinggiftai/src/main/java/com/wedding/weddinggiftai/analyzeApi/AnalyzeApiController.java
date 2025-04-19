@@ -11,10 +11,6 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {
-        "http://localhost:3000",
-        "http://54.180.242.92:3000"
-})
 public class AnalyzeApiController {
     private final AnalyzeApiService analyzeApiService;
     private final RedisTemplate<String,String> redisTemplate;
