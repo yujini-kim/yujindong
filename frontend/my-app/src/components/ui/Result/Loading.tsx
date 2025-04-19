@@ -1,7 +1,20 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Box, Text, Wrapper } from "./Styled";
-import ProgressCircle from "./ProgressCircle";
+import dynamic from "next/dynamic";
+
+const ProgressCircle = dynamic(() => import("./ProgressCircle"), {
+  ssr: false,
+});
+
+const Emoji = styled(motion.div)`
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const emojiVariants = {
   animate: {
@@ -24,13 +37,9 @@ function Loading() {
       </Box>
       <Box>
         <Text>축의금 추천</Text>
-        <motion.div
-          className="text-[50px] w-[100px] h-[100px] flex items-center justify-center"
-          variants={emojiVariants}
-          animate="animate"
-        >
+        <Emoji variants={emojiVariants} animate="animate">
           🤔
-        </motion.div>
+        </Emoji>
       </Box>
     </Wrapper>
   );

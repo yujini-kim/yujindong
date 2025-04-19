@@ -17,7 +17,7 @@ function Header() {
   const pageTitle = titleMap[pathname] || "*";
 
   return (
-    <div className="grid grid-cols-6 items-center p-4">
+    <div className="grid grid-cols-6 items-center p-4 sticky top-0 z-50 bg-white">
       <ExitIcon />
       <p className="text-2xl col-span-4 text-center">{pageTitle}</p>
     </div>
