@@ -15,18 +15,11 @@ const Container = styled.div`
 `;
 
 interface IProps {
-  summary?: string[];
-  message?: string | null;
+  summary: React.ReactNode;
 }
 
-function Summary({ summary = [], message }: IProps) {
-  return (
-    <Container>
-      {message
-        ? message
-        : summary.map((line, idx) => <p key={idx}>- {line}</p>)}
-    </Container>
-  );
+function Summary({ summary }: IProps) {
+  return <Container>{summary}</Container>;
 }
 
 export default Summary;

@@ -4,15 +4,12 @@ import HelloBergerIcon from "@/components/icons/HelloBergerIcon";
 import SignInForm from "@/components/ui/auth/SignInForm";
 import { Wrapper } from "@/components/ui/auth/styled";
 import { SigninValues } from "@/components/ui/auth/type";
-import useAuthMutation from "@/hooks/Auth";
-import { useRouter } from "next/navigation";
+import { useLogInMutation } from "@/hooks/Auth";
 
 function SignIn() {
-  const mutation = useAuthMutation<SigninValues>("login");
-  const router = useRouter();
+  const mutation = useLogInMutation();
   const onSubmit = (data: SigninValues) => {
     mutation.mutate(data);
-    router.push("/");
   };
 
   return (

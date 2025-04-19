@@ -5,8 +5,6 @@ import "@/styles/globals.css";
 import ClientLayout from "./client-layout";
 import Header from "@/components/layout/Header";
 import Navbar from "@/components/layout/Navbar";
-import { StyledComponentsRegistry } from "@/lib/styled-components/registry";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,14 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <StyledComponentsRegistry>
-          <Providers>
-            <Header />
-            <ClientLayout>{children}</ClientLayout>
-            <div className="flex-grow" />
-            <Navbar />
-          </Providers>
-        </StyledComponentsRegistry>
+        <Providers>
+          <Header />
+          <ClientLayout>{children}</ClientLayout>
+          <div className="flex-grow" />
+          <Navbar />
+        </Providers>
       </body>
     </html>
   );

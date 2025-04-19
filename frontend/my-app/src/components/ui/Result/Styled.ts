@@ -68,10 +68,10 @@ export const Score = styled.div`
   font-size: 24px;
 `;
 
-export const ResultVariants = ({ percentage }: Iprops) => ({
+export const ResultVariants = ({ percentage = 0 }: Iprops) => ({
   initial: { "--angle": "0deg" },
   animate: {
-    "--angle": ` ${percentage * 3.6}deg`,
+    "--angle": `${percentage * 3.6}deg`,
     transition: {
       duration: 1,
       ease: "easeOut",
