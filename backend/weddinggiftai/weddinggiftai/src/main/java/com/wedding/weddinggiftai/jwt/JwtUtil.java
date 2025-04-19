@@ -10,7 +10,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String secret = "my-super-secret-key-1234567890123456"; // yml에서 가져와도 OK
+    private final String secret = "my-super-secret-key-0234367190134450"; // yml에서 가져와도 OK
     private final long expiration = 3600000; // 1시간
 
     private final Key key = Keys.hmacShaKeyFor(secret.getBytes());
