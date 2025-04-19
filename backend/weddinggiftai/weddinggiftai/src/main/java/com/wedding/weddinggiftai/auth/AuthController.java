@@ -5,18 +5,16 @@ import com.wedding.weddinggiftai.member.Member;
 import com.wedding.weddinggiftai.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Optional;
 
 
 @RequiredArgsConstructor
 @RestController
-@CrossOrigin(origins = {
-        "http://localhost:3000",
-        "http://54.180.242.92:3000"
-})
 public class AuthController {
 
     private final MemberRepository memberRepository;
@@ -43,5 +41,10 @@ public class AuthController {
         return ResponseEntity.ok(new LoginResponse(true,token,"로그인 성공"));
 
 
+    }
+
+    @GetMapping("/verify")
+    public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal String username){
+        return ResponseEntity.ok(new VerifyResponse(username,"OK"));
     }
 }
