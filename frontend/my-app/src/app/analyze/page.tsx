@@ -6,7 +6,7 @@ import Result from "@/components/ui/Result/Result";
 import Summary from "@/components/ui/Summary";
 import TextArea from "@/components/ui/TextArea";
 import { useAnalyzeMutation } from "@/hooks/analyzeText";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -21,10 +21,11 @@ const Wrapper = styled.div`
 export default function Analyze() {
   const [text, setText] = useState("");
   const [score, setScore] = useState<number | null>(null);
-  const [success, setSuccess] = useState<boolean>(true); //false일때message 쓰기기
-  const [message, setMessage] = useState<string | null>("");
-  const [summary, setSummary] = useState<string | null>("");
+  const [success, setSuccess] = useState<boolean>(true);
+  const [message, setMessage] = useState<string | null>(null);
+  const [summary, setSummary] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<string>("");
+  const [realsummary, setRealsummary] = useState<string[]>([]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -50,13 +51,15 @@ export default function Analyze() {
     setSummary(data.summary);
   });
 
-  const realsummary =
-    summary !== null
-      ? summary
-          .split("\n")
-          .filter((line) => line.startsWith("-"))
-          .map((line) => line.slice(1).trim())
-      : [];
+  useEffect(() => {
+    if (summary !== null) {
+      const lines = summary
+        .split("\n")
+        .filter((line) => line.startsWith("-"))
+        .map((line) => line.slice(1).trim());
+      setRealsummary(lines);
+    }
+  }, [summary]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,17 +83,9 @@ export default function Analyze() {
         <PreResult />
       )}
 
-      {success ? (
-        summary == "" ? null : (
-          <Summary
-            summary={realsummary.map((line, idx) => (
-              <p key={idx}>- {line}</p>
-            ))}
-          />
-        )
-      ) : (
-        <Summary summary={message} />
-      )}
+      {success
+        ? realsummary.length > 0 && <Summary summary={realsummary} />
+        : message && <Summary message={message} />}
     </Wrapper>
   );
 }
