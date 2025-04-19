@@ -11,6 +11,7 @@ function SignInForm({ onSubmit }: SigninFormProps) {
         type="text"
         {...register("username", { required: true })}
         placeholder="ID"
+        autoComplete="current-password"
       />
       <Input
         type="password"
