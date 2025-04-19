@@ -2,9 +2,33 @@
 
 import { usePathname } from "next/navigation";
 import ExitIcon from "../icons/ExitIcon";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const HeaderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+`;
+
+const PageTitle = styled.p`
+  font-size: 1.5rem;
+  grid-column: span 4 / span 4;
+  text-align: center;
+`;
 
 function Header() {
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const titleMap: Record<string, string> = {
     "/": "홈페이지",
@@ -16,11 +40,13 @@ function Header() {
 
   const pageTitle = titleMap[pathname] || "*";
 
+  if (!isMounted) return null;
+
   return (
-    <div className="grid grid-cols-6 items-center p-4 sticky top-0 z-50 bg-white">
+    <HeaderWrapper>
       <ExitIcon />
-      <p className="text-2xl col-span-4 text-center">{pageTitle}</p>
-    </div>
+      <PageTitle>{pageTitle}</PageTitle>
+    </HeaderWrapper>
   );
 }
 
