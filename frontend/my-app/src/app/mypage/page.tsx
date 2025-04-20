@@ -2,6 +2,7 @@
 
 import DetailView from "@/components/ui/mypage/DetailView";
 import ListCard from "@/components/ui/mypage/ListCard";
+import { useMyPageQuery } from "@/hooks/MypageData";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -38,28 +39,23 @@ const Overlay = styled.div`
   background-color: rgb(0, 0, 0, 0.5);
 `;
 
-const data = [
-  { number: "01", name: "햄버거", recommend: 50000, score: 24 },
-  { number: "02", name: "피자", recommend: 70000, score: 65 },
-  { number: "03", name: "족발", recommend: 30000, score: 80 },
-  { number: "04", name: "보쌈", recommend: 100000, score: 100 },
-  { number: "05", name: "닭발", recommend: 70000, score: 70 },
-];
-
 function Mypage() {
+  const { data: pagedata, isLoading, isError, error } = useMyPageQuery();
   const [isAuth, setIsAuth] = useState(false);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [isClick, setIsClick] = useState(false);
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
+  console.log(pagedata);
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setIsClick((pre) => !pre);
   };
 
-  const handleDetail = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
+  const handleDetail = (idx: number) => {
     setIsClick((pre) => !pre);
+    setSelectedIdx(idx);
   };
 
   useEffect(() => {
@@ -91,22 +87,32 @@ function Mypage() {
   }, [router]);
 
   if (!mounted || !isAuth) return null;
-
+  if (isLoading) {
+    <div>로딩중</div>;
+  }
   return (
     <Wrapper>
-      {data.map((item) => (
-        <Card onClick={handleDetail}>
-          <ListCard
-            key={item.number}
-            number={item.number}
-            recommendation={item.recommend}
-            score={item.score}
-          />
-        </Card>
-      ))}
-      {isClick && (
+      {pagedata?.items.map((item, idx) => {
+        console.log("idx 확인 👀", idx);
+        return (
+          <Card onClick={() => handleDetail(idx)} key={idx}>
+            <ListCard
+              idx={idx}
+              recommendation={item.recommendation}
+              score={item.score}
+            />
+          </Card>
+        );
+      })}
+      {isClick && selectedIdx !== null && pagedata && (
         <Overlay onClick={handleOverlayClick}>
-          <DetailView onClick={() => handleDetail} />
+          <DetailView
+            idx={selectedIdx}
+            recommendation={pagedata.items[selectedIdx].recommendation}
+            score={pagedata.items[selectedIdx].score}
+            text={pagedata.items[selectedIdx].text!}
+            summary={pagedata.items[selectedIdx].summary}
+          />
         </Overlay>
       )}
     </Wrapper>

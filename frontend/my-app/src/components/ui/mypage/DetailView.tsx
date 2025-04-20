@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ListCard from "./ListCard";
 import { Text } from "./styled";
+import { IAnalysisItem } from "@/hooks/MypageData";
 
 const Card = styled.div`
   display: flex;
@@ -42,40 +43,32 @@ const Button = styled.button`
   font-size: 14px;
 `;
 
-interface IDetailViewProps {
-  onClick: () => void;
+interface IDetailProps {
+  recommendation: string;
+  score: number;
+  summary: string;
+  text: string;
+  idx: number;
 }
 
-function DetailView({ onClick }: IDetailViewProps) {
+function DetailView({
+  recommendation,
+  score,
+  summary,
+  text,
+  idx,
+}: IDetailProps) {
   return (
     <Card>
-      <ListCard key={"01"} number={"01"} recommendation={50000} score={24} />
-      <SummaryText>
-        3줄
-        <br />
-        요약
-        <br />
-        ㅋㅋ
-      </SummaryText>
-      <ScrollBox>
-        [주머니도둑] [오후 8:54] 안녕 [주머니도둑] [오후 8:54] 나 다음달에
-        결혼해 ~^^ [뿡뿡이🥰] [오후 8:55] 정말 ?! 축하해! [주머니도둑] [오후
-        8:55] 그래서 말인데 [주머니도둑] [오후 8:55] 내 결혼식에 와줬으면 좋겠어
-        [주머니도둑] [오후 8:55] 주머니 두둑하게 [뿡뿡이🥰] [오후 8:55] 허거걱 …
-        [주머니도둑] [오후 8:54] 안녕 [주머니도둑] [오후 8:54] 나 다음달에
-        결혼해 ~^^ [뿡뿡이🥰] [오후 8:55] 정말 ?! 축하해! [주머니도둑] [오후
-        8:55] 그래서 말인데 [주머니도둑] [오후 8:55] 내 결혼식에 와줬으면 좋겠어
-        [주머니도둑] [오후 8:55] 주머니 두둑하게 [뿡뿡이🥰] [오후 8:55] 허거걱 …
-        [주머니도둑] [오후 8:54] 안녕 [주머니도둑] [오후 8:54] 나 다음달에
-        결혼해 ~^^ [뿡뿡이🥰] [오후 8:55] 정말 ?! 축하해! [주머니도둑] [오후
-        8:55] 그래서 말인데 [주머니도둑] [오후 8:55] 내 결혼식에 와줬으면 좋겠어
-        [주머니도둑] [오후 8:55] 주머니 두둑하게 [뿡뿡이🥰] [오후 8:55] 허거걱 …
-        [주머니도둑] [오후 8:54] 안녕 [주머니도둑] [오후 8:54] 나 다음달에
-        결혼해 ~^^ [뿡뿡이🥰] [오후 8:55] 정말 ?! 축하해! [주머니도둑] [오후
-        8:55] 그래서 말인데 [주머니도둑] [오후 8:55] 내 결혼식에 와줬으면 좋겠어
-        [주머니도둑] [오후 8:55] 주머니 두둑하게 [뿡뿡이🥰] [오후 8:55] 허거걱 …
-      </ScrollBox>
-      <Button onClick={onClick}> 닫기 </Button>
+      <ListCard
+        key={idx}
+        idx={idx}
+        recommendation={recommendation}
+        score={score}
+      />
+      <SummaryText>{summary}</SummaryText>
+      <ScrollBox>{text}</ScrollBox>
+      <Button> 닫기 </Button>
     </Card>
   );
 }
