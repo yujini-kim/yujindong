@@ -19,6 +19,10 @@ public class MemberService {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
 
         }
+
+        if(request.getUsername() == null || request.getUsername().equals("anonymousUser")){
+            throw new IllegalArgumentException("이 이름은 사용할 수 없습니다");
+        }
         Member member = new Member();
         member.setUsername(request.getUsername());
         member.setPassword(passwordEncoder.encode(request.getPassword()));
