@@ -1,7 +1,8 @@
 "use client";
 
-import ResultCircle from "@/components/ui/Result/ResultCircle";
-import { useRouter } from "next/navigation"; // ✅ 수정!
+import DetailView from "@/components/ui/mypage/DetailView";
+import ListCard from "@/components/ui/mypage/ListCard";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -12,11 +13,11 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 8px;
   margin-top: 28px;
+  margin-bottom: 28px;
+  position: relative;
 `;
 
 const Card = styled.div`
-  display: flex;
-  justify-content: space-between;
   border: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 15px;
   padding: 20px;
@@ -24,33 +25,42 @@ const Card = styled.div`
   width: 294px;
 `;
 
-const Number = styled.h2`
-  font-size: 18px;
-  font-weight: 600;
-`;
-
-const Text = styled.h2`
-  font-size: 13px;
-`;
-
-const TextBox = styled.div`
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.5);
 `;
 
 const data = [
-  { number: "01", name: "햄버거", recommend: 50000 },
-  { number: "02", name: "피자", recommend: 70000 },
-  { number: "03", name: "족발", recommend: 30000 },
-  { number: "04", name: "보쌈", recommend: 100000 },
-  { number: "05", name: "닭발", recommend: 70000 },
+  { number: "01", name: "햄버거", recommend: 50000, score: 24 },
+  { number: "02", name: "피자", recommend: 70000, score: 65 },
+  { number: "03", name: "족발", recommend: 30000, score: 80 },
+  { number: "04", name: "보쌈", recommend: 100000, score: 100 },
+  { number: "05", name: "닭발", recommend: 70000, score: 70 },
 ];
 
 function Mypage() {
   const [isAuth, setIsAuth] = useState(false);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [isClick, setIsClick] = useState(false);
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsClick((pre) => !pre);
+  };
+
+  const handleDetail = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsClick((pre) => !pre);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -74,7 +84,7 @@ function Mypage() {
       })
       .then(() => setIsAuth(true))
       .catch(() => {
-        alert("로그인 정보가 만료되었어요.");
+        alert("로그인이 필요합니다");
         localStorage.removeItem("accessToken");
         router.replace("/auth/signin");
       });
@@ -85,18 +95,20 @@ function Mypage() {
   return (
     <Wrapper>
       {data.map((item) => (
-        <Card key={item.number}>
-          <TextBox>
-            <Number>{item.number}</Number>
-            <Text>
-              상대방 : {item.name}
-              <br />
-              추천축의금: {item.recommend.toLocaleString()}원
-            </Text>
-          </TextBox>
-          <ResultCircle score={75} />
+        <Card onClick={handleDetail}>
+          <ListCard
+            key={item.number}
+            number={item.number}
+            recommendation={item.recommend}
+            score={item.score}
+          />
         </Card>
       ))}
+      {isClick && (
+        <Overlay onClick={handleOverlayClick}>
+          <DetailView onClick={() => handleDetail} />
+        </Overlay>
+      )}
     </Wrapper>
   );
 }

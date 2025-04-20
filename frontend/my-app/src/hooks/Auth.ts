@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
+
 export function useSignUpMutation() {
   const router = useRouter();
 
@@ -27,7 +28,7 @@ export function useSignUpMutation() {
     },
 
     onSuccess: () => {
-      router.push("/auth/signin");
+      router.replace("/auth/signin");
       alert("회원가입 성공❤️ 환영해용 ^^");
     },
 
@@ -60,7 +61,7 @@ export function useLogInMutation() {
     },
     onSuccess: (data) => {
       console.log("로그인 성공!", data.token);
-      router.push("/mypage");
+      router.replace("/mypage");
     },
     onError: (error) => {
       alert("❌ 로그인 실패: " + error.message);
