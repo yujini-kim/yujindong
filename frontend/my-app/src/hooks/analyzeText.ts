@@ -12,12 +12,12 @@ type AnalyzeResponse = {
 
 interface AnalyzePayload {
   text: string;
-  name: string;
+  friend_name: string;
 }
 
 const analyzeText = async ({
   text,
-  name,
+  friend_name,
 }: AnalyzePayload): Promise<AnalyzeResponse> => {
   const token = localStorage.getItem("accessToken");
   const res = await fetch(`${BASE_URL}/api/analyze`, {
@@ -26,7 +26,7 @@ const analyzeText = async ({
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ text, name }),
+    body: JSON.stringify({ text, friend_name }),
   });
 
   if (!res.ok) {

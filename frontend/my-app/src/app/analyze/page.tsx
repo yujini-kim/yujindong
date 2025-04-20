@@ -69,7 +69,7 @@ export default function Analyze() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate(text, name);
+    mutation.mutate({ text, friend_name: name });
   };
 
   return (
