@@ -42,7 +42,8 @@ public class MypageController {
                         a.getScore(),
                         a.getRecommendation(),
                         a.getSummary(),
-                        a.getCreatedAt()
+                        a.getCreatedAt(),
+                        a.getFriend_name()
                 )).toList();
 
         // 최종 응답 객체 생성
