@@ -1,7 +1,7 @@
 "use client";
 
 import ResultCircle from "@/components/ui/Result/ResultCircle";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // ✅ 수정!
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -40,36 +40,21 @@ const TextBox = styled.div`
 `;
 
 const data = [
-  {
-    number: "01",
-    name: "햄버거",
-    recommend: 50000,
-  },
-  {
-    number: "02",
-    name: "피자",
-    recommend: 70000,
-  },
-  {
-    number: "03",
-    name: "족발",
-    recommend: 30000,
-  },
-  {
-    number: "04",
-    name: "보쌈",
-    recommend: 100000,
-  },
-  {
-    number: "05",
-    name: "닭발",
-    recommend: 70000,
-  },
+  { number: "01", name: "햄버거", recommend: 50000 },
+  { number: "02", name: "피자", recommend: 70000 },
+  { number: "03", name: "족발", recommend: 30000 },
+  { number: "04", name: "보쌈", recommend: 100000 },
+  { number: "05", name: "닭발", recommend: 70000 },
 ];
 
 function Mypage() {
   const [isAuth, setIsAuth] = useState(false);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -93,17 +78,20 @@ function Mypage() {
         localStorage.removeItem("accessToken");
         router.replace("/auth/signin");
       });
-  }, []);
+  }, [router]);
+
+  if (!mounted || !isAuth) return null;
 
   return (
     <Wrapper>
-      {data.map((data) => (
-        <Card>
+      {data.map((item) => (
+        <Card key={item.number}>
           <TextBox>
-            <Number>{data.number}</Number>
+            <Number>{item.number}</Number>
             <Text>
-              상대방 : {data.name}
-              <br /> 추천축의금:{data.recommend}원
+              상대방 : {item.name}
+              <br />
+              추천축의금: {item.recommend.toLocaleString()}원
             </Text>
           </TextBox>
           <ResultCircle score={75} />
