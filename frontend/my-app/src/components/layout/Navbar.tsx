@@ -5,7 +5,7 @@ import ProfileIcon from "../icons/profileIcon";
 
 function Navbar() {
   return (
-    <nav className="bg-[#FDDF2E] w-full h-[72px]">
+    <nav className="bg-[#FDDF2E] w-full h-[72px] z-50 sticky">
       <ul className="grid grid-cols-6 h-full items-center">
         <li className="col-span-2 flex justify-end">
           <Link href="/">
