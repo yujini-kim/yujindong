@@ -1,5 +1,7 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
+import com.wedding.weddinggiftai.member.Member;
+import com.wedding.weddinggiftai.member.MemberRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,6 +17,7 @@ import java.time.LocalDateTime;
 public class AnalyzeApiController {
     private final AnalyzeApiService analyzeApiService;
     private final RedisService redisService;
+    private final MemberRepository memberRepository;
 
     @PostMapping("/analyze")
     public ChatResponse analyze(@RequestBody ChatRequest request, HttpServletRequest httpRequest, @AuthenticationPrincipal String username){
@@ -28,7 +31,9 @@ public class AnalyzeApiController {
         ChatResponse analyze = analyzeApiService.analyzeWithSummary(request.getText());
         System.out.println("username from token: " + username);
         if(username != null && !username.equals("anonymousUser")){
-            analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze);
+            Member member = memberRepository.findByUsername(username)
+                    .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+            analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze,member);
         }
 
         return analyze;

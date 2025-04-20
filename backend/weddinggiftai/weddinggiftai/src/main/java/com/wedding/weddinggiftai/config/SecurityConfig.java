@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // REST API에서는 CSRF 필요 없음
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/verify").authenticated()
+                        .requestMatchers("/verify","/mypage").authenticated()
                         .anyRequest().permitAll() // ✅ 모든 요청을 허용함
                 ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // 우리가 만든 필터 추가;
         return http.build();
