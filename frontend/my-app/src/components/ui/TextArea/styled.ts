@@ -8,13 +8,11 @@ export const Form = styled.form`
   justify-content: center;
   gap: 24px;
 `;
-export const Text = styled.textarea.attrs({
-  placeholder: "텍스트를 입력해 주세요",
-  rows: 5,
-})`
+export const Text = styled.textarea`
   all: unset;
   box-sizing: border-box;
   width: 100%;
+
   border-radius: 15px;
   border: 1px solid ${(props) => props.theme.borderColor};
   padding: 10px;
@@ -48,4 +46,13 @@ export const Button = styled.button.attrs({
   padding: 8px;
   font-weight: 600;
   cursor: pointer;
+`;
+export const Input = styled.input`
+  height: 30px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid ${(props) => props.theme.borderColor};
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px;
 `;
