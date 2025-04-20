@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { BtnBox, Button, File, Form, Text } from "./styled";
 
 interface ITextProps {
