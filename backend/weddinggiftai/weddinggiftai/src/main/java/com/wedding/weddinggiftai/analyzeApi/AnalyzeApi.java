@@ -1,5 +1,6 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
+import com.wedding.weddinggiftai.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,4 +20,8 @@ public class AnalyzeApi {
     private String recommendation;
     private String summary;
     private LocalDateTime createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
