@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 8px;
   margin-top: 28px;
+  margin-bottom: 28px;
   position: relative;
 `;
 
@@ -61,8 +62,6 @@ function Mypage() {
     setIsClick((pre) => !pre);
   };
 
-  console.log(isClick);
-
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -85,7 +84,7 @@ function Mypage() {
       })
       .then(() => setIsAuth(true))
       .catch(() => {
-        alert("로그인 정보가 만료되었어요.");
+        alert("로그인이 필요합니다");
         localStorage.removeItem("accessToken");
         router.replace("/auth/signin");
       });

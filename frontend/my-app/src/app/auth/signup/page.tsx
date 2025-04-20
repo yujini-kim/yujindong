@@ -10,11 +10,7 @@ function Signup() {
   const mutation = useSignUpMutation();
 
   const onSubmit = (data: SignupValues) => {
-    mutation.mutate(data, {
-      onError: (err) => {
-        alert(`❌ 회원가입 실패: ${err.message}`);
-      },
-    });
+    mutation.mutate(data);
   };
 
   return (
