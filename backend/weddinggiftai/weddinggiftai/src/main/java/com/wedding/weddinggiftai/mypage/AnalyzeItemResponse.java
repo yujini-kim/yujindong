@@ -13,4 +13,5 @@ public class AnalyzeItemResponse {
     private String recommendation;
     private String summary;
     private LocalDateTime createdAt;
+    private String friend_name;
 }

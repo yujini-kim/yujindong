@@ -33,7 +33,7 @@ public class AnalyzeApiController {
         if(username != null && !username.equals("anonymousUser")){
             Member member = memberRepository.findByUsername(username)
                     .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
-            analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze,member);
+            analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze,member, request.getFriend_name());
         }
 
         return analyze;

@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a0cb855-90f2-4672-9847-190083d9ce89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/AnalyzeItemResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/MypageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/MypageResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/AnalyzeApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/RedisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/member/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/ChatRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/analyzeApi/ChatRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/AnalyzeItemResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/AnalyzeItemResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/MypageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/weddinggiftai/weddinggiftai/src/main/java/com/wedding/weddinggiftai/mypage/MypageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
