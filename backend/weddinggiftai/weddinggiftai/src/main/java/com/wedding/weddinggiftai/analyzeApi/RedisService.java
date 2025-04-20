@@ -17,7 +17,7 @@ public class RedisService {
         String countStr =  redisTemplate.opsForValue().get(key);
         int count = countStr != null ? Integer.parseInt(countStr) : 0;
 
-        return count >= 10;
+        return count >= 30;
     }
 
     public void increaseCount(String ip){
