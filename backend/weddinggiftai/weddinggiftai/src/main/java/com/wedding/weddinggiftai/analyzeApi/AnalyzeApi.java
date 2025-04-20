@@ -20,6 +20,7 @@ public class AnalyzeApi {
     private String recommendation;
     private String summary;
     private LocalDateTime createdAt;
+    private String friend_name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
