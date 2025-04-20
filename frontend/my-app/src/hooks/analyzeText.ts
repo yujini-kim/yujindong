@@ -11,10 +11,12 @@ type AnalyzeResponse = {
 };
 
 const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
+  const token = localStorage.getItem("accessToken");
   const res = await fetch(`${BASE_URL}/api/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ text }),
   });
