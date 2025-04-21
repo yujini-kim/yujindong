@@ -17,3 +17,7 @@ export interface SignupFormProps {
 export interface SigninFormProps {
   onSubmit: (data: SigninValues) => void;
 }
+
+export interface ResultCircleProps {
+  score: number;
+}

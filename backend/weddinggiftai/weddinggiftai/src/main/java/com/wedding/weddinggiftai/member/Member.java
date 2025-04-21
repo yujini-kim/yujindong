@@ -1,8 +1,12 @@
 package com.wedding.weddinggiftai.member;
 
+import com.wedding.weddinggiftai.analyzeApi.AnalyzeApi;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -17,4 +21,9 @@ public class Member {
     private String displayName;
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AnalyzeApi> analyzeApis = new ArrayList<>();
+
+
 }
