@@ -1,4 +1,3 @@
-import { IAnalysisItem } from "@/hooks/MypageData";
 import ResultCircle from "../Result/ResultCircle";
 import { TextBox, Text, ListCardBox, Number } from "./styled";
 interface IListProps {
