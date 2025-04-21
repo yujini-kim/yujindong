@@ -1,17 +1,11 @@
 "use client";
 
-import Loading from "@/components/ui/Result/Loading";
-import PreResult from "@/components/ui/Result/PreResult";
-import Summary from "@/components/ui/Summary";
-import TextArea from "@/components/ui/TextArea";
 import { useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
 import styled from "styled-components";
-import dynamic from "next/dynamic";
-
-const Result = dynamic(() => import("@/components/ui/Result/Result"), {
-  ssr: false,
-});
+import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
+import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
+import Summary from "@/components/ui/analyzeForm/Summary";
 
 const Wrapper = styled.div`
   display: flex;
@@ -74,23 +68,20 @@ export default function Analyze() {
 
   return (
     <Wrapper>
-      <TextArea
+      <AnalyzeForm
         onSubmit={onSubmit}
         textValue={text}
+        nameValue={name}
         onChange={onChange}
-        text={mutation.isPending ? "분석중..." : "분석하기"}
         handleFileChange={handleFileChange}
         handleName={handleName}
-        nameValue={name}
+        isPending={mutation.isPending}
       />
-      {mutation.isPending ? (
-        <Loading />
-      ) : score !== null ? (
-        <Result recommendation={recommendation} score={score} />
-      ) : (
-        <PreResult />
-      )}
-
+      <AnalyzeResult
+        score={score}
+        recommendation={recommendation}
+        isPending={mutation.isPending}
+      />
       {success ? (
         summary == "" ? null : (
           <Summary
