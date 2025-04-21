@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 export default function Analyze() {
   const [text, setText] = useState("");
   const [score, setScore] = useState<number | null>(null);
+  const [name, setName] = useState("");
   const [success, setSuccess] = useState<boolean>(true); //false일때message 쓰기기
   const [message, setMessage] = useState<string | null>("");
   const [summary, setSummary] = useState<string | null>("");
@@ -46,6 +47,10 @@ export default function Analyze() {
     setText(e.target.value);
   };
 
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
   const mutation = useAnalyzeMutation((data) => {
     setScore(data.score);
     setRecommendation(data.recommendation);
@@ -64,17 +69,19 @@ export default function Analyze() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    mutation.mutate(text);
+    mutation.mutate({ text, friend_name: name });
   };
 
   return (
     <Wrapper>
       <TextArea
         onSubmit={onSubmit}
-        value={text}
+        textValue={text}
         onChange={onChange}
         text={mutation.isPending ? "분석중..." : "분석하기"}
         handleFileChange={handleFileChange}
+        handleName={handleName}
+        nameValue={name}
       />
       {mutation.isPending ? (
         <Loading />

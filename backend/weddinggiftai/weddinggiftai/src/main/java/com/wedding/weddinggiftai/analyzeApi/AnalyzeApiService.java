@@ -1,6 +1,7 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
 import com.wedding.weddinggiftai.gpt.GptService;
+import com.wedding.weddinggiftai.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -67,7 +68,7 @@ public class AnalyzeApiService {
         return "20만원 이상";
     }
 
-    public void SaveAnalyzeResult(String ip,String text,ChatResponse response){
+    public void SaveAnalyzeResult(String ip,String text,ChatResponse response,Member member,String friend_name){
         AnalyzeApi analyzeApi = new AnalyzeApi();
         analyzeApi.setIp(ip);
         analyzeApi.setText(text);
@@ -75,6 +76,9 @@ public class AnalyzeApiService {
         analyzeApi.setRecommendation(response.getRecommendation());
         analyzeApi.setSummary(response.getSummary());
         analyzeApi.setCreatedAt(LocalDateTime.now());
+        analyzeApi.setFriend_name(friend_name);
+
+        analyzeApi.setMember(member);
         analyzeApiRepository.save(analyzeApi);
     }
 

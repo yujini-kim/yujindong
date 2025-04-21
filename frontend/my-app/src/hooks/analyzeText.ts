@@ -10,13 +10,23 @@ type AnalyzeResponse = {
   summary: string;
 };
 
-const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
+interface AnalyzePayload {
+  text: string;
+  friend_name: string;
+}
+
+const analyzeText = async ({
+  text,
+  friend_name,
+}: AnalyzePayload): Promise<AnalyzeResponse> => {
+  const token = localStorage.getItem("accessToken");
   const res = await fetch(`${BASE_URL}/api/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ text, friend_name }),
   });
 
   if (!res.ok) {
@@ -30,7 +40,7 @@ const analyzeText = async (text: string): Promise<AnalyzeResponse> => {
 
 export const useAnalyzeMutation = (
   onSuccessCallback: (data: AnalyzeResponse) => void
-): UseMutationResult<AnalyzeResponse, Error, string> => {
+): UseMutationResult<AnalyzeResponse, Error, AnalyzePayload> => {
   return useMutation({
     mutationFn: analyzeText,
 
