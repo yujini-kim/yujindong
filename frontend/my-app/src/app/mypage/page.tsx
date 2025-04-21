@@ -40,14 +40,11 @@ const Overlay = styled.div`
 `;
 
 function Mypage() {
-  const { data: pagedata, isLoading, isError, error } = useMyPageQuery();
-  const [isAuth, setIsAuth] = useState(false);
+  const { data: pagedata, isLoading } = useMyPageQuery();
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
-  console.log(pagedata);
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setIsClick((pre) => !pre);
@@ -59,34 +56,33 @@ function Mypage() {
   };
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const verifyToken = async () => {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        alert("로그인이 필요합니다");
+        router.replace("/auth/signin");
+        return;
+      }
 
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      router.replace("/auth/signin");
-      return;
-    }
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => {
         if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then(() => setIsAuth(true))
-      .catch(() => {
+
+        await res.json();
+      } catch (err) {
         alert("로그인이 필요합니다");
         localStorage.removeItem("accessToken");
         router.replace("/auth/signin");
-      });
-  }, [router]);
+      }
+    };
 
-  if (!mounted || !isAuth) return null;
+    verifyToken();
+  }, [router]);
   if (isLoading) {
     <div>로딩중</div>;
   }
