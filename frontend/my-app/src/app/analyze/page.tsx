@@ -6,6 +6,7 @@ import styled from "styled-components";
 import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
 import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
 import Summary from "@/components/ui/analyzeForm/Summary";
+import { useSummaryStore } from "@/store/summaryStore";
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,8 +23,8 @@ export default function Analyze() {
   const [name, setName] = useState("");
   const [success, setSuccess] = useState<boolean>(true); //false일때message 쓰기기
   const [message, setMessage] = useState<string | null>("");
-  const [summary, setSummary] = useState<string | null>("");
   const [recommendation, setRecommendation] = useState<string>("");
+  const { setSummary, realsummary } = useSummaryStore();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -53,14 +54,6 @@ export default function Analyze() {
     setSummary(data.summary);
   });
 
-  const realsummary =
-    summary !== null
-      ? summary
-          .split("\n")
-          .filter((line) => line.startsWith("-"))
-          .map((line) => line.slice(1).trim())
-      : [];
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     mutation.mutate({ text, friend_name: name });
@@ -83,7 +76,7 @@ export default function Analyze() {
         isPending={mutation.isPending}
       />
       {success ? (
-        summary == "" ? null : (
+        realsummary.length === 0 ? null : (
           <Summary
             summary={realsummary.map((line, idx) => (
               <p key={idx}>- {line}</p>
