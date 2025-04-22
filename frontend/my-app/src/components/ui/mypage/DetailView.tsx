@@ -7,13 +7,15 @@ import {
   ScrollBox,
   SummaryText,
 } from "./styled";
+import { ReactNode } from "react";
 
 interface IDetailProps {
   recommendation: string;
   score: number;
-  summary: string;
+  summary: ReactNode;
   text: string;
   idx: number;
+  friend_name: string;
   onClose: () => void;
 }
 
@@ -23,12 +25,14 @@ function DetailView({
   summary,
   text,
   idx,
+  friend_name,
   onClose,
 }: IDetailProps) {
   return (
     <Overlay onClick={onClose}>
       <DetailCard onClick={(e) => e.stopPropagation()}>
         <ListCard
+          friend_name={friend_name}
           key={idx}
           idx={idx}
           recommendation={recommendation}
