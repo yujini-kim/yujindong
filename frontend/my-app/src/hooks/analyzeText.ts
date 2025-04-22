@@ -1,13 +1,15 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
-type AnalyzeResponse = {
+export type AnalyzeResponse = {
   score: number;
   recommendation: string;
   success: boolean;
   message: string;
   summary: string;
+  share_uuid: string;
 };
 
 interface AnalyzePayload {
@@ -34,8 +36,9 @@ const analyzeText = async ({
     console.error("서버오류:", errorText);
     throw new Error("서버 오류");
   }
+  const data = await res.json();
 
-  return res.json();
+  return data;
 };
 
 export const useAnalyzeMutation = (
