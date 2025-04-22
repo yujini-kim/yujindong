@@ -1,9 +1,12 @@
 package com.wedding.weddinggiftai.analyzeApi;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Getter
 public class ChatResponse {
     private int score;
@@ -12,20 +15,6 @@ public class ChatResponse {
     private String message;
     private String summary;
     private String cleanText;
-
-
-    public ChatResponse(int score,
-                        String recommendation,
-                        boolean success,
-                        String message,
-                        String summary,
-                        String cleanText) {
-        this.score = score;
-        this.recommendation = recommendation;
-        this.success = success;
-        this.message = message;
-        this.summary = summary;
-        this.cleanText = cleanText;
-    }
+    private String shareUuid;
 
 }
