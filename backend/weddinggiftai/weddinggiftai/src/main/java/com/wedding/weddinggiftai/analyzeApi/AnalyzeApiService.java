@@ -55,7 +55,7 @@ public class AnalyzeApiService {
 
         String recommendation = getRecommendation(score);
 
-        return new ChatResponse(score, recommendation, true, "분석완료", summary ,cleanText);
+        return new ChatResponse(score, recommendation, true, "분석완료", summary ,cleanText,null);
 
     }
 
@@ -68,7 +68,7 @@ public class AnalyzeApiService {
         return "20만원 이상";
     }
 
-    public void SaveAnalyzeResult(String ip,String text,ChatResponse response,Member member,String friend_name){
+    public String SaveAnalyzeResult(String ip,String text,ChatResponse response,Member member,String friend_name){
         AnalyzeApi analyzeApi = new AnalyzeApi();
         analyzeApi.setIp(ip);
         analyzeApi.setText(text);
@@ -77,9 +77,16 @@ public class AnalyzeApiService {
         analyzeApi.setSummary(response.getSummary());
         analyzeApi.setCreatedAt(LocalDateTime.now());
         analyzeApi.setFriend_name(friend_name);
-
         analyzeApi.setMember(member);
-        analyzeApiRepository.save(analyzeApi);
+
+        AnalyzeApi saved = analyzeApiRepository.save(analyzeApi);
+        return saved.getShareUuid();
+    }
+
+    public AnalyzeApi findByUuid(String uuid){
+        return analyzeApiRepository.findByShareUuid(uuid).orElseThrow(()-> new RuntimeException("공유 결과를 찾을 수 없습니다."));
     }
 
 }
+
+

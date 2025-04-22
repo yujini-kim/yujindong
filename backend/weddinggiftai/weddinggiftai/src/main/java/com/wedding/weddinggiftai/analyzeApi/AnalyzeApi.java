@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -21,6 +22,8 @@ public class AnalyzeApi {
     private String summary;
     private LocalDateTime createdAt;
     private String friend_name;
+    @Column(unique = true, updatable = false)
+    private String shareUuid = UUID.randomUUID().toString();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
