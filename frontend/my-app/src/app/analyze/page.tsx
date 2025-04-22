@@ -70,11 +70,6 @@ export default function Analyze() {
         handleName={handleName}
         isPending={mutation.isPending}
       />
-      <AnalyzeResult
-        score={score}
-        recommendation={recommendation}
-        isPending={mutation.isPending}
-      />
       {success ? (
         realsummary.length === 0 ? null : (
           <Summary
@@ -86,7 +81,11 @@ export default function Analyze() {
       ) : (
         <Summary summary={message} />
       )}
-      <button>공유하기</button>
+      <AnalyzeResult
+        score={score}
+        recommendation={recommendation}
+        isPending={mutation.isPending}
+      />
     </Wrapper>
   );
 }
