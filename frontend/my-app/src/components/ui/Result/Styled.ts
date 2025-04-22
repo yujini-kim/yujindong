@@ -30,7 +30,7 @@ export const AnimatedBorder = styled(motion.div)`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: conic-gradient(#facc15 var(--angle), #e5e7eb 0deg);
+  background: conic-gradient(#ffe186 var(--angle), #e5e7eb 0deg);
 `;
 
 export const InnerCircle = styled.div`

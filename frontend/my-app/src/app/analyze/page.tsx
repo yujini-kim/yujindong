@@ -5,7 +5,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
 import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
-import Summary from "@/components/ui/analyzeForm/Summary";
+import Summary from "@/components/ui/Result/Summary";
 import { useSummaryStore } from "@/store/summaryStore";
 
 const Wrapper = styled.div`
@@ -86,6 +86,7 @@ export default function Analyze() {
       ) : (
         <Summary summary={message} />
       )}
+      <button>공유하기</button>
     </Wrapper>
   );
 }
