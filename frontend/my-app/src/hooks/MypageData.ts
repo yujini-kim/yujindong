@@ -9,15 +9,16 @@ export interface IAnalysisItem {
     summary: string;
     text: string;
   }[];
-  pageSize?: number;
-  totalPages?: number;
+  pageSize: number;
+  totalPages: number;
+  currentPage?: number;
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
-export const fetchMyPage = async () => {
+export const fetchMyPage = async (currentPage: number) => {
   const token = localStorage.getItem("accessToken");
-  const res = await fetch(`${BASE_URL}/mypage`, {
+  const res = await fetch(`${BASE_URL}/mypage?page=${currentPage}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -27,10 +28,10 @@ export const fetchMyPage = async () => {
   return res.json();
 };
 
-export function useMyPageQuery() {
+export function useMyPageQuery(currentPage: number) {
   return useQuery<IAnalysisItem>({
-    queryKey: ["mypage"],
-    queryFn: fetchMyPage,
+    queryKey: ["mypage", currentPage],
+    queryFn: () => fetchMyPage(currentPage),
     staleTime: 1000 * 60 * 5,
   });
 }
