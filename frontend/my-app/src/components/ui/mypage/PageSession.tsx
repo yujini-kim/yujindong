@@ -1,4 +1,5 @@
 import { LeftArrow, RightArrow } from "@/components/icons/Arrows";
+import { useMypageStore } from "@/store/mypageStore";
 import styled from "styled-components";
 
 const PageBtn = styled.button`
@@ -17,17 +18,12 @@ const PageNumber = styled.div`
   font-size: 18px;
 `;
 
-interface IPageProps {
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  currentPage: number;
-  totalPages: number;
-}
-
-function PageSession({ setCurrentPage, currentPage, totalPages }: IPageProps) {
+function PageSession({ totalPages }: { totalPages: number }) {
+  const { currentPage, setCurrentPage } = useMypageStore();
   return (
     <PageTabs>
       <PageBtn
-        onClick={() => setCurrentPage((prev) => prev - 1)}
+        onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 0}
       >
         <LeftArrow />
@@ -36,7 +32,7 @@ function PageSession({ setCurrentPage, currentPage, totalPages }: IPageProps) {
         {(currentPage ?? 1) + 1}/ {totalPages}
       </PageNumber>
       <PageBtn
-        onClick={() => setCurrentPage((prev) => prev + 1)}
+        onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPage === (totalPages ?? 1) - 1}
       >
         <RightArrow />
