@@ -24,6 +24,7 @@ function MyList({ data, onClick }: IMyListProps) {
         return (
           <Card onClick={() => onClick(idx)} key={idx}>
             <ListCard
+              friend_name={item.friend_name ?? "일단빼"}
               idx={idx}
               recommendation={item.recommendation}
               score={item.score}
