@@ -1,12 +1,14 @@
 "use client";
 
-import { useAnalyzeMutation } from "@/hooks/analyzeText";
+import { AnalyzeResponse, useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
 import styled from "styled-components";
 import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
 import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
 import Summary from "@/components/ui/Result/Summary";
 import { useSummaryStore } from "@/store/summaryStore";
+import { useQuery } from "@tanstack/react-query";
+import { ShareURL } from "@/hooks/ShareURL";
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,6 +26,7 @@ export default function Analyze() {
   const [success, setSuccess] = useState<boolean>(true); //false일때message 쓰기기
   const [message, setMessage] = useState<string | null>("");
   const [recommendation, setRecommendation] = useState<string>("");
+  const [shareUrl, setShareUrl] = useState<string>("");
   const { setSummary, realsummary } = useSummaryStore();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +55,8 @@ export default function Analyze() {
     setSuccess(data.success);
     setMessage(data.message);
     setSummary(data.summary);
+    setShareUrl(data.shareUuid);
+    console.log(data.shareUuid);
   });
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -85,6 +90,7 @@ export default function Analyze() {
         score={score}
         recommendation={recommendation}
         isPending={mutation.isPending}
+        shareUrl={shareUrl}
       />
     </Wrapper>
   );

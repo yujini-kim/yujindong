@@ -9,7 +9,7 @@ export type AnalyzeResponse = {
   success: boolean;
   message: string;
   summary: string;
-  share_uuid: string;
+  shareUuid: string;
 };
 
 interface AnalyzePayload {
