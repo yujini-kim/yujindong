@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Getter
@@ -24,6 +25,18 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AnalyzeApi> analyzeApis = new ArrayList<>();
+
+    public Member(String email,String displayName){
+        this.username = "google_" + email;
+        this.password = UUID.randomUUID().toString();
+        this.displayName = displayName;
+        this.email = email;
+    }
+
+    public Member(){
+
+    }
+
 
 
 }

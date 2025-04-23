@@ -1,6 +1,7 @@
 package com.wedding.weddinggiftai.config;
 
 import com.wedding.weddinggiftai.jwt.JwtAuthenticationFilter;
+import com.wedding.weddinggiftai.oauth.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +21,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
+    private final CustomOAuth2UserService customOAuth2UserService;
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -33,10 +34,19 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/verify","/mypage").authenticated()
+                        .requestMatchers("/oauth2/**", "/login/**").permitAll()
                         .anyRequest().permitAll() // ✅ 모든 요청을 허용함
-                ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // 우리가 만든 필터 추가;
+                )
+                .oauth2Login(oauth -> oauth
+                        .userInfoEndpoint(user -> user
+                                .userService(customOAuth2UserService)// ✅ 사용자 정보 처리 서비스 등록
+                        )
+                )
+
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // 우리가 만든 필터 추가;
         return http.build();
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
