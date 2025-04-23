@@ -9,7 +9,7 @@ import {
   Text,
   Wrapper,
 } from "./Styled";
-import { BASE_URL } from "@/hooks/analyzeText";
+import { ShareURL } from "@/hooks/ShareURL";
 
 interface IResultProps {
   score: number;
@@ -19,6 +19,11 @@ interface IResultProps {
 
 function Result({ score, recommendation, shareUrl }: IResultProps) {
   const router = useRouter();
+
+  const onClick = async () => {
+    router.push(`/result/${shareUrl}`);
+  };
+
   return (
     <>
       <Wrapper>
@@ -38,9 +43,7 @@ function Result({ score, recommendation, shareUrl }: IResultProps) {
           <Score>{recommendation}</Score>
         </Box>
       </Wrapper>
-      <button onClick={() => router.push(`${BASE_URL}/result/${shareUrl}`)}>
-        공유하기
-      </button>
+      <button onClick={onClick}>공유하기</button>
     </>
   );
 }
