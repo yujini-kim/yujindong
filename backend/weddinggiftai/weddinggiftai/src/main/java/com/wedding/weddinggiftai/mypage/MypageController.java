@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,16 +36,22 @@ public class MypageController {
         // 해당 사용자 분석 결과 조회
         Page<AnalyzeApi> analyzePage = analyzeApiRepository.findByMember(member, pageable);
 
+        int startIndex = page * size + 1;
+
         // 각 결과를 DTO로 변환
-        List<AnalyzeItemResponse> items = analyzePage.getContent().stream()
-                .map(a -> new AnalyzeItemResponse(
-                        a.getText(),
-                        a.getScore(),
-                        a.getRecommendation(),
-                        a.getSummary(),
-                        a.getCreatedAt(),
-                        a.getFriend_name()
-                )).toList();
+        List<AnalyzeItemResponse> items = IntStream.range(0,analyzePage.getContent().size())
+                .mapToObj(i -> {
+                    AnalyzeApi a = analyzePage.getContent().get(i);
+                    return new AnalyzeItemResponse(
+                            startIndex+i,
+                            a.getText(),
+                            a.getScore(),
+                            a.getRecommendation(),
+                            a.getSummary(),
+                            a.getCreatedAt(),
+                            a.getFriend_name()
+                    );
+                }).toList();
 
         // 최종 응답 객체 생성
         MypageResponse response = new MypageResponse(
