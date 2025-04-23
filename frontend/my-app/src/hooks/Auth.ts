@@ -1,4 +1,5 @@
 import { SigninValues, SignupValues } from "@/components/ui/auth/type";
+import { useAuthStore } from "@/store/authStore";
 import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "next/navigation";
@@ -40,6 +41,7 @@ export function useSignUpMutation() {
 }
 export function useLogInMutation() {
   const router = useRouter();
+  const setToken = useAuthStore.getState().setToken;
   return useMutation({
     mutationFn: async (signinValues: SigninValues) => {
       const res = await fetch(`${BASE_URL}/login`, {
@@ -60,7 +62,8 @@ export function useLogInMutation() {
       return data;
     },
     onSuccess: (data) => {
-      console.log("로그인 성공!", data.token);
+      localStorage.setItem("accessToken", data.token);
+      setToken(data.token);
       router.replace("/mypage");
     },
     onError: (error) => {
