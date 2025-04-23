@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class AnalyzeItemResponse {
+    private int index;
     private String text;
     private int score;
     private String recommendation;
