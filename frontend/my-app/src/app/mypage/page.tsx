@@ -94,7 +94,8 @@ const DetailCard = styled.div`
 
 const RealSummary = styled.div`
   border: 1px solid ${(props) => props.theme.borderColor};
-
+  border-radius: 15px;
+  padding: 10px;
   p {
     font-size: 12px;
   }

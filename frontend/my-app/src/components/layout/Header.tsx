@@ -5,6 +5,7 @@ import ExitIcon from "../icons/ExitIcon";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LoginBtn, LogoutBtn } from "../ui/auth/LoginBtn";
+import { useAuthStore } from "@/store/authStore";
 
 const HeaderWrapper = styled.div`
   display: grid;
@@ -26,11 +27,9 @@ const PageTitle = styled.p`
 function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
-  const [token, setToken] = useState<string | null>(null);
-
+  const token = useAuthStore((state) => state.token);
   useEffect(() => {
     setIsMounted(true);
-    setToken(localStorage.getItem("accessToken"));
   }, []);
 
   const titleMap: Record<string, string> = {
