@@ -8,5 +8,6 @@ declare module "styled-components" {
     accentColor: string;
     shadowColor: string;
     circleColor: string;
+    boxColor: string;
   }
 }

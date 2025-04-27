@@ -15,6 +15,7 @@ const HeaderWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 50;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 const PageTitle = styled.p`

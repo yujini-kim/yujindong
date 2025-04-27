@@ -10,6 +10,7 @@ import Summary from "@/components/ui/Result/Summary";
 import styled from "styled-components";
 import { Overlay } from "@/components/ui/mypage/styled";
 import { useState } from "react";
+import { TopIcon } from "@/components/icons/TopIcon";
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 14px;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 const ChatText = styled.div`
@@ -71,7 +73,7 @@ const DetailDesignCard = styled.div`
   border: 2px solid ${(props) => props.theme.shadowColor};
   border-radius: 7px;
   box-shadow: 7px 7px ${(props) => props.theme.shadowColor};
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 40px;
 `;
 
@@ -105,6 +107,7 @@ const Analyze = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
 `;
 
 const CloseDetailBtn = styled.button`
@@ -186,6 +189,7 @@ function Mypage() {
         >
           <DetailDesignCard onClick={(e) => e.stopPropagation()}>
             <DetailCard>
+              <TopIcon />
               <Analyze>
                 <TextInfo>
                   <Idx>

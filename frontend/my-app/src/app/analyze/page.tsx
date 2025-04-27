@@ -3,20 +3,106 @@
 import { AnalyzeResponse, useAnalyzeMutation } from "@/hooks/analyzeText";
 import { useState } from "react";
 import styled from "styled-components";
-import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
-import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
-import Summary from "@/components/ui/Result/Summary";
 import { useSummaryStore } from "@/store/splitStore";
 import { useQuery } from "@tanstack/react-query";
 import { ShareURL } from "@/hooks/ShareURL";
+import { ChevronDown, Minus, XIcon } from "@/components/icons/TopIcon";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Loading from "@/components/ui/analyze/Loading";
 
 const Wrapper = styled.div`
+  height: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 32px;
   margin-top: 28px;
+`;
+
+const Background = styled.div`
+  position: relative;
+  max-width: 360px;
+  width: 360px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.bgColor};
+  border: 3px solid ${(props) => props.theme.borderColor};
+  border-radius: 10px;
+  box-shadow: 5px 5px ${(props) => props.theme.shadowColor};
+  overflow: hidden;
+`;
+
+const Top = styled.div`
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3px;
+  height: 8%;
+  background-color: ${(props) => props.theme.accentColor};
+  font-weight: 700;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+`;
+const Text = styled.textarea`
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: ${(props) => props.theme.bgColor};
+  border: 2px solid ${(props) => props.theme.borderColor};
+  padding: 10px;
+`;
+
+const File = styled.label.attrs({
+  htmlFor: "file",
+})`
+  width: 141px;
+  background-color: ${(props) => props.theme.circleColor};
+  border: 2px solid ${(props) => props.theme.borderColor};
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+  text-align: center;
+  input {
+    display: none;
+  }
+`;
+const BtnBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+const Button = styled.button.attrs({
+  type: "submit",
+})`
+  width: 141px;
+  background-color: ${(props) => props.theme.accentColor};
+  border: 2px solid ${(props) => props.theme.borderColor};
+  padding: 8px;
+  font-weight: 600;
+  cursor: pointer;
+`;
+const Input = styled.input`
+  height: 30px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: ${(props) => props.theme.bgColor};
+  border: 2px solid ${(props) => props.theme.borderColor};
+  width: 100%;
+  margin-top: 10px;
 `;
 
 export default function Analyze() {
@@ -28,6 +114,9 @@ export default function Analyze() {
   const [recommendation, setRecommendation] = useState<string>("");
   const [shareUrl, setShareUrl] = useState<string>("");
   const { setSummary, realsummary } = useSummaryStore();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -56,42 +145,55 @@ export default function Analyze() {
     setMessage(data.message);
     setSummary(data.summary);
     setShareUrl(data.shareUuid);
-    console.log(data.shareUuid);
+    router.push(`/result/${data.shareUuid}`);
   });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     mutation.mutate({ text, friend_name: name });
   };
 
   return (
     <Wrapper>
-      <AnalyzeForm
-        onSubmit={onSubmit}
-        textValue={text}
-        nameValue={name}
-        onChange={onChange}
-        handleFileChange={handleFileChange}
-        handleName={handleName}
-        isPending={mutation.isPending}
-      />
-      {success ? (
-        realsummary.length === 0 ? null : (
-          <Summary
-            summary={realsummary.map((line, idx) => (
-              <p key={idx}>- {line}</p>
-            ))}
-          />
-        )
+      {isLoading ? (
+        <Loading />
       ) : (
-        <Summary summary={message} />
+        <Background>
+          <Top>
+            <ChevronDown />
+            <Minus />
+            <XIcon />
+          </Top>
+          <Form onSubmit={onSubmit}>
+            <Input
+              placeholder="친구이름 입력해주세요"
+              value={name}
+              onChange={handleName}
+            />
+            <Text
+              rows={5}
+              placeholder="텍스트를 입력해주세요"
+              value={text}
+              onChange={onChange}
+            />
+            <BtnBox>
+              <File>
+                파일 업로드하기
+                <input
+                  type="file"
+                  id="file"
+                  accept=".txt"
+                  onChange={handleFileChange}
+                />
+              </File>
+              <Button disabled={mutation.isPending}>
+                {mutation.isPending ? "분석 중..." : "분석하기"}
+              </Button>
+            </BtnBox>
+          </Form>
+        </Background>
       )}
-      <AnalyzeResult
-        score={score}
-        recommendation={recommendation}
-        isPending={mutation.isPending}
-        shareUrl={shareUrl}
-      />
     </Wrapper>
   );
 }
