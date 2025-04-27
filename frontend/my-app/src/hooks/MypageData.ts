@@ -8,6 +8,7 @@ export interface IAnalysisItem {
     score: number;
     summary: string;
     text: string;
+    index: number;
   }[];
   pageSize: number;
   totalPages: number;

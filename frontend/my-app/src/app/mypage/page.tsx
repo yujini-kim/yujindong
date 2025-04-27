@@ -132,13 +132,13 @@ function Mypage() {
   } = useMypageStore();
   const { data, isLoading } = useMyPageQuery(currentPage);
   const { setSummary, realsummary } = useSummaryStore();
-
+  console.log(data);
   return (
     <Wrapper>
       <List>
         {data?.items.map((data, idx) => (
           <Card
-            key={idx}
+            key={data.index}
             onClick={() => {
               setSelectedIdx(idx);
               toggleClick();
@@ -146,7 +146,7 @@ function Mypage() {
             }}
           >
             <TextInfo>
-              <Idx>0{idx + 1}</Idx>
+              <Idx>{data.index + 1}</Idx>
               <span>
                 상대방: {data.friend_name ?? "익명의사나이"} <br />
                 추천축의금 :{data.recommendation}
