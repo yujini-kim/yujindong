@@ -24,8 +24,12 @@ public class MypageController {
             @AuthenticationPrincipal String username,
             @RequestParam(defaultValue = "0") int page,//몇 번째 페이지인지
             @RequestParam(defaultValue = "5") int size//한페이지에 몇개씩 보여줄지
-    ) {
+    )
+    
+     {
         // 사용자 확인
+        System.out.println("현재 요청된 페이지: " + page);
+        System.out.println("요청한 사용자: " + username);
         Member member = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
 
