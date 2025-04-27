@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const Box = styled.div`
   border: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 15px;
+  box-shadow: 2px 2px ${(props) => props.theme.shadowColor};
   padding: 20px;
   display: flex;
   flex-direction: column;

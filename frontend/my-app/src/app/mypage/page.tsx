@@ -131,10 +131,10 @@ const Tab = styled.div`
   padding: 20px;
 `;
 
-const Title = styled.span<{ isActive: boolean }>`
+const Title = styled.span<{ $isActive: boolean }>`
   font-size: 14px;
   border-bottom: ${(props) =>
-    props.isActive ? `2px solid ${props.theme.circleColor}` : "none"};
+    props.$isActive ? `2px solid ${props.theme.circleColor}` : "none"};
   cursor: pointer;
 `;
 
@@ -152,7 +152,7 @@ function Mypage() {
   const { setSummary, realsummary } = useSummaryStore();
   const { setTextLines, textLines } = useTextStore();
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
-  console.log(data?.items[0].text);
+  console.log(data?.items[1].text);
   return (
     <Wrapper>
       <List>
@@ -204,13 +204,13 @@ function Mypage() {
               <Tabs>
                 <Tab>
                   <Title
-                    isActive={selectedTab === "summary"}
+                    $isActive={selectedTab === "summary"}
                     onClick={() => setSelectedTab("summary")}
                   >
                     3줄요약
                   </Title>
                   <Title
-                    isActive={selectedTab === "chat"}
+                    $isActive={selectedTab === "chat"}
                     onClick={() => setSelectedTab("chat")}
                   >
                     대화내용

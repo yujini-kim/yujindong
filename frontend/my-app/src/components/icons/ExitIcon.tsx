@@ -1,7 +1,7 @@
 function ExitIcon() {
   return (
     <svg
-      className="size-7"
+      className="size-6"
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"

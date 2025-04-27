@@ -2,8 +2,20 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const Login = styled.div`
+  width: 50px;
+  background-color: white;
+  border: 2px solid ${(props) => props.theme.shadowColor};
+  border-radius: 5px;
+  box-shadow: 2px 2px ${(props) => props.theme.shadowColor};
+  padding: 3px;
   font-size: 10px;
+  font-weight: 600;
   text-align: center;
+  cursor: pointer;
+
+  :hover {
+    color: ${(props) => props.theme.circleColor};
+  }
 `;
 
 interface ILogOut {
