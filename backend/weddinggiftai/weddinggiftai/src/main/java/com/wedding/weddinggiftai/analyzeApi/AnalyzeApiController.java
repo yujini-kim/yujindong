@@ -33,11 +33,12 @@ public class AnalyzeApiController {
         System.out.println("username from token: " + username);
 
         String shareUuid = null;
-        if(username != null && !username.equals("anonymousUser")){
-            Member member = memberRepository.findByUsername(username)
+        Member member = null;
+        if (username != null && !username.equals("anonymousUser")) {
+            member = memberRepository.findByUsername(username)
                     .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
-           shareUuid = analyzeApiService.SaveAnalyzeResult(ip,analyze.getCleanText(),analyze,member, request.getFriend_name());
         }
+        shareUuid = analyzeApiService.SaveAnalyzeResult(ip, analyze.getCleanText(), analyze, member, request.getFriend_name());
 
         return new ChatResponse(
                 analyze.getScore(),
