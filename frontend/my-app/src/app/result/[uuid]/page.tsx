@@ -1,11 +1,12 @@
 "use client";
 
+import { TopIcon } from "@/components/icons/TopIcon";
 import ResultCircle from "@/components/ui/Result/ResultCircle";
 import { AnalyzeResponse } from "@/hooks/analyzeText";
 import { ShareURL } from "@/hooks/ShareURL";
 import { useSummaryStore, useTextStore } from "@/store/splitStore";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -28,7 +29,7 @@ const DetailDesignCard = styled.div`
   border: 2px solid ${(props) => props.theme.shadowColor};
   border-radius: 7px;
   box-shadow: 7px 7px ${(props) => props.theme.shadowColor};
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 40px;
 `;
 
@@ -88,6 +89,7 @@ const CloseDetailBtn = styled.button`
   position: absolute;
   right: 10px;
   bottom: 5px;
+  cursor: pointer;
 `;
 
 const Tabs = styled.div`
@@ -102,10 +104,10 @@ const Tab = styled.div`
   padding: 20px;
 `;
 
-const Title = styled.span<{ isActive: boolean }>`
+const Title = styled.span<{ $isActive: boolean }>`
   font-size: 14px;
   border-bottom: ${(props) =>
-    props.isActive ? `2px solid ${props.theme.circleColor}` : "none"};
+    props.$isActive ? `2px solid ${props.theme.circleColor}` : "none"};
   cursor: pointer;
 `;
 
@@ -120,7 +122,7 @@ export default function ShareResultPage() {
     enabled: !!uuid,
   });
   const { setSummary, realsummary } = useSummaryStore();
-
+  const router = useRouter();
   useEffect(() => {
     if (data?.summary) {
       setSummary(data.summary);
@@ -150,6 +152,7 @@ export default function ShareResultPage() {
     <div>
       <DetailDesignCard>
         <DetailCard>
+          <TopIcon onClick={() => router.push(`/analyze`)} />
           <Analyze>
             <TextInfo>
               <span>
@@ -163,13 +166,13 @@ export default function ShareResultPage() {
           <Tabs>
             <Tab>
               <Title
-                isActive={selectedTab === "summary"}
+                $isActive={selectedTab === "summary"}
                 onClick={() => setSelectedTab("summary")}
               >
                 3줄요약
               </Title>
               <Title
-                isActive={selectedTab === "chat"}
+                $isActive={selectedTab === "chat"}
                 onClick={() => setSelectedTab("chat")}
               >
                 대화내용
@@ -185,7 +188,6 @@ export default function ShareResultPage() {
 
             {selectedTab === "chat" && (
               <ChatText>
-                {" "}
                 {textLines.map((line, idx) => (
                   <p key={idx}>{line}</p>
                 ))}

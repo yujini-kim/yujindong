@@ -10,6 +10,7 @@ import Summary from "@/components/ui/Result/Summary";
 import styled from "styled-components";
 import { Overlay } from "@/components/ui/mypage/styled";
 import { useState } from "react";
+import { TopIcon } from "@/components/icons/TopIcon";
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 14px;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 const ChatText = styled.div`
@@ -71,7 +73,7 @@ const DetailDesignCard = styled.div`
   border: 2px solid ${(props) => props.theme.shadowColor};
   border-radius: 7px;
   box-shadow: 7px 7px ${(props) => props.theme.shadowColor};
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 40px;
 `;
 
@@ -105,6 +107,7 @@ const Analyze = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
 `;
 
 const CloseDetailBtn = styled.button`
@@ -131,10 +134,10 @@ const Tab = styled.div`
   padding: 20px;
 `;
 
-const Title = styled.span<{ isActive: boolean }>`
+const Title = styled.span<{ $isActive: boolean }>`
   font-size: 14px;
   border-bottom: ${(props) =>
-    props.isActive ? `2px solid ${props.theme.circleColor}` : "none"};
+    props.$isActive ? `2px solid ${props.theme.circleColor}` : "none"};
   cursor: pointer;
 `;
 
@@ -152,7 +155,7 @@ function Mypage() {
   const { setSummary, realsummary } = useSummaryStore();
   const { setTextLines, textLines } = useTextStore();
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
-  console.log(data?.items[0].text);
+  console.log(data?.items[1].text);
   return (
     <Wrapper>
       <List>
@@ -186,6 +189,7 @@ function Mypage() {
         >
           <DetailDesignCard onClick={(e) => e.stopPropagation()}>
             <DetailCard>
+              <TopIcon />
               <Analyze>
                 <TextInfo>
                   <Idx>
@@ -204,13 +208,13 @@ function Mypage() {
               <Tabs>
                 <Tab>
                   <Title
-                    isActive={selectedTab === "summary"}
+                    $isActive={selectedTab === "summary"}
                     onClick={() => setSelectedTab("summary")}
                   >
                     3줄요약
                   </Title>
                   <Title
-                    isActive={selectedTab === "chat"}
+                    $isActive={selectedTab === "chat"}
                     onClick={() => setSelectedTab("chat")}
                   >
                     대화내용
