@@ -5,10 +5,11 @@ import ResultCircle from "@/components/ui/Result/ResultCircle";
 import { useMyPageQuery } from "@/hooks/MypageData";
 import { useAuthGuard } from "@/hooks/useAuthGuard";
 import { useMypageStore } from "@/store/mypageStore";
-import { useSummaryStore } from "@/store/summaryStore";
+import { useSummaryStore, useTextStore } from "@/store/splitStore";
 import Summary from "@/components/ui/Result/Summary";
 import styled from "styled-components";
 import { Overlay } from "@/components/ui/mypage/styled";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -55,13 +56,9 @@ const ChatText = styled.div`
   width: 100%;
   height: 200px;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  border-radius: 15px;
   padding: 10px;
   font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
 `;
 
 const DetailDesignCard = styled.div`
@@ -87,15 +84,17 @@ const DetailCard = styled.div`
   border-top: 2px solid ${(props) => props.theme.shadowColor};
   border-bottom: 2px solid ${(props) => props.theme.shadowColor};
   padding: 20px;
-  max-width: 394px;
-  width: 394px;
+  max-width: 294px;
+  width: 294px;
   gap: 20px;
 `;
 
 const RealSummary = styled.div`
-  border: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 15px;
+  width: 100%;
   padding: 10px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
   p {
     font-size: 12px;
   }
@@ -120,6 +119,25 @@ const CloseDetailBtn = styled.button`
   bottom: 5px;
 `;
 
+const Tabs = styled.div`
+  width: 100%;
+  border: 2px solid ${(props) => props.theme.shadowColor};
+  border-radius: 10px;
+`;
+
+const Tab = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+const Title = styled.span<{ isActive: boolean }>`
+  font-size: 14px;
+  border-bottom: ${(props) =>
+    props.isActive ? `2px solid ${props.theme.circleColor}` : "none"};
+  cursor: pointer;
+`;
+
 function Mypage() {
   useAuthGuard();
   const {
@@ -132,7 +150,9 @@ function Mypage() {
   } = useMypageStore();
   const { data, isLoading } = useMyPageQuery(currentPage);
   const { setSummary, realsummary } = useSummaryStore();
-  console.log(data);
+  const { setTextLines, textLines } = useTextStore();
+  const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
+  console.log(data?.items[0].text);
   return (
     <Wrapper>
       <List>
@@ -143,10 +163,11 @@ function Mypage() {
               setSelectedIdx(idx);
               toggleClick();
               setSummary(data.summary);
+              setTextLines(data.text);
             }}
           >
             <TextInfo>
-              <Idx>{data.index + 1}</Idx>
+              <Idx>{data.index}</Idx>
               <span>
                 상대방: {data.friend_name ?? "익명의사나이"} <br />
                 추천축의금 :{data.recommendation}
@@ -172,7 +193,7 @@ function Mypage() {
                     {selectedIdx + 1}
                   </Idx>
                   <span>
-                    상대방:{" "}
+                    상대방:
                     {data.items[selectedIdx].friend_name ?? "익명의사나이"}
                     <br />
                     추천축의금 :{data.items[selectedIdx].recommendation}
@@ -180,14 +201,37 @@ function Mypage() {
                 </TextInfo>
                 <ResultCircle score={data.items[selectedIdx].score} />
               </Analyze>
-              {realsummary.length === 0 ? null : (
-                <RealSummary>
-                  {realsummary.map((line, idx) => (
-                    <p key={idx}>- {line}</p>
-                  ))}
-                </RealSummary>
-              )}
-              <ChatText>{data.items[selectedIdx].text}</ChatText>
+              <Tabs>
+                <Tab>
+                  <Title
+                    isActive={selectedTab === "summary"}
+                    onClick={() => setSelectedTab("summary")}
+                  >
+                    3줄요약
+                  </Title>
+                  <Title
+                    isActive={selectedTab === "chat"}
+                    onClick={() => setSelectedTab("chat")}
+                  >
+                    대화내용
+                  </Title>
+                </Tab>
+                {selectedTab === "summary" && realsummary.length > 0 && (
+                  <RealSummary>
+                    {realsummary.map((line, idx) => (
+                      <p key={idx}>- {line}</p>
+                    ))}
+                  </RealSummary>
+                )}
+
+                {selectedTab === "chat" && (
+                  <ChatText>
+                    {textLines.map((line, idx) => (
+                      <p key={idx}>{line}</p>
+                    ))}
+                  </ChatText>
+                )}
+              </Tabs>
             </DetailCard>
             <CloseDetailBtn
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {

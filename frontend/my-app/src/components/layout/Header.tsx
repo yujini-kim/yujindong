@@ -40,7 +40,10 @@ function Header() {
     "/auth/signin": "로그인",
   };
 
-  const pageTitle = titleMap[pathname] || "*";
+  let pageTitle = titleMap[pathname] || "*";
+  if (pathname.startsWith("/result/")) {
+    pageTitle = "분석결과";
+  }
 
   const deleteToken = () => {
     localStorage.removeItem("accessToken");

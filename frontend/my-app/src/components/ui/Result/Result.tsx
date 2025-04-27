@@ -9,7 +9,6 @@ import {
   Text,
   Wrapper,
 } from "./Styled";
-import { ShareURL } from "@/hooks/ShareURL";
 
 interface IResultProps {
   score: number;

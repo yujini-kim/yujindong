@@ -6,7 +6,7 @@ import styled from "styled-components";
 import AnalyzeResult from "@/components/ui/analyzeForm/AnalyzeResult";
 import AnalyzeForm from "@/components/ui/analyzeForm/AnalyzeForm";
 import Summary from "@/components/ui/Result/Summary";
-import { useSummaryStore } from "@/store/summaryStore";
+import { useSummaryStore } from "@/store/splitStore";
 import { useQuery } from "@tanstack/react-query";
 import { ShareURL } from "@/hooks/ShareURL";
 

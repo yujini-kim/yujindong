@@ -4,6 +4,6 @@ export const lightTheme: DefaultTheme = {
   textColor: "#262626",
   borderColor: "#D9D9D9",
   shadowColor: "#0a0a0a",
-  accentColor: "#FFE186",
-  circleColor: "#5abc84",
+  accentColor: "#FDDF2E",
+  circleColor: "#FE90E7",
 };

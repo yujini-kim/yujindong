@@ -1,6 +1,15 @@
-import { AnalyzeResponse, BASE_URL } from "./analyzeText";
+import { BASE_URL } from "./analyzeText";
 
-export const ShareURL = async (uuid: string): Promise<AnalyzeResponse> => {
+interface IShareResult {
+  score: number;
+  recommendation: string;
+  summary: string;
+  friendName: string;
+  createdAt: string;
+  text: string;
+}
+
+export const ShareURL = async (uuid: string): Promise<IShareResult> => {
   try {
     const res = await fetch(`${BASE_URL}/api/result/${uuid}`, {
       method: "GET",
