@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
+console.log(BASE_URL);
+
 export function useSignUpMutation() {
   const router = useRouter();
 
@@ -56,16 +58,11 @@ export function useLogInMutation() {
         throw new Error("로그인 실패");
       }
 
-      const data = await res.json();
-      const token = data.token;
-
-      setCookie("accessToken", token, { path: "/" });
-
-      return data;
+      return res;
     },
     onSuccess: (data) => {
-      setCookie("accessToken", data.token, { path: "/" });
-      setToken(data.token);
+      console.log("💬 로그인 성공");
+      setToken("use-cookie");
       router.replace("/mypage");
     },
     onError: (error) => {
