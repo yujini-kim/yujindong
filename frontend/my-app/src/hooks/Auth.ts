@@ -1,7 +1,7 @@
 import { SigninValues, SignupValues } from "@/components/ui/auth/type";
 import { useAuthStore } from "@/store/authStore";
 import { useMutation } from "@tanstack/react-query";
-
+import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
@@ -42,12 +42,14 @@ export function useSignUpMutation() {
 export function useLogInMutation() {
   const router = useRouter();
   const setToken = useAuthStore.getState().setToken;
+
   return useMutation({
     mutationFn: async (signinValues: SigninValues) => {
       const res = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         body: JSON.stringify(signinValues),
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
 
       if (!res.ok) {
@@ -57,12 +59,12 @@ export function useLogInMutation() {
       const data = await res.json();
       const token = data.token;
 
-      localStorage.setItem("accessToken", token);
+      setCookie("accessToken", token, { path: "/" });
 
       return data;
     },
     onSuccess: (data) => {
-      localStorage.setItem("accessToken", data.token);
+      setCookie("accessToken", data.token, { path: "/" });
       setToken(data.token);
       router.replace("/mypage");
     },

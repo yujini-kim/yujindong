@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LoginBtn, LogoutBtn } from "../ui/auth/LoginBtn";
 import { useAuthStore } from "@/store/authStore";
-
+import { deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 const HeaderWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -45,9 +46,11 @@ function Header() {
     pageTitle = "분석결과";
   }
 
-  const deleteToken = () => {
-    localStorage.removeItem("accessToken");
-    window.location.reload();
+  const router = useRouter();
+
+  const logout = () => {
+    deleteCookie("accessToken");
+    router.replace("/auth/signin");
   };
 
   if (!isMounted) return null;
@@ -56,7 +59,7 @@ function Header() {
     <HeaderWrapper>
       <ExitIcon />
       <PageTitle>{pageTitle}</PageTitle>
-      {token ? <LogoutBtn onClick={deleteToken} /> : <LoginBtn />}
+      {token ? <LogoutBtn onClick={logout} /> : <LoginBtn />}
     </HeaderWrapper>
   );
 }

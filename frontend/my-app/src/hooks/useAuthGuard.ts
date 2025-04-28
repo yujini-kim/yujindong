@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { getCookie, deleteCookie } from "cookies-next";
 
 export function useAuthGuard() {
   const router = useRouter();
 
   useEffect(() => {
     const verifyToken = async () => {
-      const token = localStorage.getItem("accessToken");
+      const token = getCookie("accessToken");
       if (!token) {
         alert("로그인이 필요합니다");
         router.replace("/auth/signin");
@@ -18,6 +19,7 @@ export function useAuthGuard() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          credentials: "include",
         });
 
         if (!res.ok) throw new Error();
@@ -25,7 +27,7 @@ export function useAuthGuard() {
         await res.json();
       } catch (err) {
         alert("로그인이 필요합니다");
-        localStorage.removeItem("accessToken");
+        deleteCookie("accessToken");
         router.replace("/auth/signin");
       }
     };
