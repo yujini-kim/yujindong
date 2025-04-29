@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { getCookie, deleteCookie } from "cookies-next";
 
 export function useAuthGuard() {
   const router = useRouter();
@@ -17,7 +16,6 @@ export function useAuthGuard() {
         await res.json();
       } catch (err) {
         alert("로그인이 필요합니다");
-        deleteCookie("accessToken");
         router.replace("/auth/signin");
       }
     };

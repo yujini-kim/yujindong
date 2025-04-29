@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LoginBtn, LogoutBtn } from "../ui/auth/LoginBtn";
 import { useAuthStore } from "@/store/authStore";
-import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 const HeaderWrapper = styled.div`
   display: grid;
@@ -49,7 +48,6 @@ function Header() {
   const router = useRouter();
 
   const logout = () => {
-    deleteCookie("accessToken");
     router.replace("/auth/signin");
   };
 
