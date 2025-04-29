@@ -53,6 +53,18 @@ public class AuthController {
 
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response) {
+        Cookie cookie = new Cookie("access_token", null);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false); // 개발 중
+        cookie.setPath("/");
+        cookie.setMaxAge(0); // 즉시 만료
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok().body("로그아웃 성공");
+    }
+
     @GetMapping("/verify")
     public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal String username){
         return ResponseEntity.ok(new VerifyResponse(username,"OK"));
