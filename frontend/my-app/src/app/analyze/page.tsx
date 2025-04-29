@@ -25,7 +25,7 @@ const Background = styled.div`
   position: relative;
   max-width: 360px;
   width: 360px;
-  height: 400px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +55,8 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 0px 20px;
 `;
 const Text = styled.textarea`
   all: unset;
@@ -64,6 +65,8 @@ const Text = styled.textarea`
   background-color: ${(props) => props.theme.bgColor};
   border: 2px solid ${(props) => props.theme.borderColor};
   padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
 `;
 
 const File = styled.label.attrs({
@@ -72,6 +75,7 @@ const File = styled.label.attrs({
   width: 141px;
   background-color: ${(props) => props.theme.circleColor};
   border: 2px solid ${(props) => props.theme.borderColor};
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   padding: 8px;
@@ -84,6 +88,7 @@ const BtnBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
 `;
 const Button = styled.button.attrs({
   type: "submit",
@@ -93,6 +98,7 @@ const Button = styled.button.attrs({
   border: 2px solid ${(props) => props.theme.borderColor};
   padding: 8px;
   font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
 `;
 const Input = styled.input`
@@ -101,6 +107,7 @@ const Input = styled.input`
   font-size: 14px;
   background-color: ${(props) => props.theme.bgColor};
   border: 2px solid ${(props) => props.theme.borderColor};
+  border-radius: 10px;
   width: 100%;
   margin-top: 10px;
 `;

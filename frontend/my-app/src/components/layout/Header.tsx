@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { LoginBtn, LogoutBtn } from "../ui/auth/LoginBtn";
 import { useAuthStore } from "@/store/authStore";
-import { useRouter } from "next/navigation";
+import { useLogout } from "@/hooks/Auth";
 const HeaderWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -28,6 +28,7 @@ function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
   const token = useAuthStore((state) => state.token);
+  const logout = useLogout();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -44,12 +45,6 @@ function Header() {
   if (pathname.startsWith("/result/")) {
     pageTitle = "분석결과";
   }
-
-  const router = useRouter();
-
-  const logout = () => {
-    router.replace("/auth/signin");
-  };
 
   if (!isMounted) return null;
 
