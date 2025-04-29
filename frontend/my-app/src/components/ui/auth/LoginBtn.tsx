@@ -18,6 +18,23 @@ const Login = styled.div`
   }
 `;
 
+const Logout = styled.div`
+  width: 50px;
+  background-color: white;
+  border: 2px solid ${(props) => props.theme.shadowColor};
+  border-radius: 5px;
+  box-shadow: 2px 2px ${(props) => props.theme.shadowColor};
+  padding: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+
+  :hover {
+    color: ${(props) => props.theme.circleColor};
+  }
+`;
+
 interface ILogOut {
   onClick: () => void;
 }
@@ -32,10 +49,8 @@ export function LoginBtn() {
 
 export function LogoutBtn({ onClick }: ILogOut) {
   return (
-    <Login>
-      <Link href="/" onClick={onClick}>
-        로그아웃
-      </Link>
-    </Login>
+    <Logout>
+      <button onClick={onClick}>로그아웃</button>
+    </Logout>
   );
 }

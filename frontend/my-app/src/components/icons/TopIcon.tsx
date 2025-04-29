@@ -64,7 +64,7 @@ export function Minus() {
   );
 }
 interface TopIconProps {
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 export function TopIcon({ onClick }: TopIconProps) {
   return (

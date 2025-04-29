@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { Overlay } from "@/components/ui/mypage/styled";
 import { useState } from "react";
 import { TopIcon } from "@/components/icons/TopIcon";
+import { useAuthStore } from "@/store/authStore";
 
 const Wrapper = styled.div`
   display: flex;
@@ -120,6 +121,7 @@ const CloseDetailBtn = styled.button`
   position: absolute;
   right: 10px;
   bottom: 5px;
+  cursor: pointer;
 `;
 
 const Tabs = styled.div`
@@ -155,7 +157,12 @@ function Mypage() {
   const { setSummary, realsummary } = useSummaryStore();
   const { setTextLines, textLines } = useTextStore();
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
-  console.log(data?.items[1].text);
+  const token = useAuthStore((state) => state.token);
+
+  if (!token) {
+    return null; // 아무것도 렌더링 안함
+  }
+
   return (
     <Wrapper>
       <List>
@@ -189,7 +196,12 @@ function Mypage() {
         >
           <DetailDesignCard onClick={(e) => e.stopPropagation()}>
             <DetailCard>
-              <TopIcon />
+              <TopIcon
+                onClick={(e: React.MouseEvent<HTMLElement>) => {
+                  e.stopPropagation();
+                  toggleClick();
+                }}
+              />
               <Analyze>
                 <TextInfo>
                   <Idx>
@@ -249,7 +261,7 @@ function Mypage() {
         </Overlay>
       )}
 
-      <PageSession totalPages={data?.totalPages ?? 1} />
+      {data && <PageSession totalPages={data.totalPages} />}
     </Wrapper>
   );
 }

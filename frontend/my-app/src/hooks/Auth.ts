@@ -1,12 +1,11 @@
 import { SigninValues, SignupValues } from "@/components/ui/auth/type";
 import { useAuthStore } from "@/store/authStore";
 import { useMutation } from "@tanstack/react-query";
-import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
-console.log(BASE_URL);
+console.log("💬 BASE_URL:", BASE_URL);
 
 export function useSignUpMutation() {
   const router = useRouter();
@@ -61,7 +60,7 @@ export function useLogInMutation() {
       return res;
     },
     onSuccess: (data) => {
-      console.log("💬 로그인 성공");
+      console.log("💬 로그인 성공", data);
       setToken("use-cookie");
       router.replace("/mypage");
     },
@@ -69,4 +68,25 @@ export function useLogInMutation() {
       alert("❌ 로그인 실패: " + error.message);
     },
   });
+}
+
+export function useLogout() {
+  const router = useRouter();
+  const resetToken = useAuthStore.getState().clearToken;
+
+  const logout = async () => {
+    try {
+      await fetch(`${BASE_URL}/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+    } catch (err) {
+      console.error("❌ 로그아웃 요청 실패", err);
+    } finally {
+      resetToken();
+      router.replace("/auth/signin");
+    }
+  };
+
+  return logout;
 }
