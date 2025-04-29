@@ -34,7 +34,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/verify","/mypage").authenticated()
                         .anyRequest().permitAll() // ✅ 모든 요청을 허용함
-                ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // 우리가 만든 필터 추가;
+                )
+                .logout(logout -> logout.disable())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // 우리가 만든 필터 추가;
         return http.build();
     }
     @Bean
