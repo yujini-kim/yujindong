@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { getCookie } from "cookies-next";
 
 export interface IAnalysisItem {
   items: {
@@ -18,11 +19,8 @@ export interface IAnalysisItem {
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export const fetchMyPage = async (currentPage: number) => {
-  const token = localStorage.getItem("accessToken");
   const res = await fetch(`${BASE_URL}/mypage?page=${currentPage}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    credentials: "include",
   });
 
   if (!res.ok) throw new Error("데이터를 불러오지 못했습니다.");
