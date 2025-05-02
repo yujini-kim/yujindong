@@ -66,7 +66,7 @@ public class AuthController {
     }
 
     @GetMapping("/verify")
-    public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal String username){
-        return ResponseEntity.ok(new VerifyResponse(username,"OK"));
+    public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal Member member){
+        return ResponseEntity.ok(new VerifyResponse(member.getUsername(),"OK"));
     }
 }

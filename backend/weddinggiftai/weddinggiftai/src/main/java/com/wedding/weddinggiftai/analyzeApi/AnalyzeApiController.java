@@ -21,7 +21,7 @@ public class AnalyzeApiController {
     private final MemberRepository memberRepository;
 
     @PostMapping("/analyze")
-    public ChatResponse analyze(@RequestBody ChatRequest request, HttpServletRequest httpRequest, @AuthenticationPrincipal String username){
+    public ChatResponse analyze(@RequestBody ChatRequest request, HttpServletRequest httpRequest, @AuthenticationPrincipal Member member){
         String ip = httpRequest.getRemoteAddr();
 
         if (redisService.isOverLimit(ip)) {
@@ -30,15 +30,20 @@ public class AnalyzeApiController {
         redisService.increaseCount(ip);
 
         ChatResponse analyze = analyzeApiService.analyzeWithSummary(request.getText());
-        System.out.println("username from token: " + username);
 
-        String shareUuid = null;
-        Member member = null;
-        if (username != null && !username.equals("anonymousUser")) {
-            member = memberRepository.findByUsername(username)
-                    .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+        if (member != null) {
+            System.out.println("username = 진짜" + member.getUsername());
+            System.out.println("member = 진짜" + member);
+        } else {
+            System.out.println("비회원 사용자 요청입니다.");
         }
-        shareUuid = analyzeApiService.SaveAnalyzeResult(ip, analyze.getCleanText(), analyze, member, request.getFriend_name());
+
+        String shareUuid = analyzeApiService.SaveAnalyzeResult(
+                ip,
+                analyze.getCleanText(),
+                analyze,
+                member,
+                request.getFriend_name());
 
         return new ChatResponse(
                 analyze.getScore(),
