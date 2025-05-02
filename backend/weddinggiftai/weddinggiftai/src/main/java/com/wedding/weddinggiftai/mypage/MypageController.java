@@ -22,23 +22,23 @@ public class MypageController {
 
     @GetMapping("/mypage")
     public ResponseEntity<MypageResponse> getMypage(
-            @AuthenticationPrincipal String username,
+            @AuthenticationPrincipal Member member,
             @RequestParam(defaultValue = "0") int page,//몇 번째 페이지인지
             @RequestParam(defaultValue = "5") int size//한페이지에 몇개씩 보여줄지
     )
-    
+
      {
-        // 사용자 확인
-        System.out.println("현재 요청된 페이지: " + page);
-        System.out.println("요청한 사용자: " + username);
-        Member member = memberRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+         if (member == null) {
+             throw new RuntimeException("로그인이 필요합니다.");
+         }
+
 
         // 페이징 설정 (최신순 정렬)
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
 
         // 해당 사용자 분석 결과 조회
         Page<AnalyzeApi> analyzePage = analyzeApiRepository.findByMember(member, pageable);
+        System.out.println("마이페이지입니다" + member.getId());
 
         int startIndex = page * size + 1;
 

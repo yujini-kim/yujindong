@@ -28,6 +28,7 @@ const analyzeText = async ({
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
+    credentials: "include",
     body: JSON.stringify({ text, friend_name }),
   });
 

@@ -13,6 +13,7 @@ import java.util.Optional;
 public interface AnalyzeApiRepository extends JpaRepository<AnalyzeApi, Long> {
     Page<AnalyzeApi> findByMember(Member member, Pageable pageable);
     Optional<AnalyzeApi> findByShareUuid(String shareUuid);
+    Page<AnalyzeApi> findByMemberId(Long memberId, Pageable pageable);
 
     @Transactional
     @Modifying
