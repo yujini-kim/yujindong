@@ -14,7 +14,7 @@ export const Form = styled.form`
   flex-direction: column;
   width: 294px;
   gap: 8px;
-  margin-bottom: 28px;
+  margin-bottom: 4px;
 `;
 
 export const Input = styled.input.attrs({

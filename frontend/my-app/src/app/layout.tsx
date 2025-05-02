@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "./providers";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Navbar from "@/components/layout/Navbar";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "hamberger",
@@ -26,13 +17,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-      >
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2N63BVZPXP"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2N63BVZPXP');
+          `}
+        </Script>
+      </head>
+      <body>
         <Providers>
           <Header />
           {children}
-          <div className="flex-grow" />
           <Navbar />
         </Providers>
       </body>

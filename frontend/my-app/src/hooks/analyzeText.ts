@@ -21,12 +21,10 @@ const analyzeText = async ({
   text,
   friend_name,
 }: AnalyzePayload): Promise<AnalyzeResponse> => {
-  const token = localStorage.getItem("accessToken");
   const res = await fetch(`${BASE_URL}/api/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     credentials: "include",
     body: JSON.stringify({ text, friend_name }),

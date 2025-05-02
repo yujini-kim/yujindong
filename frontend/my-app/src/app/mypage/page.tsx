@@ -157,8 +157,6 @@ function Mypage() {
   const { setSummary, realsummary } = useSummaryStore();
   const { setTextLines, textLines } = useTextStore();
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
-  const token = useAuthStore((state) => state.token);
-
 
   return (
     <Wrapper>

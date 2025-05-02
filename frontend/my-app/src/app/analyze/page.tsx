@@ -102,6 +102,7 @@ const Button = styled.button.attrs({
   cursor: pointer;
 `;
 const Input = styled.input`
+
   height: 30px;
   padding: 8px;
   font-size: 14px;
@@ -155,8 +156,16 @@ export default function Analyze() {
     router.push(`/result/${data.shareUuid}`);
   });
 
+  const handleAnalyzeClick = () => {
+    gtag("event", "click_analyze_button", {
+      event_category: "engagement",
+      event_label: "Analyze Button",
+    });
+  };
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    handleAnalyzeClick();
     setIsLoading(true);
     mutation.mutate({ text, friend_name: name });
   };
