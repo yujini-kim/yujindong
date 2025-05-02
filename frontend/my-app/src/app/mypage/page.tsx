@@ -157,11 +157,6 @@ function Mypage() {
   const { setSummary, realsummary } = useSummaryStore();
   const { setTextLines, textLines } = useTextStore();
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
-  const token = useAuthStore((state) => state.token);
-
-  if (!token) {
-    return null; // 아무것도 렌더링 안함
-  }
 
   return (
     <Wrapper>
