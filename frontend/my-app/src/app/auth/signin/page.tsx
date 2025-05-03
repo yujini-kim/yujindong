@@ -47,7 +47,7 @@ function SignIn() {
       </Button>
       <Button>
         <SocialIcon src="/kakao.png" />
-        <a href={`${BASE_URL}/oauth2/authorization/google`}>카카오로그인</a>
+        <a href={`${BASE_URL}/oauth2/authorization/kakao`}>카카오로그인</a>
       </Button>
       </SocialLogin>
     </Wrapper>
