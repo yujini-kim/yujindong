@@ -36,7 +36,7 @@ export default function AnalyticsDashboard() {
               },
             },
           }),
-        }
+        },
       );
 
       const res2 = await fetch(
@@ -60,7 +60,7 @@ export default function AnalyticsDashboard() {
               },
             },
           }),
-        }
+        },
       );
 
       const data1 = await res1.json();
