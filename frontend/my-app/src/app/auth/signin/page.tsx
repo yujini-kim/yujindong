@@ -9,26 +9,25 @@ import { useLogInMutation } from "@/hooks/Auth";
 import styled from "styled-components";
 
 const SocialLogin = styled.div`
-width:294px;
-  display:flex;
-  justify-content:space-between;
-
-`
+  width: 294px;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Button = styled.div`
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px;
-  gap:12px;
-  background-color:${props=>props.theme.accentColor};
-  border-radius:15px;
-`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  gap: 12px;
+  background-color: ${(props) => props.theme.accentColor};
+  border-radius: 15px;
+`;
 
 const SocialIcon = styled.img`
-  width:24px;
-  font-size:12px;
-`
+  width: 24px;
+  font-size: 12px;
+`;
 
 function SignIn() {
   const mutation = useLogInMutation();
@@ -41,14 +40,14 @@ function SignIn() {
       <HelloBergerIcon />
       <SignInForm onSubmit={onSubmit} />
       <SocialLogin>
-      <Button>
-        <SocialIcon src="/google.png" />
-        <a href={`${BASE_URL}/oauth2/authorization/google`}>구글로그인</a>
-      </Button>
-      <Button>
-        <SocialIcon src="/kakao.png" />
-        <a href={`${BASE_URL}/oauth2/authorization/kakao`}>카카오로그인</a>
-      </Button>
+        <Button>
+          <SocialIcon src="/google.png" />
+          <a href={`${BASE_URL}/oauth2/authorization/google`}>구글로그인</a>
+        </Button>
+        <Button>
+          <SocialIcon src="/kakao.png" />
+          <a href={`${BASE_URL}/oauth2/authorization/kakao`}>카카오로그인</a>
+        </Button>
       </SocialLogin>
     </Wrapper>
   );

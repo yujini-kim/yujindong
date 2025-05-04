@@ -102,7 +102,6 @@ const Button = styled.button.attrs({
   cursor: pointer;
 `;
 const Input = styled.input`
-
   height: 30px;
   padding: 8px;
   font-size: 14px;

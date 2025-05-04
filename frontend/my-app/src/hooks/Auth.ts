@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
-
+console.log(BASE_URL);
 export function useSignUpMutation() {
   const router = useRouter();
 

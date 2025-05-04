@@ -39,6 +39,7 @@ function Header() {
     "/mypage": "마이페이지",
     "/auth/signup": "회원가입",
     "/auth/signin": "로그인",
+    "/auth/terms": "이용약관",
   };
 
   let pageTitle = titleMap[pathname] || "*";
