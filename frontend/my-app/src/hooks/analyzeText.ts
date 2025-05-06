@@ -41,7 +41,7 @@ const analyzeText = async ({
 };
 
 export const useAnalyzeMutation = (
-  onSuccessCallback: (data: AnalyzeResponse) => void
+  onSuccessCallback: (data: AnalyzeResponse) => void,
 ): UseMutationResult<AnalyzeResponse, Error, AnalyzePayload> => {
   return useMutation({
     mutationFn: analyzeText,
