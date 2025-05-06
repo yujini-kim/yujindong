@@ -1,5 +1,7 @@
 "use client";
 
+import { useAnalyzeMutation } from "@/hooks/AnalyzeMutation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -10,25 +12,21 @@ interface IAnalyzeProps {
 
 export default function Analyze() {
   const { register, handleSubmit, setValue } = useForm<IAnalyzeProps>();
-  const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
-  const onSubmit = async ({ text, friend_name }: IAnalyzeProps) => {
-    const res = await fetch(`${BASE_URL}/api/analyze`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ text, friend_name }),
-      credentials: "include",
-    });
+  const analyzeMutation = useAnalyzeMutation();
+  const router = useRouter();
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      console.log(errorText);
-      return;
-    }
-    const data = await res.json();
-    console.log("✅ 분석 결과:", data);
-    return data;
+  const onSubmit = (data: IAnalyzeProps) => {
+    analyzeMutation.mutate(data, {
+      onSuccess: (result) => {
+        console.log("✅ 분석 결과:", result);
+        console.log("➡️ 이동할 주소:", `/result/${result.shareUuid}`);
+        router.replace(`/result/${result.shareUuid}`);
+      },
+      onError: (err: any) => {
+        console.error("❌ 분석 실패:", err.message);
+        alert("분석에 실패했습니다: " + err.message);
+      },
+    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

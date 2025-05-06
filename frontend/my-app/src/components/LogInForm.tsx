@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogInMutation } from "@/hooks/Auth";
+import { useLogInMutation } from "@/hooks/AuthMutation";
 import { useForm } from "react-hook-form";
 
 interface ILogInProps {
