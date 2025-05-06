@@ -12,12 +12,30 @@ export default function Result() {
   const { data, isLoading, isError } = useResultQuery(uuid);
   const { setTextLines, textLines } = useTextStore();
   const { setSummary, realsummary } = useSummaryStore();
+
   useEffect(() => {
     if (data?.summary) {
       setSummary(data.summary);
       setTextLines(data.text);
     }
   }, [data?.summary, data?.text, setSummary, setTextLines]);
+
+  const handleWebShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "축의금 추천 결과",
+          text: "나의 축의금 추천 결과를 확인해보세요!",
+          url: `${window.location.origin}/result/${uuid}`,
+        });
+      } catch (error) {
+        console.error("공유 실패", error);
+      }
+    } else {
+      alert("브라우저가 공유 기능을 지원하지 않아요.");
+    }
+  };
+
   return (
     <>
       <div className="h-dvh flex justify-center items-center">
@@ -88,7 +106,10 @@ export default function Result() {
             >
               다시하기
             </Link>
-            <button className="w-[45%] bg-[#242020] text-white p-4 border cursor-pointer">
+            <button
+              onClick={handleWebShare}
+              className="w-[45%] bg-[#242020] text-white p-4 border cursor-pointer"
+            >
               공유하기
             </button>
           </div>

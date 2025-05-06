@@ -10,10 +10,13 @@ interface ILogInProps {
 
 export default function LogInForm() {
   const { register, handleSubmit } = useForm<ILogInProps>();
-
+  const loginMutation = useLogInMutation();
+  const onSubmit = (data: ILogInProps) => {
+    loginMutation.mutate(data);
+  };
   return (
     <form
-      onSubmit={handleSubmit(useLogInMutation)}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col w-[294px] gap-4"
     >
       <input
