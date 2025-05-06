@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class MypageController {
 
     private final AnalyzeApiRepository analyzeApiRepository;
@@ -38,7 +39,6 @@ public class MypageController {
 
         // 해당 사용자 분석 결과 조회
         Page<AnalyzeApi> analyzePage = analyzeApiRepository.findByMember(member, pageable);
-        System.out.println("마이페이지입니다" + member.getId());
 
         int startIndex = page * size + 1;
 
