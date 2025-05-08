@@ -81,9 +81,9 @@ export default function Result() {
               </span>
             </div>
 
-            <div className="flex justify-center mt-28">
+            <div className="flex justify-center w-[360px] h-[216px]">
               {selectedTab === "summary" && realsummary.length > 0 && (
-                <div>
+                <div className="p-4 flex flex-col justify-center">
                   {realsummary.map((line, idx) => (
                     <p key={idx}>- {line}</p>
                   ))}
@@ -91,7 +91,7 @@ export default function Result() {
               )}
 
               {selectedTab === "chat" && (
-                <div className="p-4">
+                <div className="p-4 overflow-y-auto">
                   {textLines.map((line, idx) => (
                     <p key={idx}>{line}</p>
                   ))}

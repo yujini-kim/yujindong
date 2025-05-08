@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/result/Loading";
 import { useAnalyzeMutation } from "@/hooks/AnalyzeMutation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -44,7 +45,8 @@ export default function Analyze() {
   return (
     <>
       <div className="h-dvh flex justify-center items-center">
-        <form
+        {analyzeMutation.isPending ? <Loading /> : null}
+      {!analyzeMutation.isPending &&(  <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex bg-[#E3DBCE] w-6xl h-[600px] border-2 justify-center items-center"
         >
@@ -82,11 +84,11 @@ export default function Analyze() {
                 type="submit"
                 className="w-[30%] p-2 border-2 border-black text-white bg-[#242020] cursor-pointer"
               >
-                분석하기
+                {analyzeMutation.isPending ? "분석중" : "분석하기"}
               </button>
             </div>
           </div>
-        </form>
+        </form>)}
       </div>
     </>
   );
