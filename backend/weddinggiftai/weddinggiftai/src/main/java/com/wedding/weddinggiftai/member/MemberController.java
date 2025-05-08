@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
+@RequestMapping("/api")
 @CrossOrigin(origins = {
         "http://localhost:3000",
         "http://54.180.242.92:3000"
@@ -14,13 +15,6 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
     private final MemberRepository memberRepository;
     private final MemberService memberService;
-    @GetMapping("/")
-    @ResponseBody
-    public String home() {
-        return "홈 페이지입니다!";
-    }
-
-
 
     @PostMapping("/signup")
     @ResponseBody
