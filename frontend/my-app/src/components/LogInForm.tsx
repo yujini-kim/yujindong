@@ -32,7 +32,7 @@ export default function LogInForm() {
       />
       <button
         type="submit"
-        className="w-full p-3 mt-8 bg-[#FAC656] border border-[#242020]"
+        className="w-full p-3 mt-8 bg-[#FAC656] border border-[#242020] cursor-pointer"
       >
         로그인
       </button>

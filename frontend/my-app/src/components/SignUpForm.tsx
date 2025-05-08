@@ -28,7 +28,9 @@ export default function SignUpForm() {
         className="p-2 border-b border-black focus:outline-none"
         placeholder="Password"
       />
-      <button className="w-full p-3 mt-8 bg-[#FAC656] ">회원가입</button>
+      <button className="w-full p-3 mt-8 bg-[#FAC656] cursor-pointer">
+        회원가입
+      </button>
     </form>
   );
 }

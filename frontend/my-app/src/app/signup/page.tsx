@@ -24,10 +24,10 @@ export default function Signup() {
         <div className="flex-1 border-b border-[#aaa] ml-2" />
       </div>
       <div className="flex gap-12">
-        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center">
+        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer">
           <img src="/kakao.png" className="size-[27px]" />
         </div>
-        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center">
+        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer">
           <img src="/google.png" className="size-[27px]" />
         </div>
       </div>

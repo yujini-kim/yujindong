@@ -51,7 +51,7 @@ export default function Analyze() {
           <div className="flex flex-col justify-center items-center w-[40%] gap-8">
             <label
               htmlFor="file"
-              className="w-[400px] flex justify-center p-4 border-2 bg-[#FAC656]"
+              className="w-[400px] flex justify-center p-4 border-2 bg-[#FAC656] cursor-pointer"
             >
               파일업로드하기
               <input
