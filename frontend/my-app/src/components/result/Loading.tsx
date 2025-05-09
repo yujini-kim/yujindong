@@ -9,7 +9,7 @@ export default function Loading() {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleCount((prev) => (prev < 5 ? prev + 1 : 1));
-    }, 2000); 
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);

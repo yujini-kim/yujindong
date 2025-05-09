@@ -29,6 +29,7 @@ export default function LogInForm() {
         type="password"
         className="p-2 border-b border-black focus:outline-none"
         placeholder="Password"
+        autoComplete="current-password"
       />
       <button
         type="submit"

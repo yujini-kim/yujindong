@@ -1,6 +1,7 @@
 import SignUpForm from "@/components/SignUpForm";
 import Link from "next/link";
 import Image from "next/image";
+import { BASE_URL } from "@/hooks/AnalyzeMutation";
 export default function Signup() {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -24,12 +25,18 @@ export default function Signup() {
         <div className="flex-1 border-b border-[#aaa] ml-2" />
       </div>
       <div className="flex gap-12">
-        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer">
+        <a
+          href={`${BASE_URL}/oauth2/authorization/kakao`}
+          className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer"
+        >
           <img src="/kakao.png" className="size-[27px]" />
-        </div>
-        <div className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer">
+        </a>
+        <a
+          href={`${BASE_URL}/oauth2/authorization/google`}
+          className="border border-[#C0C0C0] rounded-4xl size-13 flex items-center justify-center cursor-pointer"
+        >
           <img src="/google.png" className="size-[27px]" />
-        </div>
+        </a>
       </div>
     </div>
   );

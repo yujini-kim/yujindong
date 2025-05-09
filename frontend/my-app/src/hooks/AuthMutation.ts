@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
-interface SignupValues {
+export interface SignupValues {
   username: string;
   email: string;
   displayName: string;
@@ -39,7 +39,7 @@ export function useSignUpMutation() {
     },
 
     onSuccess: () => {
-      router.replace("/auth/signin");
+      router.replace("/login");
       alert("회원가입 성공❤️ 환영해용 ^^");
     },
 
@@ -65,11 +65,11 @@ export function useLogInMutation() {
         throw new Error("로그인 실패");
       }
 
-      return res;
+      return res.json();
     },
     onSuccess: (data) => {
       console.log("💬 로그인 성공", data);
-      router.replace("/mypage");
+      router.replace("/");
     },
     onError: (error) => {
       alert("❌ 로그인 실패: " + error.message);
@@ -89,7 +89,7 @@ export function useLogout() {
     } catch (err) {
       console.error("❌ 로그아웃 요청 실패", err);
     } finally {
-      router.replace("/auth/signin");
+      router.replace("/login");
     }
   };
 
