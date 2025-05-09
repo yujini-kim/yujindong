@@ -1,5 +1,6 @@
 "use client";
 import ResultCircle from "@/components/result/ResultCircle";
+import ResultHeader from "@/components/result/ResultHeader";
 import { useResultQuery } from "@/hooks/ResultQuery";
 import { useSummaryStore, useTextStore } from "@/store/splitStore";
 import Link from "next/link";
@@ -40,27 +41,14 @@ export default function Result() {
     <>
       <div className="mt-12 flex justify-center items-center">
         <div className="flex flex-col bg-[#E3DBCE] w-[520px] h-[720px] border-2 justify-center items-center gap-8">
-          <div className="flex items-center gap-20">
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-4">
-                <div className="w-24 bg-[#242020] text-white text-center p-2">
-                  상대방
-                </div>
-                <div className="w-24 text-center p-2 border-b-2">
-                  {data?.friendName}
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-24 bg-[#242020] text-white text-center p-2">
-                  추천축의금
-                </div>
-                <div className="w-24 text-center p-2 border-b-2">
-                  {data?.recommendation}
-                </div>
-              </div>
-            </div>
-            <ResultCircle score={data?.score as number} />
-          </div>
+          {data && (
+            <ResultHeader
+              friend_name={data?.friendName}
+              recommendation={data?.recommendation}
+              score={data?.score}
+            />
+          )}
+
           <div className="bg-white w-100 h-100 border p-4">
             <div className="flex justify-center items-center gap-28 mt-4">
               <span
