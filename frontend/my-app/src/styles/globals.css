@@ -5,8 +5,8 @@
   --foreground: #171717;
 }
 @font-face {
-  font-family: "SpoqaHanSansNeo";
-  src: url("/font/SpoqaHanSansNeo.ttf") format("truetype");
+  font-family: "SpoqaHanSansNeo-R";
+  src: url("/font/SpoqaHanSansNeo-R.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -22,5 +22,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: SpoqaHanSansNeo, sans-serif;
+  font-family: SpoqaHanSansNeo-R, sans-serif;
 }
