@@ -26,9 +26,18 @@ export default function Analyze() {
 
   return (
     <>
-      <div className="mt-20 flex justify-center items-center">
-        {analyzeMutation.isPending ? <Loading /> : null}
-        {!analyzeMutation.isPending && <AnalyzeForm onSubmit={onSubmit} />}
+      <div className="mt-20 flex justify-center items-center relative min-h-[500px]">
+        {analyzeMutation.isPending && (
+          <div className="absolute">
+            <Loading />
+          </div>
+        )}
+
+        <div
+          className={`${analyzeMutation.isPending ? "invisible" : "visible"}`}
+        >
+          <AnalyzeForm onSubmit={onSubmit} />
+        </div>
       </div>
     </>
   );

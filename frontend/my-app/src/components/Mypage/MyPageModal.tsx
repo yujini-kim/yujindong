@@ -1,4 +1,4 @@
-import Content from "@/components/result/Content";
+import Content from "@/components/Mypage/Content";
 import { useMyPageStore } from "@/store/MypageStore";
 import { useTextStore, useSummaryStore } from "@/store/splitStore";
 
@@ -7,8 +7,7 @@ interface Props {
 }
 
 export default function MyPageModal({ data }: Props) {
-  const { selectedTab, selectedIdx, setSelectedIdx, setSelectedTab } =
-    useMyPageStore();
+  const { selectedTab, setSelectedIdx, setSelectedTab } = useMyPageStore();
   const { textLines } = useTextStore();
   const { realsummary } = useSummaryStore();
 
