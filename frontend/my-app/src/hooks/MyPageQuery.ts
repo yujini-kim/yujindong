@@ -18,7 +18,7 @@ export interface IMypageProps {
 }
 
 export const fetchMyPage = async (currentPage: number) => {
-  const res = await fetch(`${BASE_URL}/mypage?page=${currentPage}`, {
+  const res = await fetch(`${BASE_URL}/api/mypage?page=${currentPage}`, {
     credentials: "include",
   });
   const data = res.json();

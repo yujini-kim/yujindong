@@ -31,7 +31,7 @@ public class CustomOAuth2User implements OAuth2User {
 
     @Override
     public String getName() {
-        return member.getEmail();  // 또는 member.getId() 등
+        return member.getEmail();
     }
 
     public Member getMember() {

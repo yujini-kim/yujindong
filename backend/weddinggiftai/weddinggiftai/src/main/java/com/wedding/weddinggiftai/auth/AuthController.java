@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class AuthController {
 
     private final MemberRepository memberRepository;

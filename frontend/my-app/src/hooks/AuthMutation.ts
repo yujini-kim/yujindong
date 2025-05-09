@@ -22,7 +22,7 @@ export function useSignUpMutation() {
   const router = useRouter();
   return useMutation({
     mutationFn: async (formData: SignupValues) => {
-      const res = await fetch(`${BASE_URL}/signup`, {
+      const res = await fetch(`${BASE_URL}/api/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export function useLogInMutation() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   return useMutation({
     mutationFn: async (signinValues: SigninValues) => {
-      const res = await fetch(`${BASE_URL}/login`, {
+      const res = await fetch(`${BASE_URL}/api/login`, {
         method: "POST",
         body: JSON.stringify(signinValues),
         headers: { "Content-Type": "application/json" },
@@ -83,7 +83,7 @@ export function useLogout() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   const logout = async () => {
     try {
-      await fetch(`${BASE_URL}/logout`, {
+      await fetch(`${BASE_URL}/api/logout`, {
         method: "POST",
         credentials: "include",
       });

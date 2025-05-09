@@ -36,7 +36,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // REST API에서는 CSRF 필요 없음
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/verify","/mypage").authenticated()
+                        .requestMatchers("/api/verify","/api/mypage").authenticated()
                         .anyRequest().permitAll() // ✅ 모든 요청을 허용함
                 )
                 .oauth2Login(oauth2 -> oauth2
@@ -51,7 +51,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000", "http://54.180.242.92:3000"));
+        config.setAllowedOrigins(List.of("http://localhost:3000", "http://54.180.242.92:3000","http://weddinggiftai.online","https://weddinggiftai.online"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true); // 👉 토큰 또는 쿠키 인증 시 필수

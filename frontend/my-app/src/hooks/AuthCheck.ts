@@ -8,7 +8,7 @@ export function useAuthCheck() {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/verify`, {
           credentials: "include",
         });
         setIsLoggedIn(true);

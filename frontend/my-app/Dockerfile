@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
 
-ENV NEXT_PUBLIC_API_URL=http://54.180.242.92:8080
+ENV NEXT_PUBLIC_API_URL=https://weddinggiftai.online
 RUN npm install --include=dev
 RUN npm run build
 

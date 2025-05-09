@@ -3,6 +3,7 @@ package com.wedding.weddinggiftai.oauth;
 import com.wedding.weddinggiftai.jwt.JwtUtil;
 import com.wedding.weddinggiftai.member.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,8 @@ import java.io.IOException;
 public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private final JwtUtil jwtUtil;
+    @Value("${frontend.redirect-url}")
+    private String frontendRedirectUrl;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -32,7 +35,8 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         cookie.setHttpOnly(true);
         cookie.setMaxAge(60 * 60);
         response.addCookie(cookie);
+        System.out.println("Redirect URL: " + frontendRedirectUrl);
 
-        response.sendRedirect("http://localhost:3000");
+        response.sendRedirect(frontendRedirectUrl);
     }
 }
