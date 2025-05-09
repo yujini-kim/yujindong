@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuthStore } from "@/store/AuthCheckStore";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -51,7 +52,7 @@ export function useSignUpMutation() {
 }
 export function useLogInMutation() {
   const router = useRouter();
-
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   return useMutation({
     mutationFn: async (signinValues: SigninValues) => {
       const res = await fetch(`${BASE_URL}/login`, {
@@ -64,7 +65,7 @@ export function useLogInMutation() {
       if (!res.ok) {
         throw new Error("로그인 실패");
       }
-
+      setIsLoggedIn(true);
       return res.json();
     },
     onSuccess: (data) => {
@@ -79,13 +80,14 @@ export function useLogInMutation() {
 
 export function useLogout() {
   const router = useRouter();
-
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   const logout = async () => {
     try {
       await fetch(`${BASE_URL}/logout`, {
         method: "POST",
         credentials: "include",
       });
+      setIsLoggedIn(false);
     } catch (err) {
       console.error("❌ 로그아웃 요청 실패", err);
     } finally {

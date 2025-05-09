@@ -12,7 +12,7 @@ export default function SignUpForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col w-[294px] gap-2"
+      className="flex flex-col w-[294px] gap-2 mt-6"
     >
       <input
         {...register("displayName", { required: true })}

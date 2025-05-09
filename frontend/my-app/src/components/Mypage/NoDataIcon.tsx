@@ -1,4 +1,4 @@
-import MainIcon from "./MainIcon";
+import MainIcon from "../Icon/MainIcon";
 
 export default function MyPageNoDataIcon() {
   return (

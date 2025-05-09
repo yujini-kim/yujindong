@@ -33,7 +33,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Navbar />
-          {children}
+          <main className="pt-[120px] pb-[100px]">{children}</main>
         </Providers>
       </body>
     </html>

@@ -38,7 +38,7 @@ export default function Result() {
 
   return (
     <>
-      <div className="h-dvh flex justify-center items-center">
+      <div className="mt-12 flex justify-center items-center">
         <div className="flex flex-col bg-[#E3DBCE] w-[520px] h-[720px] border-2 justify-center items-center gap-8">
           <div className="flex items-center gap-20">
             <div className="flex flex-col gap-2">

@@ -1,24 +1,28 @@
-// src/hooks/useAuthCheck.ts
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/AuthCheckStore";
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
 
 export function useAuthCheck() {
+  const router = useRouter();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
-
   useEffect(() => {
-    const verifyLogin = async () => {
+    const verifyToken = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/verify`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify`, {
           credentials: "include",
         });
-        setIsLoggedIn(res.ok);
+        setIsLoggedIn(true);
+
+        if (!res.ok) throw new Error();
+
+        await res.json();
       } catch (err) {
         setIsLoggedIn(false);
-        console.error("로그인 확인 실패:", err);
+        alert("로그인이 필요합니다");
+        router.replace("/login");
       }
     };
 
-    verifyLogin();
-  }, [setIsLoggedIn]);
+    verifyToken();
+  }, [router]);
 }

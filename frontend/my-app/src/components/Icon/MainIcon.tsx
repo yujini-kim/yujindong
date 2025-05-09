@@ -15,7 +15,7 @@ function MainIcon() {
         ease: "easeInOut",
       }}
     >
-      <Image src="/helloberger.svg" alt="헬로버거" width={130} height={130} />
+      <Image src="/helloberger.svg" alt="헬로버거" width={192} height={192} />
     </motion.div>
   );
 }

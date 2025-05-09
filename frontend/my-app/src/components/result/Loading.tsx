@@ -15,7 +15,7 @@ export default function Loading() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 h-dvh">
+    <div className="flex flex-col items-center justify-center gap-2 min-h-screen">
       <div className="flex gap-4">
         {[...Array(visibleCount)].map((_, idx) => (
           <motion.img
