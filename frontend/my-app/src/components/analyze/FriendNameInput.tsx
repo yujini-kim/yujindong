@@ -7,7 +7,7 @@ export default function FriendNameInput() {
       <input
         value={friend_name}
         onChange={(e) => setFriendName(e.target.value)}
-        className="w-[60%] border-2 p-2 pl-4 bg-white placeholder:text-sm"
+        className="w-[180px] border-2 p-2 pl-4 bg-white text-xs lg:w-[168px] lg:text-sm"
         placeholder="친구이름을 입력해주세요"
       />
     </>

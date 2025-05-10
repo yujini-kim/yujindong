@@ -5,6 +5,11 @@ const CircleWrapper = styled.div`
   width: 120px;
   height: 120px;
   position: relative;
+
+  @media (max-width: 768px) {
+    width: 90px;
+    height: 90px;
+  }
 `;
 const AnimatedBorder = styled(motion.div)`
   width: 100%;
@@ -26,6 +31,12 @@ const InnerCircle = styled.div`
   justify-content: center;
   font-size: 16px;
   font-weight: bold;
+  @media (max-width: 768px) {
+    width: 78px;
+    height: 78px;
+    top: 6px;
+    left: 6px;
+  }
 `;
 
 const ResultVariants = ({ percentage = 0 }: Iprops) => ({

@@ -40,7 +40,7 @@ export default function Result() {
   return (
     <>
       <div className="mt-12 flex justify-center items-center">
-        <div className="flex flex-col bg-[#E3DBCE] w-[520px] h-[720px] border-2 justify-center items-center gap-8">
+        <div className="flex flex-col bg-[#E3DBCE] w-[350px] h-[720px] border-2 justify-center items-center gap-8 lg:w-[520px]">
           {data && (
             <ResultHeader
               friend_name={data?.friendName}
@@ -49,7 +49,7 @@ export default function Result() {
             />
           )}
 
-          <div className="bg-white w-100 h-100 border p-4">
+          <div className="bg-white border p-4 w-[280px] lg:w-100 lg:h-100">
             <div className="flex justify-center items-center gap-28 mt-4">
               <span
                 onClick={() => setSelectedTab("summary")}

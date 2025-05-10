@@ -15,8 +15,8 @@ export default function FileUpLoad() {
   return (
     <label
       htmlFor="file"
-      className="flex justify-center w-[300px] p-4 border-2 bg-[#FAC656] cursor-pointer
-      lg:w-[400px] "
+      className="flex justify-center w-[280px] p-2 text-sm border-2 bg-[#FAC656] cursor-pointer
+      lg:w-[400px] lg:p-4 lg:text-base"
     >
       파일업로드하기
       <input
