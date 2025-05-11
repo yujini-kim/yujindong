@@ -31,7 +31,7 @@ export default function Content({
           대화내용
         </span>
       </div>
-      <div className="flex justify-center w-[360px] h-[216px]">
+      <div className="flex justify-center w-full h-[216px]">
         {selectedTab === "summary" && summary.length > 0 && (
           <div className="p-4 flex flex-col justify-center">
             {summary.map((line, idx) => (

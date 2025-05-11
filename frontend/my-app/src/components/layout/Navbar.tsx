@@ -18,7 +18,7 @@ export default function Navbar() {
           <img src="/logo.png" className="w-8 lg:w-10" />
         </Link>
         <DeskTopList logout={logout} />
-        <div className="lg:hidden" onClick={toggleMenu}>
+        <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
           <MenuBar />
         </div>
       </div>

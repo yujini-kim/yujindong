@@ -12,7 +12,7 @@ export default function MyPageList({ data, onItemClick }: Props) {
         <div
           key={idx}
           onClick={() => onItemClick(item, idx)}
-          className="w-[500px] bg-[#E3DBCE] border-2 border-[#242020] p-4 cursor-pointer"
+          className="w-[340px] lg:w-[500px] bg-[#E3DBCE] border-2 border-[#242020] p-4 cursor-pointer"
         >
           <ResultHeader
             friend_name={item.friend_name}

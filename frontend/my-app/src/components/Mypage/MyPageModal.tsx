@@ -13,7 +13,7 @@ export default function MyPageModal({ data }: Props) {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-40">
-      <div className="bg-white w-[400px] h-[400px] border-2 p-4 space-y-8 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+      <div className="bg-white w-[350px] md:w-[400px] h-[400px] border-2 p-4 space-y-8 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
         <Content
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
