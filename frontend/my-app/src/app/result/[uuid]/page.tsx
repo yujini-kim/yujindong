@@ -39,8 +39,8 @@ export default function Result() {
 
   return (
     <>
-      <div className="mt-12 flex justify-center items-center">
-        <div className="flex flex-col bg-[#E3DBCE] w-[520px] h-[720px] border-2 justify-center items-center gap-8">
+      <div className="mt-4 lg:mt-10 flex justify-center items-center">
+        <div className="flex flex-col bg-[#E3DBCE] w-[350px] h-[580px] border-2 justify-center items-center gap-8 lg:w-[520px] lg:h-[720px]">
           {data && (
             <ResultHeader
               friend_name={data?.friendName}
@@ -49,11 +49,11 @@ export default function Result() {
             />
           )}
 
-          <div className="bg-white w-100 h-100 border p-4">
-            <div className="flex justify-center items-center gap-28 mt-4">
+          <div className="bg-white border p-4 w-[280px] lg:w-100 lg:h-100">
+            <div className="flex justify-center items-center mt-4 mb-4 gap-24 lg:gap-28">
               <span
                 onClick={() => setSelectedTab("summary")}
-                className={`${
+                className={`text-sm lg:text-base ${
                   selectedTab === "summary" && "border-b-2 border-[#FAC656]"
                 } cursor-pointer`}
               >
@@ -61,7 +61,7 @@ export default function Result() {
               </span>
               <span
                 onClick={() => setSelectedTab("chat")}
-                className={`${
+                className={`text-sm lg:text-base ${
                   selectedTab === "chat" && "border-b-2 border-[#FAC656]"
                 } cursor-pointer`}
               >
@@ -69,9 +69,9 @@ export default function Result() {
               </span>
             </div>
 
-            <div className="flex justify-center w-[360px] h-[216px]">
+            <div className="flex justify-center w-full h-[200px] p-4 lg:h-[300px]">
               {selectedTab === "summary" && realsummary.length > 0 && (
-                <div className="p-4 flex flex-col justify-center">
+                <div className="p-4 flex flex-col justify-center text-sm lg:text-base">
                   {realsummary.map((line, idx) => (
                     <p key={idx}>- {line}</p>
                   ))}
@@ -79,7 +79,7 @@ export default function Result() {
               )}
 
               {selectedTab === "chat" && (
-                <div className="p-4 overflow-y-auto">
+                <div className="p-4 flex flex-col justify-center overflow-y-auto text-sm lg:text-base">
                   {textLines.map((line, idx) => (
                     <p key={idx}>{line}</p>
                   ))}
@@ -87,16 +87,16 @@ export default function Result() {
               )}
             </div>
           </div>
-          <div className="w-100 flex gap-10">
+          <div className="w-[280px] flex justify-between lg:w-100 lg:gap-10">
             <Link
               href={"/analyze"}
-              className="w-[45%] bg-[#FAC656] p-4 border cursor-pointer text-center"
+              className="w-[45%] bg-[#FAC656] p-4 border cursor-pointer text-sm text-center lg:text-base"
             >
               다시하기
             </Link>
             <button
               onClick={handleWebShare}
-              className="w-[45%] bg-[#242020] text-white p-4 border cursor-pointer"
+              className="w-[45%] bg-[#242020] text-white text-sm p-4 border cursor-pointer lg:text-base"
             >
               공유하기
             </button>

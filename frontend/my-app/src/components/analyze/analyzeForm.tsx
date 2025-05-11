@@ -15,16 +15,17 @@ export default function AnalyzeForm({ onSubmit }: IProps) {
           e.preventDefault();
           onSubmit();
         }}
-        className="flex bg-[#E3DBCE] w-6xl h-[600px] border-2 justify-center items-center"
+        className="flex flex-col bg-[#E3DBCE] w-[320px] h-[580px] border-2 justify-center items-center
+        lg:w-6xl lg:h-[600px] lg:flex-row"
       >
-        <div className="flex flex-col justify-center items-center w-[40%] gap-8">
+        <div className="flex flex-col justify-center items-center w-[40%] gap-2 lg:gap-8">
           <FileUpLoad />
           <TextArea />
         </div>
-        <div className="w-[2px] h-[500px] bg-black ml-12 mr-16"></div>
+        <div className="hidden w-[2px] h-[500px] bg-black ml-12 mr-16 lg:block"></div>
         <div className="flex flex-col justify-center items-center">
-          <img src="/analyze.png" className="w-md" />
-          <div className="flex justify-between w-full">
+          <img src="/analyze.png" className="w-[280px] lg:w-md" />
+          <div className="w-full flex justify-between">
             <FriendNameInput />
             <Button />
           </div>
