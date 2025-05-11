@@ -14,6 +14,7 @@ public interface AnalyzeApiRepository extends JpaRepository<AnalyzeApi, Long> {
     Page<AnalyzeApi> findByMember(Member member, Pageable pageable);
     Optional<AnalyzeApi> findByShareUuid(String shareUuid);
     Page<AnalyzeApi> findByMemberId(Long memberId, Pageable pageable);
+    int countByMember(Member member);
 
     @Transactional
     @Modifying
