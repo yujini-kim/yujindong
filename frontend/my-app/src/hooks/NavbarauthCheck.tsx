@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/AuthCheckStore";
+import { useEffect } from "react";
 
-export function useAuthCheck() {
-  const router = useRouter();
+export function NavbarauthCheck() {
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+
   useEffect(() => {
     const verifyToken = async () => {
       try {
@@ -14,17 +13,15 @@ export function useAuthCheck() {
             credentials: "include",
           }
         );
-
         if (!res.ok) throw new Error();
 
         await res.json();
         setIsLoggedIn(true);
-      } catch (err) {
-        alert("로그인이 필요합니다");
-        router.replace("/login");
+      } catch {
+        setIsLoggedIn(false);
       }
     };
 
     verifyToken();
-  }, [router]);
+  }, []);
 }
