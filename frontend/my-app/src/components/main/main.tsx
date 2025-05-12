@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -25,21 +25,26 @@ const Section = styled(motion.div)`
 export default function MainInfo() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
+  const [windowHeight, setWindowHeight] = useState(0);
 
-  const opacity1 = useTransform(scrollY, [0, window.innerHeight * 1], [1, 0]);
+  useEffect(() => {
+    setWindowHeight(window.innerHeight);
+  }, []);
+
+  const opacity1 = useTransform(scrollY, [0, windowHeight * 1], [1, 0]);
   const opacity2 = useTransform(
     scrollY,
-    [window.innerHeight * 1, window.innerHeight * 2],
+    [windowHeight * 1, windowHeight * 2],
     [1, 0]
   );
   const opacity3 = useTransform(
     scrollY,
-    [window.innerHeight * 2, window.innerHeight * 3],
+    [windowHeight * 2, windowHeight * 3],
     [1, 0]
   );
   const opacity4 = useTransform(
     scrollY,
-    [window.innerHeight * 3, window.innerHeight * 4],
+    [windowHeight * 3, windowHeight * 4],
     [1, 0]
   );
 
