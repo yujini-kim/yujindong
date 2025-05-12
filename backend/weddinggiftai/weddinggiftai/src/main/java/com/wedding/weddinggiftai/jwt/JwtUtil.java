@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component
 public class JwtUtil {
@@ -20,8 +22,17 @@ public class JwtUtil {
 
     // ✅ 토큰 생성
     public String createToken(String userId) {
+        List<String> roles = new ArrayList<>();
+        if (userId.equals("sdh1001")) {
+            roles.add("ROLE_ADMIN");
+            roles.add("ROLE_USER");
+        } else {
+            roles.add("ROLE_USER");
+        }
+
         return Jwts.builder()
                 .setSubject(userId)
+                .claim("roles", roles)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -46,5 +57,15 @@ public class JwtUtil {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    public List<String> getRolesFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        return (List<String>) claims.get("roles");
     }
 }

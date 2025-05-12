@@ -5,9 +5,8 @@ import com.wedding.weddinggiftai.member.Member;
 import com.wedding.weddinggiftai.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +17,7 @@ import java.util.stream.Collectors;
 public class AdminController {
     private final MemberRepository memberRepository;
     private final AnalyzeApiRepository analyzeApiRepository;
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin/members")
     public ResponseEntity<List<AdminMemberResponse>> getAllMember(){
 
@@ -33,5 +33,14 @@ public class AdminController {
             );
         }).collect(Collectors.toList());
         return ResponseEntity.ok(all_member);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/admin/members/delete-member/{username}")
+    public ResponseEntity<Void> deleteMember(@PathVariable String username){
+        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("해당 사용자를 찾을 수 없습니다."));
+
+        memberRepository.delete(member);
+        return ResponseEntity.noContent().build();
     }
 }

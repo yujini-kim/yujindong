@@ -55,7 +55,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         Member member = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
 
-        var authorities = List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        List<String> roles = jwtUtil.getRolesFromToken(token);
+
+        List<SimpleGrantedAuthority> authorities = roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .toList();
         // 4. 인증 객체 생성해서 SecurityContext에 등록
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 member, // principal
