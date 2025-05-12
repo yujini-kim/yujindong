@@ -4,6 +4,7 @@ import com.wedding.weddinggiftai.jwt.JwtUtil;
 import com.wedding.weddinggiftai.member.Member;
 import com.wedding.weddinggiftai.member.MemberRepository;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -55,13 +56,21 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logout(HttpServletResponse response) {
+    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+
+        request.getSession().invalidate();
+
         Cookie cookie = new Cookie("access_token", null);
         cookie.setHttpOnly(true);
         cookie.setSecure(false); // 개발 중
         cookie.setPath("/");
         cookie.setMaxAge(0); // 즉시 만료
         response.addCookie(cookie);
+
+        Cookie jsessionCookie = new Cookie("JSESSIONID", null);
+        jsessionCookie.setPath("/");
+        jsessionCookie.setMaxAge(0);
+        response.addCookie(jsessionCookie);
 
         return ResponseEntity.ok().body("로그아웃 성공");
     }
