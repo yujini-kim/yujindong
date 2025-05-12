@@ -46,7 +46,9 @@ export function MobileList({ logout, setIsMenuOpen }: IDeskTopListProps) {
       </li>
       <li>
         {isLoggedIn ? (
-          <button onClick={logout}>로그아웃</button>
+          <button className="cursor-pointer" onClick={logout}>
+            로그아웃
+          </button>
         ) : (
           <Link href="/login" onClick={() => setIsMenuOpen(false)}>
             로그인
