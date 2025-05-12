@@ -13,11 +13,14 @@ export function NavbarauthCheck() {
             credentials: "include",
           }
         );
+        console.log("🔵 응답 상태 코드:", res.status);
         if (!res.ok) throw new Error();
 
-        await res.json();
+        const data = await res.text();
+        console.log("✅ 응답 데이터:", data);
         setIsLoggedIn(true);
-      } catch {
+      } catch (err) {
+        console.log("❌ 인증 실패:", err);
         setIsLoggedIn(false);
       }
     };

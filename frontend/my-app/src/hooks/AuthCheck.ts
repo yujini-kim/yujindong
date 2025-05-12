@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+// hooks/AuthCheck.ts
+"use client";
+
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/store/AuthCheckStore";
+import { useEffect, useState } from "react";
 
 export function useAuthCheck() {
   const router = useRouter();
-  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+
   useEffect(() => {
     const verifyToken = async () => {
       try {
@@ -14,14 +16,13 @@ export function useAuthCheck() {
             credentials: "include",
           }
         );
-
+        console.log("🔵 응답 상태 코드:", res.status);
         if (!res.ok) throw new Error();
 
-        await res.json();
-        setIsLoggedIn(true);
+        const data = await res.text();
+        console.log("✅ 응답 데이터:", data);
       } catch (err) {
-        alert("로그인이 필요합니다");
-        router.replace("/login");
+        console.log("❌ 인증 실패:", err);
       }
     };
 
