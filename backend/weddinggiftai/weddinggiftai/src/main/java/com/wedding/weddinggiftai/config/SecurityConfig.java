@@ -6,6 +6,7 @@ import com.wedding.weddinggiftai.oauth.OAuth2LoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,7 +36,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
+        http.exceptionHandling(e -> e
+                .authenticationEntryPoint((req, res, ex) -> {
+                    res.setStatus(HttpStatus.UNAUTHORIZED.value());
+                    res.setContentLength(0);
+                })
+        )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
