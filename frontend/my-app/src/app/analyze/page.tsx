@@ -26,7 +26,7 @@ export default function Analyze() {
 
   return (
     <>
-      <div className="mt-10 flex justify-center items-center relative min-h-[500px] lg:mt-20">
+      <div className="mt-4 flex justify-center items-center relative min-h-[500px] lg:mt-10">
         {analyzeMutation.isPending && (
           <div className="absolute">
             <Loading />
