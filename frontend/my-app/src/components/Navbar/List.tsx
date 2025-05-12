@@ -21,7 +21,9 @@ export function DeskTopList({ logout }: IListProps) {
       </li>
       <li>
         {isLoggedIn ? (
-          <button onClick={logout}>로그아웃</button>
+          <button className="cursor-pointer" onClick={logout}>
+            로그아웃
+          </button>
         ) : (
           <Link href="/login">로그인</Link>
         )}
