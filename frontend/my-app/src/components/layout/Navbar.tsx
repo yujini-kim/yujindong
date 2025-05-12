@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import MenuBar from "../Icon/MenuBar";
 import { MobileList, DeskTopList } from "../Navbar/List";
+import { useAuthCheck } from "@/hooks/AuthCheck";
 
 export default function Navbar() {
+  useAuthCheck();
   const logout = useLogout();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
