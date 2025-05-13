@@ -16,13 +16,15 @@ export function useAuthCheck() {
             credentials: "include",
           }
         );
-        console.log("🔵 응답 상태 코드:", res.status);
+        console.log("🔵 마이페이지 응답 상태 코드:", res.status);
         if (!res.ok) throw new Error();
 
         const data = await res.text();
-        console.log("✅ 응답 데이터:", data);
+        console.log("✅ 마이페이지 응답 데이터:", data);
       } catch (err) {
-        console.log("❌ 인증 실패:", err);
+        console.log("❌ 마이페이지 인증 실패:", err);
+        alert("로그인이 필요합니다");
+        router.replace("/login");
       }
     };
 
