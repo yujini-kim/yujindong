@@ -15,7 +15,7 @@ export default function Pagination({ totalPages }: Props) {
         <LeftArrow />
       </button>
       <p>
-        {currentPage + 1} / {totalPages}
+        {currentPage === 0 ? "0" : currentPage + 1} / {totalPages}
       </p>
       <button
         className="w-6 h-6 bg-[#E3DBCE] border-2 cursor-pointer"

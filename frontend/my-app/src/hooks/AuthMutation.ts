@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuthStore } from "@/store/AuthCheckStore";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL!;
@@ -79,6 +79,8 @@ export function useLogInMutation() {
 }
 
 export function useLogout() {
+  const queryClient = useQueryClient();
+
   const router = useRouter();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   const logout = async () => {
@@ -88,6 +90,7 @@ export function useLogout() {
         credentials: "include",
       });
       setIsLoggedIn(false);
+      queryClient.removeQueries({ queryKey: ["mypage"] });
     } catch (err) {
       console.error("❌ 로그아웃 요청 실패", err);
     } finally {
