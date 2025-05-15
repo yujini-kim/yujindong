@@ -11,7 +11,7 @@ export function NavbarauthCheck() {
           `${process.env.NEXT_PUBLIC_API_URL}/api/verify`,
           {
             credentials: "include",
-          }
+          },
         );
         console.log("🔵 응답 상태 코드:", res.status);
         if (!res.ok) throw new Error();
