@@ -35,17 +35,17 @@ export default function MainInfo() {
   const opacity2 = useTransform(
     scrollY,
     [windowHeight * 1, windowHeight * 2],
-    [1, 0]
+    [1, 0],
   );
   const opacity3 = useTransform(
     scrollY,
     [windowHeight * 2, windowHeight * 3],
-    [1, 0]
+    [1, 0],
   );
   const opacity4 = useTransform(
     scrollY,
     [windowHeight * 3, windowHeight * 4],
-    [1, 0]
+    [1, 0],
   );
 
   return (

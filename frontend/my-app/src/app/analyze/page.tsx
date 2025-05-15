@@ -20,7 +20,7 @@ export default function Analyze() {
         onError: (err: any) => {
           alert("분석에 실패했습니다: " + err.message);
         },
-      }
+      },
     );
   };
 
