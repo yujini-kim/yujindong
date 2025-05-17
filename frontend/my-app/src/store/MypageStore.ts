@@ -10,7 +10,7 @@ interface MyPageState {
 }
 
 export const useMyPageStore = create<MyPageState>((set) => ({
-  currentPage: 0,
+  currentPage: 1,
   selectedTab: "summary",
   selectedIdx: null,
   setCurrentPage: (page) => set({ currentPage: page }),
