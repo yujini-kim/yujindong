@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { useAdminMembersQuery } from "@/hooks/AdminQuery";
+import { IAdminProps, useAdminMembersQuery } from "@/hooks/AdminQuery";
 import { useMyPageStore } from "@/store/MypageStore";
 import AdminPagination from "@/components/admin/AdminPagenation";
 import DeleteBtn from "@/components/admin/DeleteBtn";
 import AdminTable from "@/components/admin/AdminTable";
+import SearchBar from "@/components/admin/SearchBar";
 
 export default function Admin() {
   const { data } = useAdminMembersQuery();
   const [username, setUsername] = useState("");
   const { currentPage } = useMyPageStore();
+
   type SearchField =
     | "id"
     | "display_name"
@@ -18,10 +20,12 @@ export default function Admin() {
     | "email"
     | "analyzeCount";
 
-  const [searchField, setSearchField] = useState<SearchField>("display_name"); // 기본값: 이름
+  const [searchField, setSearchField] = useState<SearchField>("display_name");
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const isSearching = searchKeyword.trim() !== "";
+
+  const handleDeleteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
     console.log(username);
   };
@@ -29,38 +33,54 @@ export default function Admin() {
   const totalPages = data ? Math.ceil(data.length / 10) : 0;
 
   const currentItems = data?.slice((currentPage - 1) * 10, currentPage * 10);
-  const filteredItems = currentItems?.filter((item) => {
+  const filteredItems = data?.filter((item) => {
     const value = String(item[searchField]).toLowerCase();
     return value.includes(searchKeyword.toLowerCase());
+  });
+  const [sortKey, setSortKey] = useState<keyof IAdminProps | null>(null);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const handleSort = (key: keyof IAdminProps) => {
+    if (sortKey === key) {
+      setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortOrder("asc");
+    }
+  };
+  const baseItems = isSearching ? filteredItems ?? [] : currentItems ?? [];
+
+  const sortedItems = [...baseItems].sort((a, b) => {
+    if (!sortKey) return 0;
+
+    const aVal = a[sortKey];
+    const bVal = b[sortKey];
+
+    if (typeof aVal === "number" && typeof bVal === "number") {
+      return sortOrder === "asc" ? aVal - bVal : bVal - aVal;
+    }
+
+    return (
+      String(aVal).localeCompare(String(bVal)) * (sortOrder === "asc" ? 1 : -1)
+    );
   });
 
   return (
     <div className="p-4">
-      <div className="flex gap-2 items-center mb-4">
-        <select
-          value={searchField}
-          onChange={(e) => setSearchField(e.target.value as SearchField)}
-          className="border px-2 py-1 rounded"
-        >
-          <option value="id">ID</option>
-          <option value="display_name">이름</option>
-          <option value="username">사용자ID</option>
-          <option value="email">Email</option>
-          <option value="analyzeCount">분석 횟수</option>
-        </select>
+      <SearchBar
+        searchField={searchField}
+        setSearchField={setSearchField}
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
+      />
 
-        <input
-          type="text"
-          placeholder="검색어 입력"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-          className="border px-2 py-1 rounded w-full max-w-xs"
-        />
-      </div>
-
-      <AdminTable items={filteredItems ?? []} />
-      <AdminPagination totalPages={totalPages} />
-      <DeleteBtn username={username} onChange={onChange} />
+      <AdminTable
+        items={sortedItems}
+        handleSort={handleSort}
+        sortKey={sortKey}
+        sortOrder={sortOrder}
+      />
+      {!isSearching && <AdminPagination totalPages={totalPages} />}
+      <DeleteBtn username={username} onChange={handleDeleteChange} />
     </div>
   );
 }
