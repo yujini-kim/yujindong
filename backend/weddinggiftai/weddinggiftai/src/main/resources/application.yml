@@ -55,6 +55,5 @@ jwt:
 frontend:
   redirect-url: ${FRONTEND_REDIRECT_URL:http://localhost:3000}
 
-
 server:
   port: 8080

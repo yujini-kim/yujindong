@@ -1,6 +1,9 @@
-import { useEffect } from "react";
+// hooks/AuthCheck.ts
+"use client";
+
 import { useRouter } from "next/navigation";
 import { useAdminCheckStore, useAuthStore } from "@/store/AuthCheckStore";
+import { useEffect } from "react";
 
 export function useAuthCheck() {
   const router = useRouter();
@@ -21,7 +24,7 @@ export function useAuthCheck() {
         const data = await res.json();
         console.log(data);
       } catch (err) {
-        setIsLoggedIn(false);
+        console.log("❌ 마이페이지 인증 실패:", err);
         alert("로그인이 필요합니다");
         router.replace("/login");
       }

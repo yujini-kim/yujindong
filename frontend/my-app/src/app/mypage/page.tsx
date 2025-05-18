@@ -10,7 +10,6 @@ import { useTextStore, useSummaryStore } from "@/store/splitStore";
 
 export default function Mypage() {
   useAuthCheck();
-
   const { currentPage, selectedIdx } = useMyPageStore();
   const { setTextLines } = useTextStore();
   const { setSummary } = useSummaryStore();
