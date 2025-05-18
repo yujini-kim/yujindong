@@ -1,6 +1,6 @@
 "use client";
 
-type SearchField =
+export type SearchField =
   | "id"
   | "display_name"
   | "username"
