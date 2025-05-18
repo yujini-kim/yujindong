@@ -2,7 +2,7 @@
 
 import MyPageList from "@/components/Mypage/MyPageList";
 import MyPageModal from "@/components/Mypage/MyPageModal";
-import Pagination from "@/components/Mypage/Pagination";
+import Pagination from "@/components/Mypage/Pagenation";
 import { useAuthCheck } from "@/hooks/AuthCheck";
 import { useMyPageQuery } from "@/hooks/MyPageQuery";
 import { useMyPageStore } from "@/store/MypageStore";

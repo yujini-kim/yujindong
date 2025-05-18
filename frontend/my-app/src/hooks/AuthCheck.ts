@@ -2,11 +2,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useAdminCheckStore, useAuthStore } from "@/store/AuthCheckStore";
+import { useEffect } from "react";
 
 export function useAuthCheck() {
   const router = useRouter();
-
+  const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
   useEffect(() => {
     const verifyToken = async () => {
       try {
@@ -14,13 +15,14 @@ export function useAuthCheck() {
           `${process.env.NEXT_PUBLIC_API_URL}/api/verify`,
           {
             credentials: "include",
-          },
+          }
         );
-        console.log("🔵 마이페이지 응답 상태 코드:", res.status);
+        setIsLoggedIn(true);
+
         if (!res.ok) throw new Error();
 
-        const data = await res.text();
-        console.log("✅ 마이페이지 응답 데이터:", data);
+        const data = await res.json();
+        console.log(data);
       } catch (err) {
         console.log("❌ 마이페이지 인증 실패:", err);
         alert("로그인이 필요합니다");
@@ -31,3 +33,14 @@ export function useAuthCheck() {
     verifyToken();
   }, [router]);
 }
+
+export const fetchUserRoles = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/verify`, {
+    credentials: "include",
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    useAdminCheckStore.getState().setRoles(data.roles);
+  }
+};
