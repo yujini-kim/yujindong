@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -76,7 +77,9 @@ public class AuthController {
     }
 
     @GetMapping("/verify")
-    public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal Member member){
-        return ResponseEntity.ok(new VerifyResponse(member.getUsername(),"OK"));
+    public ResponseEntity<VerifyResponse> verify(@AuthenticationPrincipal Member member,@CookieValue("access_token") String token){
+        List<String> roles = jwtUtil.getRolesFromToken(token);
+        boolean isAdmin = roles.contains("ROLE_ADMIN");
+        return ResponseEntity.ok(new VerifyResponse(member.getUsername(),"OK",isAdmin));
     }
 }

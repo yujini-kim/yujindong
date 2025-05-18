@@ -8,4 +8,5 @@ import lombok.Getter;
 public class VerifyResponse {
     private String username;
     private String message;
+    private boolean isAdmin;
 }
