@@ -39,8 +39,10 @@ export const fetchUserRoles = async () => {
     credentials: "include",
   });
 
+  const { setIsAdmin } = useAdminCheckStore.getState();
+
   if (res.ok) {
     const data = await res.json();
-    useAdminCheckStore.getState().setRoles(data.roles);
+    setIsAdmin(data.admin);
   }
 };

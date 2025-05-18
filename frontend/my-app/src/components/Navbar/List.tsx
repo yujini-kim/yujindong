@@ -1,3 +1,4 @@
+import { useAuthCheck } from "@/hooks/AuthCheck";
 import { useAdminCheckStore, useAuthStore } from "@/store/AuthCheckStore";
 import Link from "next/link";
 import { SetStateAction } from "react";
@@ -10,9 +11,8 @@ interface IDeskTopListProps {
   setIsMenuOpen: (value: SetStateAction<boolean>) => void;
 }
 export function DeskTopList({ logout }: IListProps) {
-  const isLoggedIn = useAdminCheckStore((state) => state.isLoggedIn);
-  const roles = useAdminCheckStore((state) => state.roles);
-  const isAdmin = roles.includes("ROLE_ADMIN");
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isAdmin = useAdminCheckStore((state) => state.isAdmin);
   return (
     <ul className="lg:flex gap-8 text-base font-medium hidden">
       {isAdmin && (

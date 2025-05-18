@@ -10,7 +10,7 @@ export default function AdminGuard({
 }: {
   children: React.ReactNode;
 }) {
-  const { roles } = useAdminCheckStore();
+  const { isAdmin } = useAdminCheckStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -18,12 +18,12 @@ export default function AdminGuard({
   }, []);
 
   useEffect(() => {
-    if (!roles.includes("ROLE_ADMIN")) {
-      console.log(roles);
-      // alert("접근 권한이 없습니다");
-      // router.replace("/");
+    if (!isAdmin) {
+      console.log(isAdmin);
+      alert("접근 권한이 없습니다");
+      router.replace("/");
     }
-  }, [roles, router]);
+  }, [isAdmin, router]);
 
   return <>{children}</>;
 }

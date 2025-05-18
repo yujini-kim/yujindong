@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthStore } from "@/store/AuthCheckStore";
+import { useAdminCheckStore, useAuthStore } from "@/store/AuthCheckStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
@@ -80,9 +80,9 @@ export function useLogInMutation() {
 
 export function useLogout() {
   const queryClient = useQueryClient();
-
   const router = useRouter();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+  const setIsAdmin = useAdminCheckStore((state) => state.setIsAdmin);
   const logout = async () => {
     try {
       await fetch(`${BASE_URL}/api/logout`, {
@@ -90,6 +90,7 @@ export function useLogout() {
         credentials: "include",
       });
       setIsLoggedIn(false);
+      setIsAdmin(false);
       queryClient.removeQueries({ queryKey: ["mypage"] });
     } catch (err) {
       console.error("❌ 로그아웃 요청 실패", err);

@@ -11,13 +11,11 @@ export const useAuthStore = create<AuthState>((set) => ({
 }));
 
 interface AdminCheckState {
-  isLoggedIn: boolean;
-  roles: string[];
-  setRoles: (roles: string[]) => void;
+  isAdmin: boolean;
+  setIsAdmin: (value: boolean) => void;
 }
 
 export const useAdminCheckStore = create<AdminCheckState>((set) => ({
-  isLoggedIn: false,
-  roles: [],
-  setRoles: (roles) => set({ roles }),
+  isAdmin: false,
+  setIsAdmin: (value) => set({ isAdmin: value }),
 }));
