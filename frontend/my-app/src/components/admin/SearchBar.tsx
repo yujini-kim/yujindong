@@ -25,7 +25,7 @@ export default function SearchBar({
       <select
         value={searchField}
         onChange={(e) => setSearchField(e.target.value as SearchField)}
-        className="border px-2 py-1 rounded"
+        className="border px-2 py-1 "
       >
         <option value="id">ID</option>
         <option value="display_name">이름</option>
@@ -39,7 +39,7 @@ export default function SearchBar({
         placeholder="검색어 입력"
         value={searchKeyword}
         onChange={(e) => setSearchKeyword(e.target.value)}
-        className="border px-2 py-1 rounded w-full max-w-xs"
+        className="border px-2 py-1 w-full max-w-xs"
       />
     </div>
   );

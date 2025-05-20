@@ -41,13 +41,14 @@ export function DeskTopList({ logout }: IListProps) {
 
 export function MobileList({ logout, setIsMenuOpen }: IDeskTopListProps) {
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isAdmin = useAdminCheckStore((state) => state.isAdmin);
   return (
     <ul className="flex flex-col items-center gap-2 py-4 lg:hidden">
-      <li>
-        <Link href="/admin" onClick={() => setIsMenuOpen(false)}>
-          관리자페이지
-        </Link>
-      </li>
+      {isAdmin && (
+        <li>
+          <Link href="/admin">관리자페이지</Link>
+        </li>
+      )}
       <li>
         <Link href="/analyze" onClick={() => setIsMenuOpen(false)}>
           분석하기

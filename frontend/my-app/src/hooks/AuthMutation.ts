@@ -51,8 +51,8 @@ export function useSignUpMutation() {
   });
 }
 export function useLogInMutation() {
-  const router = useRouter();
   const setIsLoggedIn = useAuthStore((state) => state.setIsLoggedIn);
+
   return useMutation({
     mutationFn: async (signinValues: SigninValues) => {
       const res = await fetch(`${BASE_URL}/api/login`, {
@@ -66,11 +66,13 @@ export function useLogInMutation() {
         throw new Error("로그인 실패");
       }
       setIsLoggedIn(true);
+
       return res.json();
     },
     onSuccess: (data) => {
       console.log("💬 로그인 성공", data);
-      router.replace("/");
+
+      window.location.href = "/";
     },
     onError: (error) => {
       alert("❌ 로그인 실패: " + error.message);

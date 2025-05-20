@@ -1,7 +1,6 @@
 "use client";
 
 import { IAdminProps } from "@/hooks/AdminQuery";
-import SortArrow from "../Icon/SortArrow";
 
 interface AdminTableProps {
   items: IAdminProps[];
