@@ -1,13 +1,15 @@
 "use client";
 
 import { useMyPageStore } from "@/store/MypageStore";
+import { LeftArrow, RightArrow } from "../Icon/Arrow";
+import { useAdminStore } from "@/store/AdminStore";
 
 interface AdminPaginationProps {
   totalPages: number;
 }
 
 export default function AdminPagination({ totalPages }: AdminPaginationProps) {
-  const { currentPage, setCurrentPage } = useMyPageStore();
+  const { currentPage, setCurrentPage } = useAdminStore();
 
   const handlePrev = () => {
     setCurrentPage(Math.max(currentPage - 1, 1));
@@ -22,9 +24,9 @@ export default function AdminPagination({ totalPages }: AdminPaginationProps) {
       <button
         onClick={handlePrev}
         disabled={currentPage === 1}
-        className="px-4 py-1 border rounded disabled:opacity-50 cursor-pointer"
+        className="w-6 h-6 border rounded disabled:opacity-50 cursor-pointer items-center"
       >
-        이전
+        <LeftArrow />
       </button>
       <span className="text-sm">
         {currentPage} / {totalPages}
@@ -32,9 +34,9 @@ export default function AdminPagination({ totalPages }: AdminPaginationProps) {
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="px-4 py-1 border rounded disabled:opacity-50 cursor-pointer"
+        className="w-6 h-6  border rounded disabled:opacity-50 cursor-pointer"
       >
-        다음
+        <RightArrow />
       </button>
     </div>
   );
