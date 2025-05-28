@@ -50,7 +50,7 @@
 
 ---
 ## 💁‍♂️ 프로젝트 팀원
-|Backend|Frontend|
+|Frontend|Backend|
 |:---:|:---:|
 | ![]() | ![]() |
 |[김유진](https://github.com/yujini-kim)|[신동휘](https://github.com/tonghwi)|
