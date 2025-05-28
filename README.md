@@ -36,7 +36,16 @@
 
 ### 백엔드
 - `Spring Boot`
-- `JPA`, `PostgreSQL` (서버는 별도 저장소에서 관리)
+- `Spring Security + JWT 인증(쿠키 기반 인증 처리)`
+- `OAuth2 소셜 로그인 (Google, Kakao)`
+- `JPA + PostgreSQL`
+- `Redis`
+- `GPT API 연동`
+- `Gradle`
+- `Lombok`
+- `Docker / Docker Compose`
+- `AWS EC2`
+- `Nginx + HTTPS`
 
 ---
 
