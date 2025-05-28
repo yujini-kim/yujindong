@@ -36,7 +36,7 @@
 
 ### 백엔드
 - `Spring Boot`
-- `JPA`, `MySQL` (서버는 별도 저장소에서 관리)
+- `JPA`, `PostgreSQL` (서버는 별도 저장소에서 관리)
 
 ---
 
