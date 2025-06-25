@@ -1,6 +1,9 @@
 "use client";
 
-import { IAdminProps, useAdminMembersQuery } from "@/hooks/AdminQuery";
+import {
+  IAdminProps,
+  useAdminMembersQuery,
+} from "@/hooks/useAdminMembersQuery";
 import { useMyPageStore } from "@/store/MypageStore";
 import { useState } from "react";
 import SearchBar, { SearchField } from "./SearchBar";
@@ -8,7 +11,7 @@ import AdminTable from "./AdminTable";
 import AdminPagination from "./AdminPagenation";
 import DeleteBtn from "./DeleteBtn";
 import Loading from "../result/Loading";
-import { BASE_URL } from "@/hooks/AnalyzeMutation";
+import { BASE_URL } from "@/hooks/useAnalyzeMutation";
 import { useAdminStore } from "@/store/AdminStore";
 
 export default function AdminContent() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLogout } from "@/hooks/AuthMutation";
+import { useLogout } from "@/hooks/useAuthMutation";
 import Link from "next/link";
 import { useState } from "react";
 import MenuBar from "../Icon/MenuBar";

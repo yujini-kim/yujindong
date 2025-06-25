@@ -2,7 +2,7 @@
 
 import AnalyzeForm from "@/components/analyze/analyzeForm";
 import Loading from "@/components/result/Loading";
-import { useAnalyzeMutation } from "@/hooks/AnalyzeMutation";
+import { useAnalyzeMutation } from "@/hooks/useAnalyzeMutation";
 import { useAnalyzeStore } from "@/store/AnalyzeStore";
 import { useRouter } from "next/navigation";
 
@@ -20,7 +20,7 @@ export default function Analyze() {
         onError: (err: any) => {
           alert("분석에 실패했습니다: " + err.message);
         },
-      },
+      }
     );
   };
 

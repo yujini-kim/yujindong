@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { BASE_URL } from "./AnalyzeMutation";
+import { BASE_URL } from "./useAnalyzeMutation";
 
 export interface IAdminProps {
   id: number;

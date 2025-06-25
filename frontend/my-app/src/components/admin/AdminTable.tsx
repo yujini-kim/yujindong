@@ -1,6 +1,6 @@
 "use client";
 
-import { IAdminProps } from "@/hooks/AdminQuery";
+import { IAdminProps } from "@/hooks/useAdminMembersQuery";
 
 interface AdminTableProps {
   items: IAdminProps[];

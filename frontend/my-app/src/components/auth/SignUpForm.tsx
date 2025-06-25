@@ -1,6 +1,6 @@
 "use client";
 
-import { SignupValues, useSignUpMutation } from "@/hooks/AuthMutation";
+import { SignupValues, useSignUpMutation } from "@/hooks/useAuthMutation";
 import { useForm } from "react-hook-form";
 
 export default function SignUpForm() {

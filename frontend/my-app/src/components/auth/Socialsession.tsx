@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/hooks/AnalyzeMutation";
+import { BASE_URL } from "@/hooks/useAnalyzeMutation";
 
 interface IProps {
   text: string;
