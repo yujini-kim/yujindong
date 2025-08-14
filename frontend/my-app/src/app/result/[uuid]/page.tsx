@@ -1,7 +1,6 @@
 "use client";
-import ResultCircle from "@/components/result/ResultCircle";
 import ResultHeader from "@/components/result/ResultHeader";
-import { useResultQuery } from "@/hooks/ResultQuery";
+import { useResultQuery } from "@/hooks/useResultQuery";
 import { useSummaryStore, useTextStore } from "@/store/splitStore";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -10,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Result() {
   const [selectedTab, setSelectedTab] = useState<"summary" | "chat">("summary");
   const { uuid } = useParams();
-  const { data, isLoading, isError } = useResultQuery(uuid);
+  const { data } = useResultQuery(uuid);
   const { setTextLines, textLines } = useTextStore();
   const { setSummary, realsummary } = useSummaryStore();
 

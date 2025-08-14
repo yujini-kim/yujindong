@@ -1,8 +1,7 @@
 "use client";
 
-import { useMyPageStore } from "@/store/MypageStore";
-import { LeftArrow, RightArrow } from "../Icon/Arrow";
 import { useAdminStore } from "@/store/AdminStore";
+import { LeftArrow, RightArrow } from "../Icon/Arrow";
 
 interface AdminPaginationProps {
   totalPages: number;

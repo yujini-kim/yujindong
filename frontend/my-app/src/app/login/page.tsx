@@ -1,8 +1,6 @@
-import LogInForm from "@/components/auth/LogInForm";
-import Link from "next/link";
-import Image from "next/image";
-import SocialSession from "@/components/auth/Socialsession";
 import ChangeSignUp from "@/components/auth/ChangeSignUp";
+import LogInForm from "@/components/auth/LogInForm";
+import SocialSession from "@/components/auth/Socialsession";
 import MainIcon from "@/components/Icon/MainIcon";
 
 export default function Login() {
