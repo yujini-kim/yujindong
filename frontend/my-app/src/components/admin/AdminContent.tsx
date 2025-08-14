@@ -4,15 +4,14 @@ import {
   IAdminProps,
   useAdminMembersQuery,
 } from "@/hooks/useAdminMembersQuery";
-import { useMyPageStore } from "@/store/MypageStore";
-import { useState } from "react";
-import SearchBar, { SearchField } from "./SearchBar";
-import AdminTable from "./AdminTable";
-import AdminPagination from "./AdminPagenation";
-import DeleteBtn from "./DeleteBtn";
-import Loading from "../result/Loading";
 import { BASE_URL } from "@/hooks/useAnalyzeMutation";
 import { useAdminStore } from "@/store/AdminStore";
+import { useState } from "react";
+import Loading from "../result/Loading";
+import AdminPagination from "./AdminPagenation";
+import AdminTable from "./AdminTable";
+import DeleteBtn from "./DeleteBtn";
+import SearchBar, { SearchField } from "./SearchBar";
 
 export default function AdminContent() {
   const { data, isLoading, refetch } = useAdminMembersQuery();
