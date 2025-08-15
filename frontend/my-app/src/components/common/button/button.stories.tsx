@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         variant: {
             control: 'select',
-            options: ['default', 'hover', 'enable', 'enableHover'],
+            options: ['default', 'hover', 'enable', 'enableHover', 'accent'],
         },
         children: {
             control: 'text',
