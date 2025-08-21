@@ -8,8 +8,6 @@ export const postSignupAPI = async (formData: SignupFormData) => {
         headers: { 'Content-Type': 'application/json' },
     })
     const data = await res.json()
-    if (!res.ok) {
-        throw new Error((data && (data.message || data.error)) || '회원가입 실패')
-    }
+
     return data
 }
