@@ -1,14 +1,18 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import ToastContent from './toast-content'
 import { useToastStore } from './use-toast-store'
 
 export default function ToastContainer() {
-    if (typeof window === 'undefined') return null
     const toast = useToastStore((s) => s.toast)
     const clearToast = useToastStore((s) => s.clearToast)
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     useEffect(() => {
         if (!toast) return
@@ -16,9 +20,10 @@ export default function ToastContainer() {
         return () => clearTimeout(timer)
     }, [toast, clearToast])
 
-    if (!toast) return null
+    if (!mounted || !toast) return null
 
     const element = document.querySelector('#portal')
+
     if (!element) return null
 
     return createPortal(

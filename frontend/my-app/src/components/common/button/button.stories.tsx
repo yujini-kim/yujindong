@@ -32,25 +32,9 @@ export const Default: Story = {
     },
 }
 
-export const Hover: Story = {
-    args: {
-        variant: 'hover',
-        children: '버튼 button',
-        onClick: () => alert('클릭됨'),
-    },
-}
-
 export const Enable: Story = {
     args: {
         variant: 'enable',
-        children: '버튼 button',
-        onClick: () => alert('클릭됨'),
-    },
-}
-
-export const EnableHover: Story = {
-    args: {
-        variant: 'enableHover',
         children: '버튼 button',
         onClick: () => alert('클릭됨'),
     },

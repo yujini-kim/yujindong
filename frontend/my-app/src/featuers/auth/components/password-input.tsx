@@ -1,9 +1,9 @@
-'use cli'
+'use client'
 
+import Input from '@/components/common/input/input'
 import { IconVisibilityOff, IconVisibilityOn } from '@/components/icon'
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import Input from '../../../components/common/input/input'
 
 interface Props {
     fieldName: string

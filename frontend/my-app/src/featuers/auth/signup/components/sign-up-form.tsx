@@ -3,7 +3,7 @@
 import Button from '@/components/common/button/button'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
-import { SignupFormData, signupSchema } from '../model/signup.schma'
+import { SignupFormData, signupSchema } from '../model/signup.schema'
 import { useSignupMutation } from '../model/use-signup-mutation'
 import SignupFormFields from './sign-up-form-fields'
 
