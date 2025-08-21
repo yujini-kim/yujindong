@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 export default function FormField({ name, children, className, ...rest }: Props) {
     return (
-        <div className={cn('flex flex-col gap-1', className)} {...rest}>
+        <div className={cn('w-full flex flex-col gap-1', className)} {...rest}>
             {children}
             <ErrorMessage name={name} render={({ message }) => <FormErrorMessage>{message}</FormErrorMessage>} />
         </div>
