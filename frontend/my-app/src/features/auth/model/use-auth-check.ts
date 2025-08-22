@@ -1,35 +1,22 @@
 import { BASE_URL } from '@/constants/constants'
-import { useEffect, useState } from 'react'
+import { useAuthStore } from './auth-store'
 
-export const useAuthCheck = () => {
-    const [loading, setLoading] = useState(true)
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [user, setUser] = useState<{ username: string; isAdmin: boolean } | null>(null)
+export const checkAuth = async () => {
+    const { setUser } = useAuthStore.getState()
 
-    useEffect(() => {
-        const verify = async () => {
-            try {
-                const res = await fetch(`${BASE_URL}/api/verify`, {
-                    method: 'GET',
-                    credentials: 'include',
-                })
-                if (!res.ok) {
-                    setIsAuthenticated(false)
-                    setUser(null)
-                } else {
-                    const data = await res.json()
-                    setIsAuthenticated(true)
-                    setUser(data)
-                }
-            } catch (err) {
-                setIsAuthenticated(false)
-            } finally {
-                setLoading(false)
-            }
+    try {
+        const res = await fetch(`${BASE_URL}/api/verify`, {
+            method: 'GET',
+            credentials: 'include',
+        })
+
+        if (!res.ok) {
+            return null
         }
 
-        verify()
-    }, [])
-
-    return { loading, isAuthenticated, user }
+        const data = await res.json()
+        const user = { username: data.username, isAdmin: data.admin }
+        setUser(user)
+        return user
+    } catch (err) {}
 }

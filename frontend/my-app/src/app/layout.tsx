@@ -1,4 +1,4 @@
-import GnbLayout from '@/features/GNB/components/gnb-layout'
+import GnbLayout from '@/features/gnb/components/gnb-layout'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import Script from 'next/script'
