@@ -19,19 +19,23 @@ export default function MobileNav({ onClick }: Props) {
             animate="visible"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="md:hidden"
+            className="md:hidden flex flex-col items-center justify-center py-4 gap-2 bg-brand-300"
         >
-            <ul onClick={onClick} className="flex flex-col items-center justify-center py-4 gap-2  bg-brand-300">
-                <Link href="/analyze">
-                    <li className="text-white font-medium hover:text-ink-700">분석하기</li>
+            <li>
+                <Link href="/analyze" onClick={onClick} className="text-white hover:text-ink-700">
+                    분석하기
                 </Link>
-                <Link href="/mypage">
-                    <li className="text-white font-medium hover:text-ink-700">마이페이지</li>
+            </li>
+            <li>
+                <Link href="/mypage" onClick={onClick} className="text-white hover:text-ink-700">
+                    마이페이지
                 </Link>
-                <Link href="/login">
-                    <li className="text-white font-medium hover:text-ink-700">로그인</li>
+            </li>
+            <li>
+                <Link href="/login" onClick={onClick} className="text-white hover:text-ink-700">
+                    로그인
                 </Link>
-            </ul>
+            </li>
         </motion.nav>
     )
 }
