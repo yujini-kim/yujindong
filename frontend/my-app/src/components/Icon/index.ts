@@ -1,5 +1,7 @@
 export { default as IconFail } from './fail.svg'
+export { default as LogoWhite } from './logo-white.svg'
 export { default as Logo } from './logo.svg'
+export { default as IconMenu } from './menu-bar.svg'
 export { default as IconSuccess } from './success.svg'
 export { default as IconVisibilityOff } from './visibility-off.svg'
 export { default as IconVisibilityOn } from './visibility-on.svg'
