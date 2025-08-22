@@ -1,16 +1,15 @@
 import { toast } from '@/components/common/toast/toast'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import { postSignupAPI } from '../api/signup.API'
+import { postLogoutAPI } from '../logout/api/logout.API'
 
-export const useSignupMutation = () => {
+export const useLogoutMutation = () => {
     const router = useRouter()
-
     const mutation = useMutation({
-        mutationFn: postSignupAPI,
+        mutationFn: postLogoutAPI,
         onSuccess: () => {
-            toast.success('회원가입 성공')
-            router.replace('/login')
+            toast.success('로그아웃 성공')
+            router.replace('/')
         },
         onError: (err) => {
             toast.error(err.message)

@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 import DesktopNav from './desktop-nav'
-import { default as MobileNav } from './mobile-nav'
+import MobileNav from './mobile-nav'
 
 export default function GnbLayout() {
     const [openMenu, setOpenMenu] = useState(false)
