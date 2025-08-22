@@ -1,6 +1,6 @@
 import FormField from '@/components/common/form/form-field'
 import Input from '@/components/common/input/input'
-import PasswordInput from '@/featuers/auth/components/password-input'
+import PasswordInput from '@/features/auth/components/password-input'
 import { useFormContext } from 'react-hook-form'
 
 export default function SignupFormFields() {

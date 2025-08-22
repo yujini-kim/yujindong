@@ -1,6 +1,6 @@
-import AuthFormLayout from '@/featuers/auth/components/auth-layout'
-import AuthSwitchLink from '@/featuers/auth/components/auth-switch-link'
-import LoginForm from '@/featuers/auth/login/components/login-form'
+import AuthFormLayout from '@/features/auth/components/auth-layout'
+import AuthSwitchLink from '@/features/auth/components/auth-switch-link'
+import LoginForm from '@/features/auth/login/components/login-form'
 
 export default function Login() {
     return (
