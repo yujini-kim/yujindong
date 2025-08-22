@@ -1,4 +1,3 @@
-import Navbar from '@/components/layout/Navbar'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import Script from 'next/script'
@@ -26,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <div id="portal"></div>
                 <Providers>
-                    <Navbar />
                     <main className="pt-[120px] pb-[100px]">{children}</main>
                 </Providers>
             </body>

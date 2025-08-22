@@ -9,7 +9,7 @@ export const useSignupMutation = () => {
             toast.success('회원가입 성공')
         },
         onError: (err) => {
-            toast.error(`회원가입 실패: ${err}`)
+            toast.error(err.message)
         },
     })
     return mutation

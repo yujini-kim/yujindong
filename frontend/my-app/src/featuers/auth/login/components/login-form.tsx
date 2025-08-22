@@ -14,8 +14,7 @@ export default function LoginForm() {
         resolver: zodResolver(loginSchema),
     })
     const onSubmit = (formData: LoginFormData) => {
-        const { passwordConfirm, ...payload } = formData
-        loginMutation.mutate(payload)
+        loginMutation.mutate(formData)
     }
     return (
         <>
@@ -25,7 +24,9 @@ export default function LoginForm() {
                     className="w-full flex flex-col justify-center items-center gap-2"
                 >
                     <LoginFormFields />
-                    <Button className="w-full mt-8">로그인 하기</Button>
+                    <Button disabled={loginMutation.isPending || !methods.formState.isValid} className="w-full mt-8">
+                        로그인 하기
+                    </Button>
                 </form>
             </FormProvider>
         </>

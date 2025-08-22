@@ -1,6 +1,5 @@
 import { IconFail, IconSuccess } from '@/components/icon'
 import { ToastType } from './use-toast-store'
-console.log('typeof IconSuccess:', typeof IconSuccess)
 interface Props {
     type: ToastType
     message: string

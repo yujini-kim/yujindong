@@ -7,14 +7,11 @@ export default function LoginFormFields() {
     const { register } = useFormContext()
     return (
         <>
-            <FormField name="email">
-                <Input type="email" title="이메일" fieldName="email" {...register('email')} />
+            <FormField name="username">
+                <Input type="username" title="아이디" fieldName="username" {...register('username')} />
             </FormField>
             <FormField name="password">
                 <PasswordInput title="비밀번호" fieldName="password" />
-            </FormField>
-            <FormField name="passwordConfirm">
-                <PasswordInput title="비밀번호 확인" fieldName="passwordConfirm" />
             </FormField>
         </>
     )
