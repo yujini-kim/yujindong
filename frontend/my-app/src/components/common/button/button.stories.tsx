@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         variant: {
             control: 'select',
-            options: ['default', 'enable', 'accent'],
+            options: ['default', 'disable', 'accent'],
         },
         children: {
             control: 'text',
@@ -34,7 +34,7 @@ export const Default: Story = {
 
 export const Enable: Story = {
     args: {
-        variant: 'enable',
+        variant: 'disable',
         children: '버튼 button',
         onClick: () => alert('클릭됨'),
     },

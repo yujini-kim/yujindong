@@ -1,15 +1,11 @@
-import ChangeSignUp from "@/components/auth/ChangeSignUp";
-import LogInForm from "@/components/auth/LogInForm";
-import SocialSession from "@/components/auth/Socialsession";
-import MainIcon from "@/components/Icon/MainIcon";
+import AuthFormLayout from '@/features/auth/components/auth-layout'
+import AuthSwitchLink from '@/features/auth/components/auth-switch-link'
+import LoginForm from '@/features/auth/login/components/login-form'
 
 export default function Login() {
-  return (
-    <div className="flex flex-col justify-center items-center">
-      <MainIcon />
-      <LogInForm />
-      <ChangeSignUp />
-      <SocialSession text={"로그인"} />
-    </div>
-  );
+    return (
+        <AuthFormLayout footer={<AuthSwitchLink text="회원이 아니신가요?" linkText="회원가입" href="/signup" />}>
+            <LoginForm />
+        </AuthFormLayout>
+    )
 }

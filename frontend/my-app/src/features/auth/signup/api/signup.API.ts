@@ -7,7 +7,12 @@ export const postSignupAPI = async (formData: SignupFormData) => {
         body: JSON.stringify(formData),
         headers: { 'Content-Type': 'application/json' },
     })
-    const data = await res.json()
 
-    return data
+    if (!res.ok) {
+        const errorData = await res.json().catch(() => null)
+        const message = errorData?.message || `HTTP error! status: ${res.status}`
+        throw new Error(message)
+    }
+
+    return res.json()
 }

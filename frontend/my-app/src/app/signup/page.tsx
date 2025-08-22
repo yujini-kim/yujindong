@@ -1,6 +1,6 @@
-import AuthFormLayout from '@/featuers/auth/components/auth-layout'
-import AuthSwitchLink from '@/featuers/auth/components/auth-switch-link'
-import SignupForm from '@/featuers/auth/signup/components/sign-up-form'
+import AuthFormLayout from '@/features/auth/components/auth-layout'
+import AuthSwitchLink from '@/features/auth/components/auth-switch-link'
+import SignupForm from '@/features/auth/signup/components/sign-up-form'
 
 export default function Signup() {
     return (
