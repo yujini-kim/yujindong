@@ -16,7 +16,7 @@ export default function ToastContainer() {
 
     useEffect(() => {
         if (!toast) return
-        const timer = setTimeout(() => clearToast(), 3000)
+        const timer = setTimeout(() => clearToast(), 100000)
         return () => clearTimeout(timer)
     }, [toast, clearToast])
 
