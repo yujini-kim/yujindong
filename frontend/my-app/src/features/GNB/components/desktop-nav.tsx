@@ -4,7 +4,6 @@ import LogoutButton from './logout-button'
 
 export default function DesktopNav() {
     const { user } = useAuthStore()
-    console.log(user)
 
     return (
         <nav className="hidden md:flex">
