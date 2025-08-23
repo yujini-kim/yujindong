@@ -37,7 +37,6 @@ const nextConfig = {
             resourceQuery: /url/,
         })
 
-        console.log('[SVGR] enabled')
         return config
     },
 }
