@@ -1,6 +1,6 @@
 'use client'
 
-import { IconMenu, LogoWhite } from '@/components/icon'
+import { IconMenu, Logo } from '@/components/icon'
 import { AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -14,7 +14,7 @@ export default function GnbLayout() {
         <>
             <div className="bg-brand-300 flex items-center justify-between px-2">
                 <Link href="/">
-                    <LogoWhite className="size-20" />
+                    <Logo className="size-20" />
                 </Link>
                 <DesktopNav />
                 <button
@@ -23,7 +23,7 @@ export default function GnbLayout() {
                     onClick={onMenuClick}
                     className="md:hidden pr-3"
                 >
-                    <IconMenu className="size-7 cursor-pointer" />
+                    <IconMenu className="size-7 cursor-pointer text-ink-700" />
                 </button>
             </div>
             <AnimatePresence>{openMenu && <MobileNav onClick={onMenuClick} />}</AnimatePresence>

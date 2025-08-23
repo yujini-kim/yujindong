@@ -7,20 +7,20 @@ export default function DesktopNav() {
 
     return (
         <nav className="hidden md:flex">
-            <ul className="flex bg-brand-300 px-4 justify-end gap-4">
+            <ul className="flex px-4 justify-end gap-4">
                 <li>
-                    <Link href="/analyze" className="text-white hover:text-ink-700">
+                    <Link href="/analyze" className="font-medium text-ink-700 hover:text-white ">
                         분석하기
                     </Link>
                 </li>
                 <li>
-                    <Link href="/mypage" className="text-white hover:text-ink-700">
+                    <Link href="/mypage" className="font-medium text-ink-700 hover:text-white">
                         마이페이지
                     </Link>
                 </li>
                 {!user ? (
                     <li>
-                        <Link href="/login" className="text-white hover:text-ink-700">
+                        <Link href="/login" className="font-medium text-ink-700 hover:text-white">
                             로그인
                         </Link>
                     </li>

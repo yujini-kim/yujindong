@@ -25,20 +25,20 @@ export default function MobileNav({ onClick }: Props) {
             transition={{ duration: 0.5 }}
             className="md:hidden"
         >
-            <ul className=" flex flex-col items-center justify-center py-4 gap-2 bg-brand-300">
+            <ul className="bg-brand-300 flex flex-col items-center justify-center py-4 gap-2 ">
                 <li>
-                    <Link href="/analyze" onClick={onClick} className="text-white hover:text-ink-700">
+                    <Link href="/analyze" onClick={onClick} className="font-medium text-ink-700 hover:text-white">
                         분석하기
                     </Link>
                 </li>
                 <li>
-                    <Link href="/mypage" onClick={onClick} className="text-white hover:text-ink-700">
+                    <Link href="/mypage" onClick={onClick} className="font-medium text-ink-700 hover:text-white">
                         마이페이지
                     </Link>
                 </li>
                 {!user ? (
                     <li>
-                        <Link href="/login" onClick={onClick} className="text-white hover:text-ink-700">
+                        <Link href="/login" onClick={onClick} className="font-medium text-ink-700 hover:text-white">
                             로그인
                         </Link>
                     </li>
