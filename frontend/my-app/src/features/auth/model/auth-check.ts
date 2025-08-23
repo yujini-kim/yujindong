@@ -18,5 +18,8 @@ export const checkAuth = async () => {
         const user = { username: data.username, isAdmin: data.admin }
         setUser(user)
         return user
-    } catch (err) {}
+    } catch (err) {
+        setUser(null)
+        return null
+    }
 }
