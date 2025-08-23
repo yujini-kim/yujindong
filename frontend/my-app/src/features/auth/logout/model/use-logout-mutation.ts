@@ -16,7 +16,7 @@ export const useLogoutMutation = () => {
             router.replace('/')
         },
         onError: (err) => {
-            toast.error(err.message)
+            toast.error('로그아웃 실패')
         },
     })
     return mutation
