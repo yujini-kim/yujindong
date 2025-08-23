@@ -1,6 +1,11 @@
+import { useAuthStore } from '@/features/auth/model/auth-store'
 import Link from 'next/link'
+import LogoutButton from './logout-button'
 
 export default function DesktopNav() {
+    const { user } = useAuthStore()
+    console.log(user)
+
     return (
         <nav className="hidden md:flex">
             <ul className="flex bg-brand-300 px-4 justify-end gap-4">
@@ -14,11 +19,15 @@ export default function DesktopNav() {
                         마이페이지
                     </Link>
                 </li>
-                <li>
-                    <Link href="/login" className="text-white hover:text-ink-700">
-                        로그인
-                    </Link>
-                </li>
+                {!user ? (
+                    <li>
+                        <Link href="/login" className="text-white hover:text-ink-700">
+                            로그인
+                        </Link>
+                    </li>
+                ) : (
+                    <LogoutButton />
+                )}
             </ul>
         </nav>
     )

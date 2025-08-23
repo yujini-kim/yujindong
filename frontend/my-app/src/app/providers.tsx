@@ -1,13 +1,18 @@
 'use client'
 
 import ToastContainer from '@/components/common/toast/toast-container'
+import { checkAuth } from '@/features/auth/model/auth-check'
 import { lightTheme } from '@/styles/theme'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 export function Providers({ children }: { children: ReactNode }) {
+    useEffect(() => {
+        checkAuth()
+    }, [])
+
     const [queryClient] = useState(() => new QueryClient())
 
     return (

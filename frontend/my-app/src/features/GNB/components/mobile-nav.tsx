@@ -1,5 +1,7 @@
+import { useAuthStore } from '@/features/auth/model/auth-store'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import LogoutButton from './logout-button'
 
 const listVariants = {
     hidden: { y: -40, opacity: 0 },
@@ -12,6 +14,8 @@ interface Props {
 }
 
 export default function MobileNav({ onClick }: Props) {
+    const { user } = useAuthStore()
+
     return (
         <motion.nav
             variants={listVariants}
@@ -32,11 +36,15 @@ export default function MobileNav({ onClick }: Props) {
                         마이페이지
                     </Link>
                 </li>
-                <li>
-                    <Link href="/login" onClick={onClick} className="text-white hover:text-ink-700">
-                        로그인
-                    </Link>
-                </li>
+                {!user ? (
+                    <li>
+                        <Link href="/login" onClick={onClick} className="text-white hover:text-ink-700">
+                            로그인
+                        </Link>
+                    </li>
+                ) : (
+                    <LogoutButton />
+                )}
             </ul>
         </motion.nav>
     )

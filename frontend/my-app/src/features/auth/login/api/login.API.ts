@@ -16,5 +16,5 @@ export const postLoginAPI = async (formData: LoginFormData) => {
         throw new Error(message)
     }
 
-    return res.json()
+    return await res.json()
 }

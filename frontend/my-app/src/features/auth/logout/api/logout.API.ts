@@ -5,12 +5,11 @@ export const postLogoutAPI = async () => {
         method: 'POST',
         credentials: 'include',
     })
-
+    const data = await res.json()
     if (!res.ok) {
-        const errorData = await res.json().catch(() => null)
-        const message = errorData?.message || `HTTP error! status: ${res.status}`
+        const message = data?.message || `HTTP error! status: ${res.status}`
         throw new Error(message)
     }
 
-    return res.json()
+    return data
 }
