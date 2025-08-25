@@ -32,13 +32,19 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, VariantProps<type
 export default function Input({ title, fieldName, type, inputType, icon, className, ...rest }: Props) {
     return (
         <div className="w-full flex flex-col gap-1">
-            <label htmlFor={fieldName} className={cn(LabelVariants({ inputType: type === 'file' ? 'file' : 'text' }))}>
-                {title}
-            </label>
+            {title && (
+                <label
+                    htmlFor={fieldName}
+                    className={cn(LabelVariants({ inputType: type === 'file' ? 'file' : 'text' }))}
+                >
+                    {title}
+                </label>
+            )}
             <div className="relative">
                 <input
                     id={fieldName}
-                    type={type}
+                    type={type ?? 'text'}
+                    aria-label={title ?? fieldName}
                     className={cn(InputVariants({ inputType: type === 'file' ? 'file' : 'text' }), className)}
                     {...rest}
                 />
