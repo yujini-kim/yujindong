@@ -5,8 +5,8 @@ interface Props {
     friend_name: string
 }
 
-export const postAnalyze = async ({ text, friend_name }: Props) => {
-    await fetch(`${BASE_URL}/api/analyze`, {
+export const postAnalyzeAPI = async ({ text, friend_name }: Props) => {
+    const res = await fetch(`${BASE_URL}/api/analyze`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -14,4 +14,12 @@ export const postAnalyze = async ({ text, friend_name }: Props) => {
         body: JSON.stringify({ text, friend_name }),
         credentials: 'include',
     })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw new Error(data.message || '분석 요청 실패')
+    }
+
+    return data
 }

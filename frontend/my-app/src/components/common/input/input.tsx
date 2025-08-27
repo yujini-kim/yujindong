@@ -17,7 +17,7 @@ const InputVariants = cva('w-full px-4 py-3 rounded focus:border-ink-800 focus:o
 const LabelVariants = cva('text-sm font-medium text-ink-900', {
     variants: {
         inputType: {
-            file: 'cursor-pointer border border-ink-900',
+            file: 'w-fit px-1 cursor-pointer border border-ink-900 rounded',
             text: '',
         },
     },
