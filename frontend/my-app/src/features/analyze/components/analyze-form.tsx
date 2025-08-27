@@ -1,18 +1,18 @@
 'use client'
 import Button from '@/components/common/button/button'
 import Input from '@/components/common/input/input'
+import { toast } from '@/components/common/toast/toast'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { AnalyzeFormData, analyzeSchema } from '../model/analyze.schema'
 import { useAnalyzeMutation } from '../model/use-analyze-mutation'
 
-interface analyzeFormData {
-    text: string
-    friend_name: string
-}
-
 export default function AnalyzeForm() {
-    const { register, handleSubmit, setValue, watch } = useForm<analyzeFormData>()
+    const { register, handleSubmit, setValue, watch } = useForm<AnalyzeFormData>({
+        resolver: zodResolver(analyzeSchema),
+    })
     const analyzeMutation = useAnalyzeMutation()
-    const onSubmit = (formData: analyzeFormData) => {
+    const onSubmit = (formData: AnalyzeFormData) => {
         analyzeMutation.mutate(formData)
     }
     const textValue = watch('text', '')
@@ -25,6 +25,10 @@ export default function AnalyzeForm() {
         reader.onload = () => {
             setValue('text', reader.result as string, { shouldValidate: true })
         }
+
+        reader.onerror = () => {
+            toast.error('파일을 읽는 중 오류가 발생했습니다.')
+        }
         reader.readAsText(file)
     }
 
@@ -33,8 +37,8 @@ export default function AnalyzeForm() {
             <form onSubmit={handleSubmit(onSubmit)} className="w-full  flex flex-col justify-center items-center">
                 <Input title="파일업로드하기" fieldName="file" type="file" accept=".txt" onChange={handleFileChange} />
                 <Input fieldName="text" title="분석할 대화내용" {...register('text')} value={textValue} />
-                <Input fieldName="friendName" title="친구이름" {...register('friend_name')} />
-                <Button>분석하기</Button>
+                <Input fieldName="friend_name" title="친구이름" {...register('friend_name')} />
+                <Button>{analyzeMutation.isPending ? '분석중...' : '분석하기'}</Button>
             </form>
         </div>
     )
