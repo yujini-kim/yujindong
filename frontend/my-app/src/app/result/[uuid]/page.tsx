@@ -1,4 +1,4 @@
-import AnaylzeResult from '@/features/analyze-result/components/result'
+import AnaylzeResult from '@/features/analyze-result/components/analyze-result'
 
 export default function Result() {
     return (
