@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { getAnaylzeResult } from '../api/anaylze-result.API'
+import { getAnalyzeResult } from '../api/analyze-result.API'
 
 export const useAnalyzeResultQuery = (uuid: string) => {
     const analyzeResultQuery = useQuery({
-        queryFn: () => getAnaylzeResult(uuid),
+        queryFn: () => getAnalyzeResult(uuid),
         queryKey: [`result-${uuid}`],
         enabled: !!uuid,
     })

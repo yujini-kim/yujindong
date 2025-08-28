@@ -1,6 +1,6 @@
-export interface analyzeResultType {
+export interface AnalyzeResult {
     text: string
-    score: string
+    score: number
     recommendation: string
     summary: string
     friendName: string

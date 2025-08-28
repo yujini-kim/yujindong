@@ -1,7 +1,7 @@
 import { BASE_URL } from '@/constants/constants'
-import { analyzeResultType } from '../model/analyze-result.types'
+import { AnalyzeResult } from '../model/analyze-result.types'
 
-export const getAnaylzeResult = async (uuid: string): Promise<analyzeResultType> => {
+export const getAnalyzeResult = async (uuid: string): Promise<AnalyzeResult> => {
     const res = await fetch(`${BASE_URL}/api/result/${uuid}`)
     const data = await res.json()
 

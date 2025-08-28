@@ -1,6 +1,12 @@
 export default function ResultSkeleton() {
     return (
-        <div className="flex flex-col items-center justify-center gap-4 animate-pulse">
+        <div
+            role="status"
+            aria-live="polite"
+            aria-busy="true"
+            className="flex flex-col items-center justify-center gap-4 animate-pulse"
+        >
+            <span className="sr-only">분석 결과를 불러오는 중...</span>
             {/* 위쪽 카드 2개 */}
             <div className="flex gap-4">
                 {/* 왼쪽 카드 */}
