@@ -10,8 +10,8 @@ export const useAnalyzeMutation = () => {
     const mutation = useMutation({
         mutationFn: postAnalyzeAPI,
         onSuccess: (data) => {
-            toast.success(`분석완료`)
             router.push(`/result/${data.shareUuid}`)
+            toast.success(`분석완료`)
         },
         onError: (err) => {
             toast.error(err.message)
