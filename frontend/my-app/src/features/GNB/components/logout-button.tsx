@@ -7,7 +7,7 @@ export default function LogoutButton() {
     }
     return (
         <li>
-            <button onClick={logout} className="text-white hover:text-ink-700">
+            <button onClick={logout} className="font-medium text-ink-700 hover:text-white ">
                 로그아웃
             </button>
         </li>
