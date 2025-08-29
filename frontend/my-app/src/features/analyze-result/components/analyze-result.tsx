@@ -1,5 +1,6 @@
 'use client'
 
+import Button from '@/components/common/button/button'
 import { toast } from '@/components/common/toast/toast'
 import { useParams } from 'next/navigation'
 import { useAnalyzeResultQuery } from '../model/use-analyze-result-query'
@@ -37,6 +38,14 @@ export default function AnalyzeResult() {
             <div>
                 <InfoCard friendName={data.friendName} recommendation={data.recommendation} />
                 <TextCard text={data.text} />
+            </div>
+            <div className="flex gap-2">
+                <Button variant="accent" className="w-40">
+                    다시하기
+                </Button>
+                <Button variant="border" className="w-40">
+                    공유하기
+                </Button>
             </div>
         </div>
     )
