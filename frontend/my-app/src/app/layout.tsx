@@ -1,7 +1,7 @@
+import KakaoScript from '@/features/analyze-result/model/kakao-script'
 import GnbLayout from '@/features/gnb/components/gnb-layout'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { Providers } from './providers'
 
 export const metadata: Metadata = {
@@ -12,23 +12,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <head>
-                <Script src="https://www.googletagmanager.com/gtag/js?id=G-2N63BVZPXP" strategy="afterInteractive" />
-                <Script id="ga-init" strategy="afterInteractive">
-                    {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2N63BVZPXP');
-          `}
-                </Script>
-            </head>
             <body>
                 <div id="portal"></div>
                 <Providers>
                     <GnbLayout />
                     <main className="pt-[120px] pb-[100px]">{children}</main>
                 </Providers>
+                <KakaoScript />
             </body>
         </html>
     )

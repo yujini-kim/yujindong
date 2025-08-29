@@ -7,7 +7,9 @@ const ButtonVariants = cva('flex items-center justify-center rounded-xl px-4 py-
         variant: {
             default: 'bg-brand-200 text-ink-900 hover:bg-brand-300',
             disable: 'bg-ink-300 text-ink-600 hover:bg-ink-400',
-            accent: 'bg-brand-500 text-ink-900',
+            accent: 'bg-brand-300 text-ink-900',
+            ink: 'bg-ink-800 text-white',
+            border: 'bg-white border border-ink-800 text-ink-800',
         },
     },
     defaultVariants: {

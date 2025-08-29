@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn'
 import { cva, VariantProps } from 'class-variance-authority'
 
-const cardVariants = cva('relative flex  items-center justify-center p-2 rounded-lg text-ink-800', {
+const cardVariants = cva('relative flex items-center justify-center p-2 rounded-lg text-ink-800', {
     variants: {
         orientation: {
             horizontal: 'flex-row w-[334px] h-20',
