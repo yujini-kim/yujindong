@@ -1,3 +1,5 @@
+export { default as ArrowLeft } from './arrow-left'
+export { default as ArrowRight } from './arrow-right'
 export { default as IconFail } from './fail.svg'
 export { default as LogoWhite } from './logo-white.svg'
 export { default as Logo } from './logo.svg'

@@ -1,10 +1,10 @@
 import AuthGuard from '@/features/auth/components/auth-guard'
-import Card from '@/features/my-page/components/my-page-card'
+import MyPage from '@/features/my-page/components/my-page'
 
 export default function Mypage() {
     return (
         <AuthGuard>
-            <Card />
+            <MyPage />
         </AuthGuard>
     )
 }
