@@ -7,12 +7,12 @@ export interface Props {
 export default function MyPageDataTable({ data }: Props) {
     return (
         <div className="overflow-x-auto w-full">
-            <table className="min-w-full border-collapse border border-gray-200 text-sm ">
+            <table className="table-fixed min-w-full border-collapse border border-gray-200 text-sm">
                 <thead className="bg-ink-100">
                     <tr>
-                        <th className="border border-ink-300 py-2 text-center">No</th>
-                        <th className="border border-ink-300 py-2 text-center">분석요약</th>
-                        <th className="border border-ink-300 py-2 text-center">추천금액</th>
+                        <th className="w-1/12 border border-ink-300 py-2 text-center">No</th>
+                        <th className="w-8/12 md:w-10/12 border border-ink-300 py-2 text-center">분석요약</th>
+                        <th className="w-3/12 md:w-1/12 border border-ink-300 py-2 text-center">추천금액</th>
                     </tr>
                 </thead>
                 <tbody>
