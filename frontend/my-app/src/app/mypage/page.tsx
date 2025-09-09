@@ -1,9 +1,10 @@
 import AuthGuard from '@/features/auth/components/auth-guard'
+import MyPage from '@/features/my-page/components/my-page'
 
 export default function Mypage() {
     return (
         <AuthGuard>
-            <div className="min-h-screen flex flex-col justify-center items-center gap-4">마이페이지</div>
+            <MyPage />
         </AuthGuard>
     )
 }
